@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dom Claudio — Writer</title>
+<link rel="icon" type="image/svg+xml" href="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/2/svg/270d-1f3fd.svg">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=DM+Sans:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap');
+
+:root {
+  --navy: #1B3A6B;
+  --navy-light: #2A5298;
+  --cream: #F7F4EE;
+  --black: #1a1a1a;
+  --dark: #0e0e0e;
+  --surface: #161616;
+  --white: #ededed;
+  --gray: #888;
+  --dim: #555;
+  --faint: #333;
+  --light-line: #ddd;
+  --pink: #FF2D87;
+  --chartreuse: #DFFF00;
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'DM Sans', 'Helvetica Neue', sans-serif;
+  --script: 'Great Vibes', cursive;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+a { color: inherit; text-decoration: none; }
+
+/* ── NAV (adapts to section) ── */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 20px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(14px);
+  transition: background 0.4s, border-color 0.4s;
+}
+
+.nav.light {
+  background: rgba(247,244,238,0.92);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.nav.dark {
+  background: rgba(14,14,14,0.88);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.nav-name {
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.nav.light .nav-name { color: var(--black); }
+.nav.dark .nav-name { color: var(--white); }
+
+.nav-links { display: flex; gap: 32px; list-style: none; }
+
+.nav-links a {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.nav.light .nav-links a { color: #999; }
+.nav.light .nav-links a:hover,
+.nav.light .nav-links a.active { color: var(--navy); }
+
+.nav.dark .nav-links a { color: #666; }
+.nav.dark .nav-links a:hover,
+.nav.dark .nav-links a.active { color: var(--white); }
+
+/* ═══════════════════════════════════════ */
+/* HOME — clean, neutral, title card      */
+/* ═══════════════════════════════════════ */
+#home {
+  min-height: 100vh;
+  background: #FAFAF8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 30px;
+}
+
+#home .h-name {
+  font-family: var(--serif);
+  font-size: clamp(44px, 7vw, 76px);
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--black);
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.2s;
+}
+
+#home .h-rule {
+  width: 80px;
+  height: 3px;
+  background: var(--navy);
+  margin: 24px auto;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.4s;
+}
+
+#home .h-tagline {
+  font-family: var(--serif);
+  font-size: clamp(18px, 2.5vw, 24px);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--dim);
+  max-width: 500px;
+  line-height: 1.5;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.6s;
+}
+
+/* ═══════════════════════════════════════ */
+/* EDITORIAL — cream, navy, serif         */
+/* ═══════════════════════════════════════ */
+#editorial {
+  background: var(--cream);
+  color: var(--black);
+  padding: 100px 48px 80px;
+  display: none;
+}
+
+#editorial .inner { max-width: 760px; margin: 0 auto; }
+
+.ed-rule { width: 100%; height: 4px; background: var(--navy); }
+.ed-rule-thin { width: 100%; height: 1px; background: var(--light-line); }
+
+.ed-title {
+  font-family: var(--serif);
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 800;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin: 20px 0;
+}
+
+.ed-intro {
+  font-family: var(--serif);
+  font-size: 19px;
+  color: var(--black);
+  line-height: 1.6;
+  margin-bottom: 50px;
+}
+
+.ed-section-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--navy);
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--navy);
+  margin-bottom: 44px;
+}
+
+.piece { margin-bottom: 50px; }
+
+.piece-meta {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #999;
+  margin-bottom: 10px;
+}
+
+.piece-title {
+  font-family: var(--serif);
+  font-size: clamp(26px, 3.5vw, 38px);
+  font-weight: 600;
+  color: var(--black);
+  line-height: 1.25;
+  margin-bottom: 14px;
+}
+
+.piece-desc {
+  font-family: var(--serif);
+  font-size: 17px;
+  color: #666;
+  line-height: 1.65;
+  margin-bottom: 16px;
+}
+
+.piece-cta {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--navy);
+  cursor: pointer;
+}
+
+.piece-cta:hover { color: var(--navy-light); }
+
+.piece-divider { width: 100%; height: 1px; background: var(--light-line); margin-top: 44px; }
+
+/* ═══════════════════════════════════════ */
+/* CASE STUDY — campaign's own world      */
+/* ═══════════════════════════════════════ */
+#consistently-comfortable {
+  background: var(--dark);
+  color: var(--white);
+  padding: 100px 48px 80px;
+  display: none;
+}
+
+#consistently-comfortable .inner { max-width: 760px; margin: 0 auto; }
+
+.cs-back {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--pink);
+  cursor: pointer;
+  margin-bottom: 40px;
+  display: inline-block;
+}
+
+.cs-back:hover { color: #ff5fa0; }
+
+.cs-wordmark {
+  text-align: center;
+  padding: 70px 40px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 50px;
+}
+
+.cs-wordmark::before,
+.cs-wordmark::after {
+  content: '';
+  position: absolute;
+  width: 250px;
+  height: 500px;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.06;
+}
+
+.cs-wordmark::before { left: -60px; top: -50px; background: var(--pink); }
+.cs-wordmark::after { right: -60px; bottom: -50px; background: var(--chartreuse); }
+
+.cs-wm1 {
+  font-family: var(--script);
+  font-size: clamp(48px, 8vw, 72px);
+  color: var(--pink);
+  line-height: 1.0;
+  position: relative; z-index: 2;
+}
+
+.cs-wm2 {
+  font-family: var(--script);
+  font-size: clamp(58px, 10vw, 90px);
+  color: var(--chartreuse);
+  line-height: 1.05;
+  position: relative; z-index: 2;
+}
+
+.cs-wm-sub {
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: #555;
+  margin-top: 20px;
+  position: relative; z-index: 2;
+}
+
+.cs-wm-type {
+  font-size: 13px;
+  color: #666;
+  margin-top: 8px;
+  font-weight: 300;
+  position: relative; z-index: 2;
+}
+
+.cs-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--pink);
+  margin-bottom: 16px;
+  margin-top: 40px;
+}
+
+.cs-body {
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 1.7;
+  color: #ccc;
+  margin-bottom: 16px;
+}
+
+.cs-body .hl { color: var(--white); font-weight: 600; }
+
+.cs-episodes {
+  margin-top: 40px;
+  border-top: 1px solid var(--faint);
+  padding-top: 20px;
+}
+
+.cs-ep {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid #222;
+}
+
+.cs-ep-left { display: flex; align-items: baseline; gap: 16px; }
+
+.cs-ep-num { font-size: 11px; color: #555; letter-spacing: 1px; }
+
+.cs-ep-title {
+  font-family: var(--serif);
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--white);
+}
+
+.cs-ep-badge {
+  font-size: 8px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--dark);
+  background: var(--chartreuse);
+  padding: 3px 10px;
+  border-radius: 2px;
+}
+
+.cs-ep-logline {
+  font-family: var(--serif);
+  font-size: 14px;
+  color: #666;
+  font-style: italic;
+  padding: 4px 0 14px 40px;
+  border-bottom: 1px solid #222;
+}
+
+.cs-footer-note {
+  font-family: var(--serif);
+  font-size: 15px;
+  font-style: italic;
+  color: #555;
+  margin-top: 44px;
+  text-align: center;
+}
+
+/* ═══════════════════════════════════════ */
+/* SCREENWRITING — dark, cinematic        */
+/* ═══════════════════════════════════════ */
+#screenwriting {
+  background: #111;
+  color: var(--white);
+  padding: 100px 48px 80px;
+  display: none;
+}
+
+#screenwriting .inner { max-width: 760px; margin: 0 auto; }
+
+.sw-title {
+  font-family: var(--serif);
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.sw-rule { width: 60px; height: 2px; background: #444; margin-bottom: 28px; }
+
+.sw-intro {
+  font-family: var(--serif);
+  font-size: 19px;
+  font-style: italic;
+  color: #888;
+  line-height: 1.6;
+  margin-bottom: 50px;
+}
+
+.proj { border-top: 1px solid #222; padding: 32px 0; }
+
+.proj-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; flex-wrap: wrap; gap: 8px; }
+
+.proj-title {
+  font-family: var(--serif);
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 600;
+  color: var(--white);
+}
+
+.proj-type {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #555;
+}
+
+.proj-logline {
+  font-family: var(--serif);
+  font-size: 16px;
+  color: #888;
+  line-height: 1.65;
+  margin-bottom: 10px;
+}
+
+.proj-status { font-size: 11px; color: #555; letter-spacing: 1px; }
+
+.proj-link {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--pink);
+}
+
+.proj-link:hover { color: #ff5fa0; }
+
+/* ═══════════════════════════════════════ */
+/* ABOUT — warm, open                     */
+/* ═══════════════════════════════════════ */
+#about {
+  background: #FAFAF8;
+  color: var(--black);
+  padding: 100px 48px 80px;
+  display: none;
+}
+
+#about .inner { max-width: 660px; margin: 0 auto; }
+
+.ab-title {
+  font-family: var(--serif);
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 700;
+  color: var(--black);
+  margin-bottom: 8px;
+}
+
+.ab-rule { width: 60px; height: 2px; background: var(--navy); margin-bottom: 32px; }
+
+.ab-body {
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 1.75;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+.ab-body strong { color: var(--black); font-weight: 600; }
+
+.ab-contact {
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 2px solid var(--navy);
+}
+
+.ab-contact-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin-bottom: 12px;
+}
+
+.ab-email {
+  font-family: var(--serif);
+  font-size: 22px;
+  color: var(--navy);
+}
+
+.ab-email:hover { color: var(--navy-light); }
+
+.ab-loc { font-size: 14px; color: #999; margin-top: 8px; }
+
+/* ── FOOTER ── */
+.footer {
+  text-align: center;
+  padding: 24px 48px;
+  transition: background 0.4s, border-color 0.4s, color 0.4s;
+}
+
+.footer.light { background: #FAFAF8; border-top: 1px solid #eee; color: #bbb; }
+.footer.dark { background: var(--dark); border-top: 1px solid #222; color: #444; }
+
+.footer-text { font-size: 11px; letter-spacing: 1px; }
+
+/* ── ANIMATION ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── MOBILE ── */
+@media (max-width: 600px) {
+  .nav { padding: 16px 20px; }
+  .nav-links { gap: 16px; }
+  .nav-links a { font-size: 10px; }
+  #editorial, #screenwriting, #about, #consistently-comfortable { padding-left: 24px; padding-right: 24px; }
+  .cs-wordmark { padding: 50px 20px; }
+  .cs-ep-logline { padding-left: 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav light" id="main-nav">
+  <span class="nav-name" onclick="go('home')">Dom Claudio</span>
+  <ul class="nav-links">
+    <li><a onclick="go('editorial')" id="nav-editorial">Editorial</a></li>
+    <li><a onclick="go('screenwriting')" id="nav-screenwriting">Screenwriting</a></li>
+    <li><a onclick="go('about')" id="nav-about">About</a></li>
+  </ul>
+</nav>
+
+<!-- HOME -->
+<section id="home">
+  <div class="h-name">Dom Claudio</div>
+  <div class="h-rule"></div>
+  <div class="h-tagline">Winging it together works for me.</div>
+</section>
+
+<!-- EDITORIAL -->
+<section id="editorial">
+  <div class="inner">
+    <div class="ed-rule"></div>
+    <h1 class="ed-title">Editorial</h1>
+    <div class="ed-rule"></div>
+    <p class="ed-intro">Case studies and short editorial samples. Each piece is a small artifact: a problem found, a solution drafted, the editorial decisions named.</p>
+    <div class="ed-section-label">Pieces</div>
+
+    <div class="piece">
+      <div class="piece-meta">Spec Campaign · May 2026</div>
+      <h2 class="piece-title">Consistently Comfortable.</h2>
+      <p class="piece-desc">A spec social campaign for MeUndies built around the membership model. One character, one scenario, two outcomes. The product is never the punchline. It's the invisible reason everything goes right.</p>
+      <a class="piece-cta" onclick="go('consistently-comfortable')">Read the case study &nbsp;→</a>
+      <div class="piece-divider"></div>
+    </div>
+
+    <div class="piece">
+      <div class="piece-meta">Content Strategy · May 2026</div>
+      <h2 class="piece-title">Tracking Earth, in plain English.</h2>
+      <p class="piece-desc">A small editing exercise on the NISAR mission overview page. A demonstration of what content strategy looks like when applied with restraint, and what gets gained when a fresh editorial pass is taken on existing copy.</p>
+      <a class="piece-cta" href="#">Read the case study &nbsp;→</a>
+      <div class="piece-divider"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDY: CONSISTENTLY COMFORTABLE -->
+<section id="consistently-comfortable">
+  <div class="inner">
+    <a class="cs-back" onclick="go('editorial')">← Back to Editorial</a>
+
+    <div class="cs-wordmark">
+      <div class="cs-wm1">Consistently</div>
+      <div class="cs-wm2">Comfortable</div>
+      <div class="cs-wm-sub">A MeUndies Campaign</div>
+      <div class="cs-wm-type">Short-Form Social Series &nbsp;·&nbsp; TikTok &nbsp;·&nbsp; Instagram Reels</div>
+    </div>
+
+    <div class="cs-label">The Concept</div>
+    <p class="cs-body">
+      MeUndies members unlock a way of being that most people don't understand because they've never felt the long-term effects of being <span class="hl">consistently comfortable</span>. Their most precious cargo is handled. And it shows.
+    </p>
+    <p class="cs-body">
+      One character, <span class="hl">Frankie</span>, experiences the same everyday scenario twice. Version A: uncomfortable, fidgeting, reactive. Version B: settled, smooth, pulse at 60 bpm. The product is never the punchline. It's the invisible reason everything goes right.
+    </p>
+
+    <div class="cs-episodes">
+      <div class="cs-label">Episodes</div>
+
+      <div class="cs-ep">
+        <div class="cs-ep-left"><span class="cs-ep-num">01</span><span class="cs-ep-title">The Job Interview</span></div>
+        <span class="cs-ep-badge">Scripted</span>
+      </div>
+      <div class="cs-ep-logline">Same candidate. Same question. Two completely different answers.</div>
+
+      <div class="cs-ep">
+        <div class="cs-ep-left"><span class="cs-ep-num">02</span><span class="cs-ep-title">The First Date</span></div>
+      </div>
+
+      <div class="cs-ep">
+        <div class="cs-ep-left"><span class="cs-ep-num">03</span><span class="cs-ep-title">The Laundromat</span></div>
+      </div>
+
+      <div class="cs-ep">
+        <div class="cs-ep-left"><span class="cs-ep-num">04</span><span class="cs-ep-title">The Airport</span></div>
+      </div>
+
+      <div class="cs-ep">
+        <div class="cs-ep-left"><span class="cs-ep-num">05</span><span class="cs-ep-title">Sunday Morning</span></div>
+      </div>
+
+      <div class="cs-ep">
+        <div class="cs-ep-left"><span class="cs-ep-num">06</span><span class="cs-ep-title">The Poker Table</span></div>
+        <span class="cs-ep-badge">Series Closer</span>
+      </div>
+      <div class="cs-ep-logline">Same hand. Same bluff. Only one of them can sell it.</div>
+    </div>
+
+    <p class="cs-footer-note">Full campaign brief and scripts available upon request.</p>
+  </div>
+</section>
+
+<!-- SCREENWRITING -->
+<section id="screenwriting">
+  <div class="inner">
+    <h1 class="sw-title">Screenwriting</h1>
+    <div class="sw-rule"></div>
+    <p class="sw-intro">Stories about bodies that betray you, systems that fail you, and people who survive anyway.</p>
+
+    <div class="proj">
+      <div class="proj-header">
+        <span class="proj-title">The Elephant</span>
+        <span class="proj-type">Pilot · Drama</span>
+      </div>
+      <p class="proj-logline">An Afro-Latino porn star struggles with the choice between fun money and a pipe dream.</p>
+      <div class="proj-status">In active development</div>
+      <a href="https://watchtheelephant.com" class="proj-link" target="_blank">watchtheelephant.com →</a>
+    </div>
+
+    <div class="proj">
+      <div class="proj-header">
+        <span class="proj-title">Precautions</span>
+        <span class="proj-type">Short · Psychological Horror</span>
+      </div>
+      <p class="proj-logline">A teenager pushes for autonomy when his mother pushes this lifelong medication, regardless of the side effects.</p>
+      <div class="proj-status">Pre-production</div>
+      <a href="https://precautionsfilm.com" class="proj-link" target="_blank">precautionsfilm.com →</a>
+    </div>
+
+    <div class="proj">
+      <div class="proj-header">
+        <span class="proj-title">Case Management</span>
+        <span class="proj-type">Pilot · Dark Comedy</span>
+      </div>
+      <p class="proj-logline">Hell is a corporate office. Demons are middle managers. And the worst part of eternal damnation? The performance reviews.</p>
+      <div class="proj-status">In development</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="inner">
+    <h1 class="ab-title">About</h1>
+    <div class="ab-rule"></div>
+    <p class="ab-body">
+      I'm <strong>Dom Claudio</strong> — a writer, content strategist, and screenwriter based in Los Angeles. My background spans copywriting, brand storytelling, and community-facing content, with experience across social media marketing, real estate, and creative development.
+    </p>
+    <p class="ab-body">
+      I studied literature at <strong>Ramapo College of New Jersey</strong>. I've worked with Greystar, Sares Regis, RW Selby, and GHP Management across 15+ communities in Los Angeles and Ventura counties. I'm currently developing several projects for screen and building a portfolio for brands that need sharp, human writing.
+    </p>
+    <div class="ab-contact">
+      <div class="ab-contact-label">Get in touch</div>
+      <a href="mailto:dom@domclaudio.com" class="ab-email">dom@domclaudio.com</a>
+      <div class="ab-loc">Los Angeles, CA</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer light" id="main-footer">
+  <div class="footer-text">© 2026 Dom Claudio</div>
+</footer>
+
+<script>
+const darkSections = ['screenwriting', 'consistently-comfortable'];
+const lightSections = ['home', 'editorial', 'about'];
+
+function go(id) {
+  const sections = ['home', 'editorial', 'screenwriting', 'about', 'consistently-comfortable'];
+  sections.forEach(s => {
+    const el = document.getElementById(s);
+    if (el) el.style.display = s === id ? 'block' : 'none';
+  });
+
+  // Nav theme
+  const nav = document.getElementById('main-nav');
+  const footer = document.getElementById('main-footer');
+  if (darkSections.includes(id)) {
+    nav.className = 'nav dark';
+    footer.className = 'footer dark';
+  } else {
+    nav.className = 'nav light';
+    footer.className = 'footer light';
+  }
+
+  // Active nav link
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  const map = {
+    'editorial': 'nav-editorial',
+    'consistently-comfortable': 'nav-editorial',
+    'screenwriting': 'nav-screenwriting',
+    'about': 'nav-about'
+  };
+  if (map[id]) document.getElementById(map[id])?.classList.add('active');
+
+  window.scrollTo(0, 0);
+}
+</script>
+
+</body>
+</html>
