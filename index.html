@@ -6,7 +6,7 @@
 <title>Dom Claudio — Writer</title>
 <link rel="icon" type="image/svg+xml" href="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/2/svg/270d-1f3fd.svg">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=DM+Sans:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
 
 :root {
   --navy: #1B3A6B;
@@ -22,9 +22,7 @@
   --light-line: #ddd;
   --pink: #FF2D87;
   --chartreuse: #DFFF00;
-  --serif: 'Playfair Display', Georgia, serif;
   --sans: 'DM Sans', 'Helvetica Neue', sans-serif;
-  --script: 'Great Vibes', cursive;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -101,7 +99,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 #home .h-name {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: clamp(44px, 7vw, 76px);
   font-weight: 700;
   letter-spacing: 4px;
@@ -121,7 +119,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 #home .h-tagline {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: clamp(18px, 2.5vw, 24px);
   font-weight: 400;
   font-style: italic;
@@ -133,7 +131,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ═══════════════════════════════════════ */
-/* EDITORIAL — cream, navy, serif         */
+/* EDITORIAL — cream, navy                */
 /* ═══════════════════════════════════════ */
 #editorial {
   background: var(--cream);
@@ -148,9 +146,9 @@ a { color: inherit; text-decoration: none; }
 .ed-rule-thin { width: 100%; height: 1px; background: var(--light-line); }
 
 .ed-title {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: clamp(36px, 5vw, 56px);
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: 5px;
   text-transform: uppercase;
   color: var(--navy);
@@ -158,8 +156,9 @@ a { color: inherit; text-decoration: none; }
 }
 
 .ed-intro {
-  font-family: var(--serif);
-  font-size: 19px;
+  font-family: var(--sans);
+  font-size: 18px;
+  font-weight: 400;
   color: var(--black);
   line-height: 1.6;
   margin-bottom: 50px;
@@ -188,7 +187,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 .piece-title {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: clamp(26px, 3.5vw, 38px);
   font-weight: 600;
   color: var(--black);
@@ -197,8 +196,9 @@ a { color: inherit; text-decoration: none; }
 }
 
 .piece-desc {
-  font-family: var(--serif);
-  font-size: 17px;
+  font-family: var(--sans);
+  font-size: 16px;
+  font-weight: 400;
   color: #666;
   line-height: 1.65;
   margin-bottom: 16px;
@@ -265,16 +265,20 @@ a { color: inherit; text-decoration: none; }
 .cs-wordmark::after { right: -60px; bottom: -50px; background: var(--chartreuse); }
 
 .cs-wm1 {
-  font-family: var(--script);
-  font-size: clamp(48px, 8vw, 72px);
+  font-family: var(--sans);
+  font-size: clamp(40px, 7vw, 64px);
+  font-weight: 700;
+  letter-spacing: -1px;
   color: var(--pink);
   line-height: 1.0;
   position: relative; z-index: 2;
 }
 
 .cs-wm2 {
-  font-family: var(--script);
-  font-size: clamp(58px, 10vw, 90px);
+  font-family: var(--sans);
+  font-size: clamp(48px, 8vw, 76px);
+  font-weight: 700;
+  letter-spacing: -1px;
   color: var(--chartreuse);
   line-height: 1.05;
   position: relative; z-index: 2;
@@ -308,8 +312,9 @@ a { color: inherit; text-decoration: none; }
 }
 
 .cs-body {
-  font-family: var(--serif);
-  font-size: 18px;
+  font-family: var(--sans);
+  font-size: 17px;
+  font-weight: 400;
   line-height: 1.7;
   color: #ccc;
   margin-bottom: 16px;
@@ -336,8 +341,8 @@ a { color: inherit; text-decoration: none; }
 .cs-ep-num { font-size: 11px; color: #555; letter-spacing: 1px; }
 
 .cs-ep-title {
-  font-family: var(--serif);
-  font-size: 17px;
+  font-family: var(--sans);
+  font-size: 16px;
   font-weight: 500;
   color: var(--white);
 }
@@ -354,7 +359,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 .cs-ep-logline {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 14px;
   color: #666;
   font-style: italic;
@@ -363,8 +368,8 @@ a { color: inherit; text-decoration: none; }
 }
 
 .cs-footer-note {
-  font-family: var(--serif);
-  font-size: 15px;
+  font-family: var(--sans);
+  font-size: 14px;
   font-style: italic;
   color: #555;
   margin-top: 44px;
@@ -384,7 +389,7 @@ a { color: inherit; text-decoration: none; }
 #screenwriting .inner { max-width: 760px; margin: 0 auto; }
 
 .sw-title {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: clamp(32px, 5vw, 52px);
   font-weight: 700;
   color: var(--white);
@@ -396,9 +401,10 @@ a { color: inherit; text-decoration: none; }
 .sw-rule { width: 60px; height: 2px; background: #444; margin-bottom: 28px; }
 
 .sw-intro {
-  font-family: var(--serif);
-  font-size: 19px;
+  font-family: var(--sans);
+  font-size: 17px;
   font-style: italic;
+  font-weight: 400;
   color: #888;
   line-height: 1.6;
   margin-bottom: 50px;
@@ -409,8 +415,8 @@ a { color: inherit; text-decoration: none; }
 .proj-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; flex-wrap: wrap; gap: 8px; }
 
 .proj-title {
-  font-family: var(--serif);
-  font-size: clamp(22px, 3vw, 32px);
+  font-family: var(--sans);
+  font-size: clamp(22px, 3vw, 30px);
   font-weight: 600;
   color: var(--white);
 }
@@ -423,8 +429,9 @@ a { color: inherit; text-decoration: none; }
 }
 
 .proj-logline {
-  font-family: var(--serif);
-  font-size: 16px;
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 400;
   color: #888;
   line-height: 1.65;
   margin-bottom: 10px;
@@ -457,7 +464,7 @@ a { color: inherit; text-decoration: none; }
 #about .inner { max-width: 660px; margin: 0 auto; }
 
 .ab-title {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: clamp(32px, 5vw, 48px);
   font-weight: 700;
   color: var(--black);
@@ -467,9 +474,10 @@ a { color: inherit; text-decoration: none; }
 .ab-rule { width: 60px; height: 2px; background: var(--navy); margin-bottom: 32px; }
 
 .ab-body {
-  font-family: var(--serif);
-  font-size: 18px;
-  line-height: 1.75;
+  font-family: var(--sans);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.7;
   color: #444;
   margin-bottom: 20px;
 }
@@ -492,8 +500,9 @@ a { color: inherit; text-decoration: none; }
 }
 
 .ab-email {
-  font-family: var(--serif);
-  font-size: 22px;
+  font-family: var(--sans);
+  font-size: 20px;
+  font-weight: 500;
   color: var(--navy);
 }
 
@@ -676,10 +685,10 @@ a { color: inherit; text-decoration: none; }
     <h1 class="ab-title">About</h1>
     <div class="ab-rule"></div>
     <p class="ab-body">
-      I'm <strong>Dom Claudio</strong> — a writer, content strategist, and screenwriter based in Los Angeles. My background spans copywriting, brand storytelling, and community-facing content, with experience across social media marketing, real estate, and creative development.
+      Writer, content strategist, and screenwriter in Los Angeles. Copywriting, brand storytelling, and community-facing content across real estate, social, and creative development.
     </p>
     <p class="ab-body">
-      I studied literature at <strong>Ramapo College of New Jersey</strong>. I've worked with Greystar, Sares Regis, RW Selby, and GHP Management across 15+ communities in Los Angeles and Ventura counties. I'm currently developing several projects for screen and building a portfolio for brands that need sharp, human writing.
+      Lit degree, <strong>Ramapo College</strong>. Five years writing under compliance — at a State Farm Agency, then in Fair Housing–regulated property management — trained me to honor source material and translate it for readers with thirty seconds to spare. Currently developing for screen.
     </p>
     <div class="ab-contact">
       <div class="ab-contact-label">Get in touch</div>
