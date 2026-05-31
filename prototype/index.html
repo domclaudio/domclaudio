@@ -755,6 +755,16 @@
     transition: background 0.2s;
   }
   .unit-tour-btn:hover { background: var(--forest-deep); }
+   .unit-apply-btn {
+     display: block; width: 100%; box-sizing: border-box;
+     margin-top: 12px; padding: 12px 16px;
+     background: var(--terracotta); color: var(--cream);
+     border: none; border-radius: 100px;
+     font-family: var(--sans); font-size: 12px; font-weight: 700;
+     letter-spacing: 0.04em; text-align: center; text-decoration: none;
+     cursor: pointer; transition: background 0.2s;
+   }
+   .unit-apply-btn:active { background: var(--terracotta-deep); }
   .detail-footer-cta {
     padding: 8px 24px 24px;
     text-align: center;
@@ -2093,6 +2103,7 @@ body {
               </div>
               <button class="unit-tour-btn" onclick="event.stopPropagation(); openTourModal(null, 'Unit ${u.id} \u00b7 Plan ${letter}')">Tour unit</button>
             </div>
+            <a class="unit-apply-btn" href="${APPLY_URL}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();">Apply now →</a>
           </div>`;
         }).join('')}
         
@@ -2268,7 +2279,7 @@ body {
 <script>
 // ============ BETA MODAL LOGIC ============
 // IMPORTANT: Replace this URL with the property's actual SecureCafe online-leasing URL once confirmed.
-const APPLY_URL = 'https://www.thevillageapartmenthomes.com/';
+const APPLY_URL = 'https://ghpmgmt.securecafe.com/onlineleasing/the-village-0/guestlogin.aspx';
 
 let currentModal = null;
 let selectedTourFormat = 'in-person';
