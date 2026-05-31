@@ -915,6 +915,48 @@
 }
 
 .modal-form { display: flex; flex-direction: column; gap: 14px; }
+
+.tour-context {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: -8px 0 20px;
+  padding: 11px 14px;
+  background: #F5EBC8;
+  border: 1px solid #95B453;
+  border-radius: 12px;
+}
+.tour-context:empty { display: none; }
+.tour-context-unit {
+  font-size: 14px;
+  font-weight: 600;
+  color: #4D4218;
+  letter-spacing: 0.01em;
+}
+.tour-context-ref {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6A8030;
+  background: #FAF3DD;
+  border: 1px solid #E8C265;
+  border-radius: 999px;
+  padding: 4px 10px;
+  white-space: nowrap;
+}
+.confirmation-ref {
+  margin-top: 14px;
+  font-size: 13px;
+  color: #4A3E1E;
+}
+.confirmation-ref strong {
+  color: #4D4218;
+  letter-spacing: 0.06em;
+}
+
 .field-label {
   font-size: 12px;
   font-weight: 600;
@@ -1444,7 +1486,7 @@ body {
                       <div class="plan-price-label">Starting at</div>
                       <div class="plan-price">$2,339<span>/mo</span></div>
                     </div>
-                    <button class="plan-tour" onclick="event.stopPropagation(); openTourModal()">Tour</button>
+                    <button class="plan-tour" onclick="event.stopPropagation(); openTourModalFromCard(this)">Tour</button>
                   </div>
                 </div>
               </div>
@@ -1463,7 +1505,7 @@ body {
                       <div class="plan-price-label">Starting at</div>
                       <div class="plan-price">$2,879<span>/mo</span></div>
                     </div>
-                    <button class="plan-tour" onclick="event.stopPropagation(); openTourModal()">Tour</button>
+                    <button class="plan-tour" onclick="event.stopPropagation(); openTourModalFromCard(this)">Tour</button>
                   </div>
                 </div>
               </div>
@@ -1597,7 +1639,7 @@ body {
                       <div class="plan-price-label">Starting at</div>
                       <div class="plan-price">$2,399<span>/mo</span></div>
                     </div>
-                    <button class="plan-tour" onclick="event.stopPropagation(); openTourModal()">Tour</button>
+                    <button class="plan-tour" onclick="event.stopPropagation(); openTourModalFromCard(this)">Tour</button>
                   </div>
                 </div>
               </div>
@@ -1616,7 +1658,7 @@ body {
                       <div class="plan-price-label">Starting at</div>
                       <div class="plan-price">$2,339<span>/mo</span></div>
                     </div>
-                    <button class="plan-tour" onclick="event.stopPropagation(); openTourModal()">Tour</button>
+                    <button class="plan-tour" onclick="event.stopPropagation(); openTourModalFromCard(this)">Tour</button>
                   </div>
                 </div>
               </div>
@@ -1635,7 +1677,7 @@ body {
                       <div class="plan-price-label">Starting at</div>
                       <div class="plan-price">$2,239<span>/mo</span></div>
                     </div>
-                    <button class="plan-tour" onclick="event.stopPropagation(); openTourModal()">Tour</button>
+                    <button class="plan-tour" onclick="event.stopPropagation(); openTourModalFromCard(this)">Tour</button>
                   </div>
                 </div>
               </div>
@@ -1654,7 +1696,7 @@ body {
                       <div class="plan-price-label">Starting at</div>
                       <div class="plan-price">$2,279<span>/mo</span></div>
                     </div>
-                    <button class="plan-tour" onclick="event.stopPropagation(); openTourModal()">Tour</button>
+                    <button class="plan-tour" onclick="event.stopPropagation(); openTourModalFromCard(this)">Tour</button>
                   </div>
                 </div>
               </div>
@@ -1673,7 +1715,7 @@ body {
                       <div class="plan-price-label">Starting at</div>
                       <div class="plan-price">$2,379<span>/mo</span></div>
                     </div>
-                    <button class="plan-tour" onclick="event.stopPropagation(); openTourModal()">Tour</button>
+                    <button class="plan-tour" onclick="event.stopPropagation(); openTourModalFromCard(this)">Tour</button>
                   </div>
                 </div>
               </div>
@@ -1692,7 +1734,7 @@ body {
                       <div class="plan-price-label">Starting at</div>
                       <div class="plan-price">$2,879<span>/mo</span></div>
                     </div>
-                    <button class="plan-tour" onclick="event.stopPropagation(); openTourModal()">Tour</button>
+                    <button class="plan-tour" onclick="event.stopPropagation(); openTourModalFromCard(this)">Tour</button>
                   </div>
                 </div>
               </div>
@@ -2049,7 +2091,7 @@ body {
                 <div class="unit-rent-label">Monthly rent</div>
                 <div class="unit-rent">$${u.rent.toLocaleString()}<span>/mo</span></div>
               </div>
-              <button class="unit-tour-btn" onclick="event.stopPropagation(); openTourModal()">Tour unit</button>
+              <button class="unit-tour-btn" onclick="event.stopPropagation(); openTourModal(null, 'Unit ${u.id} \u00b7 Plan ${letter}')">Tour unit</button>
             </div>
           </div>`;
         }).join('')}
@@ -2075,6 +2117,7 @@ body {
       <div class="modal-eyebrow">SCHEDULE A TOUR</div>
       <div class="modal-title" id="tour-title">Pick your format.</div>
       <div class="modal-subtitle">Tell us when works and we'll confirm your time slot. Most tours are confirmed within two hours during office hours.</div>
+      <div class="tour-context" id="tour-context"></div>
       <form class="modal-form" onsubmit="submitTour(event)">
         <div>
           <label class="field-label">Tour format</label>
@@ -2123,6 +2166,7 @@ body {
       </div>
       <div class="confirmation-title">Tour requested.</div>
       <div class="confirmation-detail">We'll confirm your time slot within two hours during office hours (Mon–Sun · 9 am to 6 pm). Keep an eye on your email and texts.</div>
+      <div class="confirmation-ref">Your reference: <strong id="tour-confirm-ref">V-0000</strong></div>
       <button class="modal-submit" onclick="closeModal()">Back to browsing</button>
     </div>
   </div>
@@ -2228,6 +2272,28 @@ const APPLY_URL = 'https://www.thevillageapartmenthomes.com/';
 
 let currentModal = null;
 let selectedTourFormat = 'in-person';
+let selectedUnitContext = null;
+let currentTourRef = null;
+
+// Short, unique-enough reference code per tour request (no backend needed).
+// Skips ambiguous chars (0/O/1/I) so it's easy to read aloud on a call.
+function genTourRef() {
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  let s = '';
+  for (let i = 0; i < 4; i++) s += chars[Math.floor(Math.random() * chars.length)];
+  return 'V-' + s;
+}
+
+// Plan-card Tour buttons derive which plan they belong to from the card itself.
+function openTourModalFromCard(btn) {
+  const card = btn.closest('.plan-card');
+  let context = null;
+  if (card) {
+    const nameEl = card.querySelector('.plan-name');
+    if (nameEl) context = (nameEl.childNodes[0].textContent || '').trim();
+  }
+  openTourModal(null, context);
+}
 
 function openModal(id) {
   const overlay = document.getElementById('modalOverlay');
@@ -2253,13 +2319,26 @@ function closeModal() {
   document.body.style.overflow = '';
 }
 
-function openTourModal(format) {
+function openTourModal(format, unitContext) {
   openModal('modal-tour');
   if (format) {
     selectedTourFormat = format;
     document.querySelectorAll('#modal-tour .tour-format-btn').forEach(b => {
       b.classList.toggle('is-selected', b.dataset.format === format);
     });
+  }
+  // Carry which apartment they're speculating on + a fresh reference code.
+  selectedUnitContext = unitContext || null;
+  currentTourRef = genTourRef();
+  const ctxEl = document.getElementById('tour-context');
+  if (ctxEl) {
+    if (selectedUnitContext) {
+      ctxEl.innerHTML = '<span class="tour-context-unit">' + selectedUnitContext +
+        '</span><span class="tour-context-ref">Ref ' + currentTourRef + '</span>';
+    } else {
+      ctxEl.innerHTML = '<span class="tour-context-unit">General tour request</span>' +
+        '<span class="tour-context-ref">Ref ' + currentTourRef + '</span>';
+    }
   }
   // Set min date to today
   const dateInput = document.getElementById('tour-date');
@@ -2308,9 +2387,11 @@ function submitTour(e) {
   const phone = document.getElementById('tour-phone').value;
   const date  = document.getElementById('tour-date').value;
   const time  = document.getElementById('tour-time').value;
+  const unit  = selectedUnitContext || 'General tour request';
+  const ref   = currentTourRef || genTourRef();
 
   sendToWeb3Forms({
-    subject:        `${formatLabel} \u2014 ${name} (The Village)`,
+    subject:        `${formatLabel} \u2014 ${name} \u2014 ${unit} [${ref}]`,
     from_name:      'The Village Prospect App',
     'Tour Format':  formatLabel,
     'Prospect':     name,
@@ -2318,8 +2399,12 @@ function submitTour(e) {
     'Phone':        phone,
     'Preferred Date': date,
     'Time Window':  time,
+    'Apartment':    unit,
+    'Reference':    ref,
   });
 
+  const refEl = document.getElementById('tour-confirm-ref');
+  if (refEl) refEl.textContent = ref;
   showConfirmation('modal-tour', 'tour-confirmation');
 }
 
