@@ -2284,30 +2284,61 @@ function showConfirmation(modalId, confirmId) {
   document.getElementById(confirmId).classList.add('is-active');
 }
 
+const WEB3FORMS_KEY = '8be5718a-74e8-4036-9d30-2ba9f710b260';
+
+function sendToWeb3Forms(payload) {
+  return fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({ access_key: WEB3FORMS_KEY, ...payload })
+  }).catch(err => console.warn('[Village] Notification dispatch failed:', err));
+}
+
 function submitTour(e) {
   e.preventDefault();
-  // (Beta) capture form data locally — would POST to Knock CRM in production
-  const data = {
-    format: selectedTourFormat,
-    date: document.getElementById('tour-date').value,
-    time: document.getElementById('tour-time').value,
-    name: document.getElementById('tour-name').value,
-    email: document.getElementById('tour-email').value,
-    phone: document.getElementById('tour-phone').value,
+  const formatLabels = {
+    'in-person':   '\u{1F4CD} In-Person Tour',
+    'facetime':    '\u{1F3A5} FaceTime Tour',
+    'self-guided': '\u{1F6B6} Self-Guided Tour',
+    '3d':          '\u{1F3E0} 3D Virtual Tour'
   };
-  console.log('[BETA] Tour requested:', data);
+  const formatLabel = formatLabels[selectedTourFormat] || 'Tour Request';
+  const name  = document.getElementById('tour-name').value;
+  const email = document.getElementById('tour-email').value;
+  const phone = document.getElementById('tour-phone').value;
+  const date  = document.getElementById('tour-date').value;
+  const time  = document.getElementById('tour-time').value;
+
+  sendToWeb3Forms({
+    subject:        `${formatLabel} \u2014 ${name} (The Village)`,
+    from_name:      'The Village Prospect App',
+    'Tour Format':  formatLabel,
+    'Prospect':     name,
+    'Email':        email,
+    'Phone':        phone,
+    'Preferred Date': date,
+    'Time Window':  time,
+  });
+
   showConfirmation('modal-tour', 'tour-confirmation');
 }
 
 function submitContact(e) {
   e.preventDefault();
-  const data = {
-    name: document.getElementById('contact-name').value,
-    email: document.getElementById('contact-email').value,
-    phone: document.getElementById('contact-phone').value,
-    message: document.getElementById('contact-message').value,
-  };
-  console.log('[BETA] Contact message:', data);
+  const name    = document.getElementById('contact-name').value;
+  const email   = document.getElementById('contact-email').value;
+  const phone   = document.getElementById('contact-phone').value;
+  const message = document.getElementById('contact-message').value;
+
+  sendToWeb3Forms({
+    subject:    `\u{1F4AC} New Inquiry \u2014 ${name} (The Village)`,
+    from_name:  'The Village Prospect App',
+    'Prospect': name,
+    'Email':    email,
+    'Phone':    phone || '(not provided)',
+    'Message':  message,
+  });
+
   showConfirmation('modal-contact', 'contact-confirmation');
 }
 
