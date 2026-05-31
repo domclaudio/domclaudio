@@ -1193,6 +1193,84 @@
 /* Make the menu button look tappable */
 .icon-btn { cursor: pointer; }
 
+
+
+/* ============ INSTALL FEATURE ============ */
+.brand { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+/* The install button matches the menu icon button visually */
+
+.install-steps {
+  display: flex; flex-direction: column;
+  gap: 12px; margin-bottom: 18px;
+}
+.install-step {
+  display: flex; gap: 14px; align-items: flex-start;
+  padding: 14px;
+  background: rgba(149, 180, 83, 0.1);
+  border-radius: 12px;
+}
+.install-step-num {
+  flex-shrink: 0;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: #6A8030; color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 15px; font-weight: 600; font-style: italic;
+}
+.install-step-text {
+  flex: 1;
+  font-size: 14px; color: #1F1815;
+  line-height: 1.45;
+  padding-top: 4px;
+}
+.install-step-text .share-icon-inline {
+  display: inline-flex;
+  vertical-align: -4px;
+  margin: 0 2px;
+  width: 18px; height: 18px;
+  color: #4D4218;
+}
+.install-step-text strong { color: #4D4218; font-weight: 600; }
+
+.install-platform-pill {
+  display: inline-block;
+  font-family: 'Cinzel', serif;
+  font-size: 10px; letter-spacing: 2px;
+  color: #6A8030; font-weight: 600;
+  background: rgba(149, 180, 83, 0.12);
+  padding: 4px 10px; border-radius: 100px;
+  margin-bottom: 6px;
+}
+
+.install-already {
+  text-align: center; padding: 8px 4px 6px;
+}
+.install-already .confirmation-icon {
+  width: 64px; height: 64px;
+  margin: 0 auto 14px;
+}
+.install-already-msg {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 22px; color: #4D4218;
+  font-style: italic; margin-bottom: 6px;
+}
+.install-already-detail {
+  font-size: 14px; color: #4A3E1E;
+  opacity: 0.85; line-height: 1.5;
+}
+
+.install-desktop-qr {
+  background: #fff;
+  width: 200px; height: 200px;
+  margin: 0 auto 14px;
+  border-radius: 14px;
+  padding: 12px;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 6px 18px rgba(77, 66, 24, 0.12);
+}
+.install-desktop-qr img { width: 100%; height: 100%; display: block; }
+
 </style>
 </head>
 <body>
@@ -1223,6 +1301,13 @@
           <section class="screen active" data-screen="home">
             <div class="home-top">
               <div class="brand">
+                <button class="icon-btn" aria-label="Add to home screen" onclick="openInstallModal()">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <rect x="4" y="1.5" width="8" height="13" rx="1.5" stroke="currentColor" stroke-width="1.2"/>
+                    <line x1="8" y1="5.5" x2="8" y2="10.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                    <line x1="5.5" y1="8" x2="10.5" y2="8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                  </svg>
+                </button>
                 <div class="brand-mark">
                   <span class="brand-script">The Village</span>
                   <span class="brand-tagline">Apartment Homes</span>
@@ -2067,6 +2152,19 @@
     </div>
   </div>
 
+  <!-- INSTALL / ADD-TO-HOME-SCREEN MODAL -->
+  <div class="modal" id="modal-install" role="dialog" aria-modal="true" aria-labelledby="install-title">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close"></button>
+    <div class="modal-content">
+      <div class="modal-eyebrow" id="install-eyebrow">ADD TO HOME SCREEN</div>
+      <div class="modal-title" id="install-title">Save us to your phone.</div>
+      <div class="modal-subtitle" id="install-subtitle">Take The Village with you — quick install, no app store needed.</div>
+      <div id="install-body">
+        <!-- Filled in by openInstallModal() based on platform -->
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <script>
@@ -2201,6 +2299,116 @@ function nativeShare() {
   } else {
     // Fallback to copy
     copyShareUrl();
+  }
+}
+
+const VILLAGE_QR_B64 = "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";
+
+const SHARE_ICON_SVG = '<svg class="share-icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>';
+
+function detectPlatform() {
+  const ua = navigator.userAgent || '';
+  const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+  const isAndroid = /Android/.test(ua);
+  const isStandalone = window.navigator.standalone === true ||
+                       window.matchMedia('(display-mode: standalone)').matches;
+  const isMobile = isIOS || isAndroid;
+  return { isIOS, isAndroid, isStandalone, isMobile };
+}
+
+function openInstallModal() {
+  const p = detectPlatform();
+  const eyebrow = document.getElementById('install-eyebrow');
+  const title = document.getElementById('install-title');
+  const subtitle = document.getElementById('install-subtitle');
+  const body = document.getElementById('install-body');
+
+  if (p.isStandalone) {
+    eyebrow.textContent = "YOU'RE ALL SET";
+    title.textContent = "Already on your home screen.";
+    subtitle.textContent = "Looks like you've already saved The Village to your phone.";
+    body.innerHTML = `
+      <div class="install-already">
+        <div class="confirmation-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <div class="install-already-detail">Tap the home button or swipe up to find us. Welcome home.</div>
+      </div>
+    `;
+  } else if (p.isIOS) {
+    eyebrow.textContent = "ADD TO HOME SCREEN";
+    title.textContent = "Save us to your phone.";
+    subtitle.innerHTML = '<span class="install-platform-pill">iPHONE · SAFARI</span><br>Take The Village with you in three taps — no app store needed.';
+    body.innerHTML = `
+      <div class="install-steps">
+        <div class="install-step">
+          <div class="install-step-num">1</div>
+          <div class="install-step-text">Tap the ${SHARE_ICON_SVG} <strong>Share</strong> button at the bottom of Safari.</div>
+        </div>
+        <div class="install-step">
+          <div class="install-step-num">2</div>
+          <div class="install-step-text">Scroll and tap <strong>"Add to Home Screen."</strong></div>
+        </div>
+        <div class="install-step">
+          <div class="install-step-num">3</div>
+          <div class="install-step-text">Tap <strong>"Add"</strong> in the top right.</div>
+        </div>
+      </div>
+      <button class="modal-submit" onclick="closeModal()">Got it</button>
+    `;
+  } else if (p.isAndroid) {
+    eyebrow.textContent = "ADD TO HOME SCREEN";
+    title.textContent = "Save us to your phone.";
+    subtitle.innerHTML = '<span class="install-platform-pill">ANDROID · CHROME</span><br>Take The Village with you in a few taps — no app store needed.';
+    body.innerHTML = `
+      <div class="install-steps">
+        <div class="install-step">
+          <div class="install-step-num">1</div>
+          <div class="install-step-text">Tap the <strong>three-dot menu</strong> in the top right of Chrome.</div>
+        </div>
+        <div class="install-step">
+          <div class="install-step-num">2</div>
+          <div class="install-step-text">Tap <strong>"Install app"</strong> or <strong>"Add to Home screen."</strong></div>
+        </div>
+        <div class="install-step">
+          <div class="install-step-num">3</div>
+          <div class="install-step-text">Tap <strong>"Install"</strong> to confirm.</div>
+        </div>
+      </div>
+      <button class="modal-submit" onclick="tryAndroidPrompt()">Try it now</button>
+    `;
+  } else {
+    // Desktop
+    eyebrow.textContent = "ADD TO HOME SCREEN";
+    title.textContent = "Open us on your phone first.";
+    subtitle.textContent = "This experience is built for your phone — scan to take us with you, then save to your home screen.";
+    body.innerHTML = `
+      <div class="install-desktop-qr">
+        <img src="data:image/png;base64,${VILLAGE_QR_B64}" alt="QR code for The Village mobile experience"/>
+      </div>
+      <div style="text-align:center; font-size:13px; color:#4A3E1E; opacity:0.7; margin-bottom: 14px;">domclaudio.com/ghp-app/</div>
+      <button class="modal-submit" onclick="closeModal()">Got it</button>
+    `;
+  }
+
+  openModal('modal-install');
+}
+
+// Try Android beforeinstallprompt if captured
+let __deferredInstallPrompt = null;
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  __deferredInstallPrompt = e;
+});
+function tryAndroidPrompt() {
+  if (__deferredInstallPrompt) {
+    __deferredInstallPrompt.prompt();
+    __deferredInstallPrompt.userChoice.finally(() => {
+      __deferredInstallPrompt = null;
+      closeModal();
+    });
+  } else {
+    closeModal();
   }
 }
 
