@@ -1098,6 +1098,101 @@
 }
 .team-actions .btn-apply:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(106, 128, 48, 0.35); }
 
+
+
+/* ============ SHARE MODAL ============ */
+.share-modal-eyebrow {
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  font-size: 10px; letter-spacing: 3px;
+  color: #6A8030; font-weight: 600;
+  margin-bottom: 8px;
+}
+.share-modal-title {
+  text-align: center;
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 26px;
+  font-weight: 400;
+  color: #4D4218;
+  font-style: italic;
+  line-height: 1.15;
+  margin-bottom: 6px;
+  padding: 0 20px;
+}
+.share-modal-subtitle {
+  text-align: center;
+  font-size: 14px;
+  color: #4A3E1E;
+  opacity: 0.85;
+  margin-bottom: 22px;
+  padding: 0 12px;
+}
+.share-qr-tile {
+  background: #fff;
+  width: 240px; height: 240px;
+  margin: 0 auto 18px;
+  border-radius: 16px;
+  padding: 16px;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 6px 20px rgba(77, 66, 24, 0.12);
+}
+.share-qr-tile img { width: 100%; height: 100%; display: block; }
+.share-url-display {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 12px 16px;
+  background: rgba(149, 180, 83, 0.1);
+  color: #4D4218;
+  font-family: 'Manrope', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  border-radius: 10px;
+  margin-bottom: 16px;
+  word-break: break-all;
+}
+.share-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.share-btn {
+  padding: 13px 14px;
+  background: #4D4218;
+  color: #F5EBC8;
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background 0.15s, transform 0.1s;
+}
+.share-btn:hover { background: #3A2F11; }
+.share-btn:active { transform: scale(0.985); }
+.share-btn.secondary {
+  background: transparent;
+  color: #4D4218;
+  border: 1.5px solid rgba(77, 66, 24, 0.25);
+}
+.share-btn.secondary:hover { background: rgba(77, 66, 24, 0.05); }
+.share-btn .check-icon {
+  display: none;
+  margin-right: 4px;
+  vertical-align: -2px;
+}
+.share-btn.copied { background: #6A8030; }
+.share-btn.copied .copy-text { display: none; }
+.share-btn.copied .check-icon { display: inline-block; }
+.share-btn.copied::after { content: 'COPIED'; }
+
+/* Make the menu button look tappable */
+.icon-btn { cursor: pointer; }
+
 </style>
 </head>
 <body>
@@ -1132,7 +1227,7 @@
                   <span class="brand-script">The Village</span>
                   <span class="brand-tagline">Apartment Homes</span>
                 </div>
-                <button class="icon-btn" aria-label="menu">
+                <button class="icon-btn" aria-label="menu" onclick="openShareModal()">
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                     <path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
                   </svg>
@@ -1951,9 +2046,28 @@
     </div>
   </div>
 
+  <!-- SHARE MODAL -->
+  <div class="modal" id="modal-share" role="dialog" aria-modal="true" aria-labelledby="share-title">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close"></button>
+    <div class="modal-content">
+      <div class="share-modal-eyebrow">TAKE US WITH YOU</div>
+      <div class="share-modal-title" id="share-title">Send The Village to your phone.</div>
+      <div class="share-modal-subtitle">Scan with another device's camera, or share the link with someone you'd live with.</div>
+      <div class="share-qr-tile">
+        <img src="data:image/png;base64,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" alt="QR code linking to The Village mobile experience" />
+      </div>
+      <div class="share-url-display" id="share-url">domclaudio.com/ghp-app/</div>
+      <div class="share-actions">
+        <button class="share-btn secondary" id="copy-btn" onclick="copyShareUrl()">
+          <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span class="copy-text">COPY LINK</span>
+        </button>
+        <button class="share-btn" onclick="nativeShare()">SHARE</button>
+      </div>
+    </div>
+  </div>
+
 </div>
-
-
 
 <script>
 // ============ BETA MODAL LOGIC ============
@@ -2054,6 +2168,41 @@ function continueToApply() {
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && currentModal) closeModal();
 });
+
+function openShareModal() { openModal('modal-share'); }
+
+function copyShareUrl() {
+  const url = window.location.origin + window.location.pathname;
+  navigator.clipboard.writeText(url).then(() => {
+    const btn = document.getElementById('copy-btn');
+    btn.classList.add('copied');
+    setTimeout(() => btn.classList.remove('copied'), 1800);
+  }).catch(() => {
+    // Fallback: legacy
+    const ta = document.createElement('textarea');
+    ta.value = url; document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); } catch (e) {}
+    document.body.removeChild(ta);
+    const btn = document.getElementById('copy-btn');
+    btn.classList.add('copied');
+    setTimeout(() => btn.classList.remove('copied'), 1800);
+  });
+}
+
+function nativeShare() {
+  const url = window.location.origin + window.location.pathname;
+  const shareData = {
+    title: 'The Village Apartment Homes',
+    text: 'Two- and three-bedroom homes in Santa Clarita. Take us with you.',
+    url: url
+  };
+  if (navigator.share) {
+    navigator.share(shareData).catch(() => {});
+  } else {
+    // Fallback to copy
+    copyShareUrl();
+  }
+}
 
 // Wire visit-option cards once DOM ready
 document.addEventListener('DOMContentLoaded', () => {
