@@ -1408,14 +1408,14 @@
             <div class="stat-strip">
               <div class="stat">
                 <div class="stat-num">14</div>
-                <div class="stat-label">Available now</div>
+                <div class="stat-label">Now leasing</div>
               </div>
               <div class="stat">
                 <div class="stat-num">2–3</div>
                 <div class="stat-label">Bedrooms</div>
               </div>
               <div class="stat">
-                <div class="stat-num">$2,239</div>
+                <div class="stat-num">$2,229</div>
                 <div class="stat-label">Starting at</div>
               </div>
             </div>
@@ -1438,7 +1438,7 @@
                   <div class="plan-foot">
                     <div>
                       <div class="plan-price-label">Starting at</div>
-                      <div class="plan-price">$2,249<span>/mo</span></div>
+                      <div class="plan-price">$2,229<span>/mo</span></div>
                     </div>
                     <button class="plan-tour" onclick="event.stopPropagation(); openTourModalFromCard(this)">Tour</button>
                   </div>
@@ -1453,11 +1453,11 @@
                 </div>
                 <div class="plan-body">
                   <h3 class="plan-name">Plan E <span>2 FULL BATHS</span></h3>
-                  <div class="plan-meta">3 BR · 2 BA · 1,113 sqft · Currently leased</div>
+                  <div class="plan-meta">3 BR · 2 BA · 1,113 sqft · 1 available</div>
                   <div class="plan-foot">
                     <div>
                       <div class="plan-price-label">Starting at</div>
-                      <div class="plan-price">Ask us</div>
+                      <div class="plan-price">$2,609<span>/mo</span></div>
                     </div>
                     <button class="plan-tour" onclick="event.stopPropagation(); openTourModalFromCard(this)">Tour</button>
                   </div>
@@ -1468,10 +1468,10 @@
             <div class="section">
               <div class="section-head">
                 <h2>What's inside</h2>
-                <a>All amenities →</a>
+                <a onclick="openAmenitiesModal()" style="cursor:pointer">All amenities →</a>
               </div>
               <div class="amenity-grid">
-                <div class="amenity feature">
+                <div class="amenity feature" onclick="openAmenitiesModal()" style="cursor:pointer">
                   <div class="amenity-icon">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                       <path d="M2 14c2-1 3-1 5 0s3 1 5 0 3-1 5 0M2 10c2-1 3-1 5 0s3 1 5 0 3-1 5 0M2 6c2-1 3-1 5 0s3 1 5 0 3-1 5 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
@@ -1482,7 +1482,7 @@
                     <div class="amenity-detail">Twice the room to swim, twice the room to unwind.</div>
                   </div>
                 </div>
-                <div class="amenity">
+                <div class="amenity" onclick="openAmenitiesModal()" style="cursor:pointer">
                   <div class="amenity-icon">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                       <rect x="3" y="3" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5"/>
@@ -1495,7 +1495,7 @@
                     <div class="amenity-detail">Available with select homes</div>
                   </div>
                 </div>
-                <div class="amenity">
+                <div class="amenity" onclick="openAmenitiesModal()" style="cursor:pointer">
                   <div class="amenity-icon">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                       <rect x="3" y="5" width="14" height="11" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
@@ -1508,7 +1508,7 @@
                     <div class="amenity-detail">Plus Whirlpool appliance suite</div>
                   </div>
                 </div>
-                <div class="amenity">
+                <div class="amenity" onclick="openAmenitiesModal()" style="cursor:pointer">
                   <div class="amenity-icon">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                       <path d="M2 14c2-1 3-1 5 0s3 1 5 0 3-1 5 0M4 10l3-6 3 4 3-5 3 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1519,7 +1519,7 @@
                     <div class="amenity-detail">Picnic areas, play areas, walkways</div>
                   </div>
                 </div>
-                <div class="amenity">
+                <div class="amenity" onclick="openAmenitiesModal()" style="cursor:pointer">
                   <div class="amenity-icon">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                       <rect x="3" y="7" width="14" height="9" rx="1" stroke="currentColor" stroke-width="1.5"/>
@@ -1570,12 +1570,12 @@
               <p>6 layouts · 14 homes available · Updated from Yardi</p>
             </div>
             <div class="filter-row">
-              <button class="chip active">All</button>
-              <button class="chip">2 BR</button>
-              <button class="chip">3 BR</button>
-              <button class="chip">2 Bath</button>
-              <button class="chip">Pool view</button>
-              <button class="chip">Move-in soon</button>
+              <button class="chip active" onclick="filterPlans(this,'all')">All</button>
+              <button class="chip" onclick="filterPlans(this,'2br')">2 BR</button>
+              <button class="chip" onclick="filterPlans(this,'3br')">3 BR</button>
+              <button class="chip" onclick="filterPlans(this,'2bath')">2 Bath</button>
+              <button class="chip" onclick="filterPlans(this,'courtyard')">Courtyard view</button>
+              <button class="chip" onclick="filterPlans(this,'soon')">Move-in soon</button>
             </div>
             <div class="section" style="padding-top: 8px;">
               <!-- Plan A -->
@@ -1587,7 +1587,7 @@
                 </div>
                 <div class="plan-body">
                   <h3 class="plan-name">Plan A</h3>
-                  <div class="plan-meta">2 BR · 1.5 BA · 793 sqft · Two patios · 1 available</div>
+                  <div class="plan-meta">2 BR · 1.5 BA · 793 sqft · Two patios · 2 available</div>
                   <div class="plan-foot">
                     <div>
                       <div class="plan-price-label">Starting at</div>
@@ -1610,7 +1610,7 @@
                   <div class="plan-foot">
                     <div>
                       <div class="plan-price-label">Starting at</div>
-                      <div class="plan-price">$2,249<span>/mo</span></div>
+                      <div class="plan-price">$2,229<span>/mo</span></div>
                     </div>
                     <button class="plan-tour" onclick="event.stopPropagation(); openTourModalFromCard(this)">Tour</button>
                   </div>
@@ -1625,11 +1625,11 @@
                 </div>
                 <div class="plan-body">
                   <h3 class="plan-name">Plan B+ <span>2 BATHS</span></h3>
-                  <div class="plan-meta">2 BR · 2 BA · 832 sqft · Two patios · 1 available</div>
+                  <div class="plan-meta">2 BR · 2 BA · 832 sqft · Two patios · Currently leased</div>
                   <div class="plan-foot">
                     <div>
                       <div class="plan-price-label">Starting at</div>
-                      <div class="plan-price">$2,249<span>/mo</span></div>
+                      <div class="plan-price">Ask us</div>
                     </div>
                     <button class="plan-tour" onclick="event.stopPropagation(); openTourModalFromCard(this)">Tour</button>
                   </div>
@@ -1644,11 +1644,11 @@
                 </div>
                 <div class="plan-body">
                   <h3 class="plan-name">Plan C</h3>
-                  <div class="plan-meta">2 BR · 2 BA · 837 sqft · Two patios · 3 available</div>
+                  <div class="plan-meta">2 BR · 2 BA · 837 sqft · Two patios · 1 available</div>
                   <div class="plan-foot">
                     <div>
                       <div class="plan-price-label">Starting at</div>
-                      <div class="plan-price">$2,129<span>/mo</span></div>
+                      <div class="plan-price">$2,309<span>/mo</span></div>
                     </div>
                     <button class="plan-tour" onclick="event.stopPropagation(); openTourModalFromCard(this)">Tour</button>
                   </div>
@@ -1663,11 +1663,11 @@
                 </div>
                 <div class="plan-body">
                   <h3 class="plan-name">Plan D</h3>
-                  <div class="plan-meta">2 BR · 2 BA · 997 sqft · Walk-in closet · 2 available</div>
+                  <div class="plan-meta">2 BR · 2 BA · 997 sqft · Walk-in closet · 3 available</div>
                   <div class="plan-foot">
                     <div>
                       <div class="plan-price-label">Starting at</div>
-                      <div class="plan-price">$2,029<span>/mo</span></div>
+                      <div class="plan-price">$2,289<span>/mo</span></div>
                     </div>
                     <button class="plan-tour" onclick="event.stopPropagation(); openTourModalFromCard(this)">Tour</button>
                   </div>
@@ -1682,11 +1682,11 @@
                 </div>
                 <div class="plan-body">
                   <h3 class="plan-name">Plan E <span>2 FULL BATHS</span></h3>
-                  <div class="plan-meta">3 BR · 2 BA · 1,113 sqft · Walk-in closet · Currently leased</div>
+                  <div class="plan-meta">3 BR · 2 BA · 1,113 sqft · Walk-in closet · 1 available</div>
                   <div class="plan-foot">
                     <div>
                       <div class="plan-price-label">Starting at</div>
-                      <div class="plan-price">Ask us</div>
+                      <div class="plan-price">$2,609<span>/mo</span></div>
                     </div>
                     <button class="plan-tour" onclick="event.stopPropagation(); openTourModalFromCard(this)">Tour</button>
                   </div>
@@ -1705,65 +1705,38 @@
             <div class="visit-hero">
               <div class="kicker">Tour The Village</div>
               <h2>See your<br>future <em>home.</em></h2>
-              <p>In person, by video, or on your own time. Open Monday through Sunday, 9am–6pm.</p>
+              <p>In person or by video. Open Monday through Sunday, 9am–6pm.</p>
             </div>
             <div class="visit-options">
-              <div class="visit-option">
-                <div class="visit-option-icon">
-                  <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-                    <circle cx="11" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/>
-                    <path d="M3 19c0-3.3 3.6-6 8-6s8 2.7 8 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                  </svg>
-                </div>
-                <div class="visit-option-body">
-                  <div class="visit-option-name">In-person tour</div>
-                  <div class="visit-option-detail">~30 min · with leasing team · 7 days a week</div>
-                </div>
-                <div class="visit-option-arrow">›</div>
-              </div>
-              <div class="visit-option">
-                <div class="visit-option-icon">
-                  <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-                    <rect x="3" y="5" width="13" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/>
-                    <path d="M16 9l3-2v8l-3-2" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-                  </svg>
-                </div>
-                <div class="visit-option-body">
-                  <div class="visit-option-name">FaceTime tour</div>
-                  <div class="visit-option-detail">~20 min · live walkthrough on your phone</div>
-                </div>
-                <div class="visit-option-arrow">›</div>
-              </div>
-              <div class="visit-option">
-                <div class="visit-option-icon">
-                  <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-                    <rect x="3" y="11" width="6" height="8" rx="1" stroke="currentColor" stroke-width="1.5"/>
-                    <rect x="13" y="7" width="6" height="12" rx="1" stroke="currentColor" stroke-width="1.5"/>
-                    <path d="M6 11V6a3 3 0 016 0M16 7V5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                  </svg>
-                </div>
-                <div class="visit-option-body">
-                  <div class="visit-option-name">Self-guided</div>
-                  <div class="visit-option-detail">~45 min · tour anytime · door code unlocks</div>
-                </div>
-                <div class="visit-option-arrow">›</div>
-              </div>
-              <div class="visit-option">
-                <div class="visit-option-icon">
-                  <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-                    <path d="M11 2v18M2 11h18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                    <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="1.5"/>
-                  </svg>
-                </div>
-                <div class="visit-option-body">
-                  <div class="visit-option-name">3D virtual tour</div>
-                  <div class="visit-option-detail">Walk every plan from anywhere</div>
-                </div>
-                <div class="visit-option-arrow">›</div>
-              </div>
-            </div>
-            
-            <div class="map-card">
+      <div class="visit-option">
+        <div class="visit-option-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+            <circle cx="11" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M3 19c0-3.3 3.6-6 8-6s8 2.7 8 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="visit-option-body">
+          <div class="visit-option-name">In-person tour</div>
+          <div class="visit-option-detail">~30 min · with leasing team · 7 days a week</div>
+        </div>
+        <div class="visit-option-arrow">›</div>
+      </div>
+      <div class="visit-option">
+        <div class="visit-option-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+            <rect x="3" y="5" width="13" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M16 9l3-2v8l-3-2" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="visit-option-body">
+          <div class="visit-option-name">FaceTime tour</div>
+          <div class="visit-option-detail">~20 min · live walkthrough on your phone</div>
+        </div>
+        <div class="visit-option-arrow">›</div>
+      </div>
+    </div>
+    
+    <div class="map-card">
               <div class="map-card-header">
                 <div class="map-card-kicker">Property site map</div>
                 <div class="map-card-title">Find your way around</div>
@@ -1934,6 +1907,35 @@
 <!-- ============ BETA MODAL SYSTEM ============ -->
 <div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this) closeModal()">
 
+  <!-- AMENITIES MODAL -->
+  <div class="modal" id="modal-amenities" role="dialog" aria-modal="true" aria-labelledby="amenities-title">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close"></button>
+    <div class="modal-content">
+      <div class="modal-eyebrow">THE VILLAGE</div>
+      <div class="modal-title" id="amenities-title">Everything inside.</div>
+      <div class="modal-subtitle">What comes with your home, and what's waiting just outside your door.</div>
+      <div style="margin-top:4px;">
+        <div style="font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#6A8030;margin:6px 0 4px;">In your home</div>
+        <ul style="list-style:none;padding:0;margin:0 0 18px;">
+          <li style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:11px 0;border-bottom:1px solid rgba(77,66,24,.12);font-size:15px;color:#4D4218;">In-home washer &amp; dryer</li>
+          <li style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:11px 0;border-bottom:1px solid rgba(77,66,24,.12);font-size:15px;color:#4D4218;">Whirlpool appliance suite</li>
+          <li style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:11px 0;border-bottom:1px solid rgba(77,66,24,.12);font-size:15px;color:#4D4218;">Walk-in closets</li>
+          <li style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:11px 0;border-bottom:1px solid rgba(77,66,24,.12);font-size:15px;color:#4D4218;">Private patios</li>
+          <li style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:11px 0;border-bottom:1px solid rgba(77,66,24,.12);font-size:15px;color:#4D4218;">Hardwood-style flooring <span style="font-size:12.5px;color:#9a9279;">select homes</span></li>
+          <li style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:11px 0;font-size:15px;color:#4D4218;">Upgraded interiors <span style="font-size:12.5px;color:#9a9279;">select homes</span></li>
+        </ul>
+        <div style="font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#6A8030;margin:6px 0 4px;">At The Village</div>
+        <ul style="list-style:none;padding:0;margin:0 0 8px;">
+          <li style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:11px 0;border-bottom:1px solid rgba(77,66,24,.12);font-size:15px;color:#4D4218;">Two pools &amp; two spas</li>
+          <li style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:11px 0;border-bottom:1px solid rgba(77,66,24,.12);font-size:15px;color:#4D4218;">Landscaped grounds &mdash; picnic &amp; play areas</li>
+          <li style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:11px 0;border-bottom:1px solid rgba(77,66,24,.12);font-size:15px;color:#4D4218;">Walking paths throughout</li>
+          <li style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:11px 0;font-size:15px;color:#4D4218;">2-car garages <span style="font-size:12.5px;color:#9a9279;">select homes &middot; $200/mo</span></li>
+        </ul>
+      </div>
+      <button class="modal-submit" onclick="closeModal()">Got it</button>
+    </div>
+  </div>
+
   <!-- TOUR MODAL -->
   <div class="modal" id="modal-tour" role="dialog" aria-modal="true" aria-labelledby="tour-title">
     <button class="modal-close" onclick="closeModal()" aria-label="Close"></button>
@@ -1948,8 +1950,6 @@
           <div class="tour-format-grid">
             <button type="button" class="tour-format-btn is-selected" data-format="in-person" onclick="selectFormat(this)">In-person</button>
             <button type="button" class="tour-format-btn" data-format="facetime" onclick="selectFormat(this)">FaceTime</button>
-            <button type="button" class="tour-format-btn" data-format="self-guided" onclick="selectFormat(this)">Self-guided</button>
-            <button type="button" class="tour-format-btn" data-format="3d" onclick="selectFormat(this)">3D virtual</button>
           </div>
         </div>
         <div class="field-row">
@@ -2111,35 +2111,35 @@
     const planData = {
       'A':  { sqft: 793,  beds: 2, baths: '1.5', config: 'Two patios',
               units: [
-                { id: '46-102', status: 'ready',    avail: 'Move-in ready',    rent: 2399, amenities: ['Walk-in closet', 'Large patio', 'Hardwood', 'Upgraded'], feature: 'Hardwood' }
+                { id: '46-102', status: 'ready',    avail: 'Move-in ready',    rent: 2399, amenities: ['Walk-in closet', 'Large patio', 'Hardwood', 'Upgraded'], feature: 'Hardwood' },
+                { id: '26-102', status: 'upcoming', avail: 'Available Aug 7',   rent: 2409, amenities: ['Walk-in closet', 'Large patio', 'Upgraded'], feature: 'Upgraded', notice: true }
               ]},
       'B':  { sqft: 828,  beds: 2, baths: '1.5', config: 'Large patio',
               units: [
-                { id: '39-205', status: 'upcoming', avail: 'Available Jul 14', rent: 2249, amenities: ['Walk-in closet', 'Large patio'] },
-                { id: '34-105', status: 'upcoming', avail: 'Available Jun 13', rent: 2349, amenities: ['Walk-in closet', 'Courtyard', 'Pool view', 'Large patio', 'Hardwood'], feature: 'Pool view' },
-                { id: '01-105', status: 'upcoming', avail: 'Available Jun 3',  rent: 2379, amenities: ['Walk-in closet', 'Upgraded'] },
-                { id: '37-205', status: 'ready',    avail: 'Move-in ready',    rent: 2409, amenities: ['Walk-in closet', 'Courtyard', 'Large patio', 'Upgraded'] },
-                { id: '01-205', status: 'upcoming', avail: 'Available Jun 9',  rent: 2449, amenities: ['Walk-in closet', 'Large patio', 'Upgraded'] },
-                { id: '40-102', status: 'upcoming', avail: 'Available Jun 9',  rent: 2449, amenities: ['Walk-in closet', 'Large patio', 'Upgraded'] },
-                { id: '06-202', status: 'upcoming', avail: 'Available Jun 25', rent: 2519, amenities: ['Walk-in closet', 'Large patio', 'Premium', 'Upgraded'], feature: 'Premium' }
+                { id: '39-205', status: 'upcoming', avail: 'Available Jul 21',  rent: 2229, amenities: ['Walk-in closet', 'Large patio'], notice: true },
+                { id: '34-105', status: 'upcoming', avail: 'Available Aug 22',  rent: 2329, amenities: ['Walk-in closet', 'Courtyard view', 'Large patio'], feature: 'Courtyard view', notice: true },
+                { id: '01-105', status: 'upcoming', avail: 'Available Jun 20',  rent: 2359, amenities: ['Walk-in closet', 'Upgraded'], feature: 'Upgraded' },
+                { id: '37-205', status: 'ready',    avail: 'Move-in ready',    rent: 2389, amenities: ['Walk-in closet', 'Courtyard view', 'Large patio', 'Upgraded'], feature: 'Courtyard view' },
+                { id: '01-205', status: 'ready',    avail: 'Move-in ready',    rent: 2449, amenities: ['Walk-in closet', 'Large patio', 'Upgraded'] },
+                { id: '40-102', status: 'ready',    avail: 'Move-in ready',    rent: 2449, amenities: ['Walk-in closet', 'Large patio', 'Upgraded'] },
+                { id: '06-202', status: 'upcoming', avail: 'Available Jul 2',  rent: 2499, amenities: ['Walk-in closet', 'Large patio', 'Premium', 'Upgraded'], feature: 'Premium' }
               ]},
-      'B+': { sqft: 832,  beds: 2, baths: '2',   config: 'Two patios · Second full bath',
-              units: [
-                { id: '33-204', status: 'upcoming', avail: 'Available Jun 26', rent: 2249, amenities: ['Large patio'] }
-              ]},
+      'B+': { sqft: 832,  beds: 2, baths: '2',   config: 'Two patios \u00b7 Second full bath',
+              units: []},
       'C':  { sqft: 837,  beds: 2, baths: '2',   config: 'Two patios',
               units: [
-                { id: '46-203', status: 'ready',    avail: 'Move-in ready',    rent: 2129, amenities: ['Walk-in closet', 'Courtyard', 'Pool view', 'Large patio', 'Hardwood'], feature: 'Pool view' },
-                { id: '18-203', status: 'ready',    avail: 'Move-in ready',    rent: 2289, amenities: ['Walk-in closet', 'Courtyard', 'Large patio'] },
-                { id: '18-103', status: 'ready',    avail: 'Move-in ready',    rent: 2349, amenities: ['Walk-in closet', 'Large patio', 'Hardwood'], feature: 'Hardwood' }
+                { id: '47-203', status: 'upcoming', avail: 'Available Jul 9',  rent: 2309, amenities: ['Walk-in closet', 'Large patio', 'Hardwood'], feature: 'Hardwood', notice: true }
               ]},
       'D':  { sqft: 997,  beds: 2, baths: '2',   config: 'Walk-in closet',
               units: [
-                { id: '28-201', status: 'upcoming', avail: 'Available Jun 14', rent: 2029, amenities: ['Walk-in closet', 'Large patio'] },
-                { id: '10-201', status: 'upcoming', avail: 'Available Jun 3',  rent: 2389, amenities: ['Walk-in closet', 'Courtyard', 'Large patio', 'Hardwood'], feature: 'Hardwood' }
+                { id: '12-202', status: 'upcoming', avail: 'Available Sep 4',  rent: 2289, amenities: ['Walk-in closet', 'Large patio'], notice: true },
+                { id: '32-201', status: 'upcoming', avail: 'Available Jul 3',  rent: 2369, amenities: ['Walk-in closet', 'Courtyard view', 'Large patio', 'Hardwood'], feature: 'Courtyard view', notice: true },
+                { id: '10-201', status: 'upcoming', avail: 'Available Jul 4',  rent: 2369, amenities: ['Walk-in closet', 'Courtyard view', 'Large patio', 'Hardwood'], feature: 'Courtyard view', notice: true }
               ]},
-      'E':  { sqft: 1113, beds: 3, baths: '2',   config: 'Walk-in closet · Two full baths',
-              units: []}
+      'E':  { sqft: 1113, beds: 3, baths: '2',   config: 'Walk-in closet \u00b7 Two full baths',
+              units: [
+                { id: '49-201', status: 'upcoming', avail: 'Available Jan 21', rent: 2609, amenities: ['Walk-in closet', 'Large patio'], notice: true }
+              ]}
     };
     
         function getPlanImage(letter) {
@@ -2219,6 +2219,28 @@
       
       document.getElementById('plan-detail-content').innerHTML = content;
       showScreen('plan-detail');
+    }
+
+    function openAmenitiesModal() { openModal('modal-amenities'); }
+
+    function filterPlans(btn, mode) {
+      document.querySelectorAll('[data-screen="plans"] .filter-row .chip').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('[data-screen="plans"] .plan-card').forEach(card => {
+        const letterEl = card.querySelector('.plan-letter');
+        const letter = letterEl ? letterEl.textContent.trim() : '';
+        const plan = planData[letter];
+        let match = true;
+        if (plan) {
+          if (mode === '2br')            match = plan.beds === 2;
+          else if (mode === '3br')       match = plan.beds === 3;
+          else if (mode === '2bath')     match = plan.baths === '2';
+          else if (mode === 'courtyard') match = plan.units.some(u => u.amenities.includes('Courtyard view'));
+          else if (mode === 'soon')      match = plan.units.some(u => u.notice);
+          else match = true;
+        }
+        card.style.display = match ? '' : 'none';
+      });
     }
   </script>
 <script>
@@ -2337,8 +2359,6 @@ function submitTour(e) {
   const formatLabels = {
     'in-person':   '\u{1F4CD} In-Person Tour',
     'facetime':    '\u{1F3A5} FaceTime Tour',
-    'self-guided': '\u{1F6B6} Self-Guided Tour',
-    '3d':          '\u{1F3E0} 3D Virtual Tour'
   };
   const formatLabel = formatLabels[selectedTourFormat] || 'Tour Request';
   const name  = document.getElementById('tour-name').value;
@@ -2546,8 +2566,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const formatMap = {
     'in-person tour': 'in-person',
     'facetime tour': 'facetime',
-    'self-guided': 'self-guided',
-    '3d virtual tour': '3d',
   };
   document.querySelectorAll('.visit-option').forEach(opt => {
     opt.style.cursor = 'pointer';
