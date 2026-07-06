@@ -10,13 +10,15 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://domclaudio.com/scvbrief/">
 <meta property="og:image" content="https://domclaudio.com/scvbrief/brief-page-1.png">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cinzel:wght@400;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Manrope:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --olive:#4D4218; --sage:#6A8030; --sage-light:#95B453;
-  --cream:#F5EBC8; --gold:#E8C265; --ink:#38321b; --paper:#FCFAF3;
+  --olive:#4A3421; --sage:#3E663F; --sage-light:#6E9C6A;
+  --cream:#F5EBC8; --gold:#E8C265; --ink:#3A2E1F; --paper:#FCFAF3;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 body{background:var(--paper);color:var(--ink);font-family:'Manrope',sans-serif;-webkit-font-smoothing:antialiased;}
@@ -27,7 +29,7 @@ body{background:var(--paper);color:var(--ink);font-family:'Manrope',sans-serif;-
 .wm{font-family:'Allura',cursive;font-size:44px;color:var(--gold);line-height:1;}
 .ah{font-family:'Cinzel',serif;font-weight:600;font-size:10px;letter-spacing:5px;color:#EDE6C9;margin-top:8px;}
 .eyebrow{font-family:'Cinzel',serif;font-weight:600;font-size:10px;letter-spacing:3.4px;color:var(--gold);margin-top:34px;text-transform:uppercase;}
-h1{font-family:'Fraunces',serif;font-weight:560;font-size:clamp(26px,6vw,40px);line-height:1.1;color:#fff;margin:14px auto 0;max-width:640px;letter-spacing:-0.3px;}
+h1{font-family:'Fraunces',serif;font-weight:560;font-size:clamp(26px,6vw,40px);line-height:1.1;color:#fff;margin:30px auto 0;max-width:640px;letter-spacing:-0.3px;}
 h1 em{font-style:italic;color:var(--gold);font-weight:500;}
 .deck{font-weight:300;font-size:15px;line-height:1.6;color:#EDE6C9;max-width:520px;margin:16px auto 0;}
 .by{font-size:12px;color:#C9C09A;margin-top:18px;}
@@ -39,6 +41,10 @@ h1 em{font-style:italic;color:var(--gold);font-weight:500;}
 .btn:active{transform:scale(.97);}
 .btn-gold{background:var(--gold);color:var(--olive);box-shadow:0 4px 16px rgba(232,194,101,.35);}
 .btn-line{border:1.5px solid rgba(245,235,200,.55);color:var(--cream);}
+.qrbox{display:none;align-items:center;gap:12px;background:var(--paper);border-radius:10px;padding:9px 14px 9px 9px;}
+.qrbox img{width:78px;height:78px;display:block;border-radius:5px;}
+.qrbox .qrlbl{font-family:'Cinzel',serif;font-weight:700;font-size:9px;letter-spacing:2px;color:var(--olive);text-align:left;line-height:1.5;}
+@media (min-width:720px){ .qrbox{display:flex;} .app-btn{display:none;} }
 
 .wrap{max-width:860px;margin:0 auto;padding:40px 18px 30px;}
 .plate{background:#fff;border:1px solid rgba(77,66,24,.18);border-radius:6px;overflow:hidden;
@@ -66,12 +72,15 @@ h1 em{font-style:italic;color:var(--gold);font-weight:500;}
 <header class="mast">
   <div class="wm">The Village</div>
   <div class="ah">APARTMENT HOMES</div>
-  <div class="eyebrow">A Field Perspective &nbsp;·&nbsp; Santa Clarita Valley</div>
   <h1>Growing Leasing &amp; Marketing in the <em>Santa Clarita Valley</em></h1>
-  <p class="deck">A two-page strategy brief on the SCV campus market — and the working prospect app built to prove the strategy can ship.</p>
+  <p class="deck">A strategy brief on the SCV campus market and the implementation of the prospect app.</p>
   <p class="by"><b>Domingo Claudio</b> · Leasing Consultant, The Village Apartment Homes</p>
   <div class="actions">
-    <a class="btn btn-gold" href="https://domclaudio.com/prototype/">See the live app</a>
+    <a class="btn btn-gold app-btn" href="https://domclaudio.com/prototype/">See the live app</a>
+    <div class="qrbox">
+      <img src="qr.png" alt="Scan to open the live prospect app">
+      <div class="qrlbl">SCAN TO OPEN<br>THE LIVE APP</div>
+    </div>
     <a class="btn btn-line" href="Claudio_SCV_Marketing_Brief.pdf" download>Download the brief (PDF)</a>
   </div>
 </header>
