@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>The Leasing Routine · Domingo Claudio</title>
-<meta name="description" content="How I run a leasing desk: an eleven-stage operating routine from first contact to renewal. Domingo Claudio, Leasing Consultant.">
+<meta name="description" content="How I run a leasing desk: an eleven-stage operating routine from first contact to renewal, with sourced resident reviews. Domingo Claudio, Leasing Consultant.">
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,540;0,9..144,640;1,9..144,380&family=Manrope:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,540;0,9..144,640;1,9..144,380;1,9..144,420&family=Manrope:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
     --paper:#FAF8F3;
@@ -178,6 +178,71 @@
     font-weight:500;
   }
 
+  /* ---------- exhibits ---------- */
+  .exhibits{
+    margin:56px 0 0;
+    border-top:1px solid var(--ink);
+    padding:26px 0 0;
+  }
+  .exhibits .section-tag{
+    font-family:'Spline Sans Mono',monospace;
+    font-size:var(--tag);
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--ochre-deep);
+    margin-bottom:8px;
+  }
+  .exhibits h2{
+    font-family:'Fraunces',serif;
+    font-weight:640;
+    font-size:28px;
+    line-height:1.15;
+    letter-spacing:-0.01em;
+    margin-bottom:10px;
+  }
+  .exhibits .section-note{
+    color:var(--ink-soft);
+    margin-bottom:8px;
+  }
+  .exhibit{
+    padding:24px 0;
+    border-bottom:1px dotted var(--rail);
+  }
+  .exhibit:last-of-type{border-bottom:none;}
+  .exhibit blockquote{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-weight:420;
+    font-size:19px;
+    line-height:1.5;
+  }
+  .exhibit .attr{
+    margin-top:12px;
+    font-family:'Spline Sans Mono',monospace;
+    font-size:12.5px;
+    letter-spacing:.04em;
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:12px;
+    flex-wrap:wrap;
+    color:var(--ink-soft);
+  }
+  .exhibit .attr .who{text-transform:uppercase;letter-spacing:.1em;}
+  .exhibit .attr a{
+    color:var(--ochre-deep);
+    text-decoration:none;
+    border-bottom:1px solid var(--rule);
+    padding-bottom:1px;
+    white-space:nowrap;
+  }
+  .exhibit .attr a:hover{border-color:var(--ochre-deep);}
+  .exhibit .attr a:focus-visible{
+    outline:2px solid var(--ochre);
+    outline-offset:3px;
+    border-color:transparent;
+  }
+
   /* ---------- close ---------- */
   .close{
     margin:56px 0 0;
@@ -225,7 +290,7 @@
 
   /* ---------- motion ---------- */
   @media (prefers-reduced-motion:no-preference){
-    header,.ledger,.intro,.stage,.close{
+    header,.ledger,.intro,.stage,.exhibits,.close{
       opacity:0;
       transform:translateY(10px);
       animation:rise .6s ease forwards;
@@ -233,7 +298,8 @@
     .ledger{animation-delay:.08s;}
     .intro{animation-delay:.14s;}
     .stage{animation-delay:.2s;}
-    .close{animation-delay:.26s;}
+    .exhibits{animation-delay:.24s;}
+    .close{animation-delay:.28s;}
     @keyframes rise{to{opacity:1;transform:none;}}
   }
 
@@ -246,6 +312,7 @@
     .stage{padding-bottom:16pt;break-inside:avoid;}
     .stages::before,.stage::before{display:none;}
     .stages{padding-left:0;}
+    .exhibit{break-inside:avoid;}
     .close{margin-top:24pt;}
     footer{display:none;}
     a{color:inherit;text-decoration:none;}
@@ -353,6 +420,33 @@
     </section>
 
   </div>
+
+  <section class="exhibits">
+    <div class="section-tag">Exhibits · On the record</div>
+    <h2>What residents have said</h2>
+    <p class="section-note">Claims should be verifiable; these are published, in residents' own words, each linked to its source.</p>
+
+    <div class="exhibit">
+      <blockquote>"The Village was my last stop during a long day of apartment hunting and although it's still early in my search Domingo gave an amazing tour &amp; was such a pleasant representation of the property!"</blockquote>
+      <div class="attr"><span class="who">Exhibit A · Prospect review · Google</span><a href="https://share.google/6ZW6Jqq9JM6UP2yHm" rel="noopener">View source ↗</a></div>
+    </div>
+
+    <div class="exhibit">
+      <blockquote>"Domingo is amazing at listening to our concerns and always goes the extra mile to help with our every need."</blockquote>
+      <div class="attr"><span class="who">Exhibit B · Resident review · Google</span><a href="https://share.google/jAS6k0S6upaM6ceJW" rel="noopener">View source ↗</a></div>
+    </div>
+
+    <div class="exhibit">
+      <blockquote>"The office team, especially Elaina and Domingo, have always been professional, attentive, and quick to resolve any issues that came up. They genuinely care about the residents, and it shows in the way they handle everything with such promptness and kindness."</blockquote>
+      <div class="attr"><span class="who">Exhibit C · Resident review · Google</span><a href="https://share.google/chi1Bgr4ZPnQMZRDd" rel="noopener">View source ↗</a></div>
+    </div>
+
+    <div class="exhibit">
+      <blockquote>"Domingo has consistently gone above and beyond to ensure our apartment is well maintained and that any maintenance concerns are addressed promptly&hellip; I renewed my lease for another year because of how comfortable I've felt living here and because the leasing office has gone above and beyond to make this a positive living experience."</blockquote>
+      <div class="attr"><span class="who">Exhibit D · Resident review · Yelp · "Ms Mam"</span><a href="https://www.yelp.com/biz/the-village-apartments-santa-clarita?hrid=MY5ZIdyXs5GbWc7-iF2dVg&amp;utm_campaign=www_review_share_popup&amp;utm_medium=copy_link&amp;utm_source=(direct)" rel="noopener">View source ↗</a></div>
+    </div>
+
+  </section>
 
   <div class="close">
     <p>Respectfully submitted;</p>
