@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dom Claudio — Via Avanti</title>
+<meta name="description" content="Dom Claudio — Leasing Consultant candidate for Via Avanti, Sherman Oaks. Setting the standard, with the record to prove it.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --stucco:#F1E8DA; --stucco-deep:#E7DAC5; --ink:#2A211A;
+    --terra:#B5502E; --olive:#5D6B42; --stone:#8B8071;
+  }
+  @media (prefers-reduced-motion: reduce){ *{animation:none!important; transition:none!important} }
+  *{box-sizing:border-box; margin:0}
+  body{
+    background:var(--stucco); color:var(--ink);
+    font:17px/1.6 "Archivo", system-ui, sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--terra); text-decoration-thickness:1px; text-underline-offset:3px}
+  a:focus-visible{outline:2px solid var(--terra); outline-offset:3px}
+  main{max-width:680px; margin:0 auto; padding:0 24px 72px}
+
+  header{padding:56px 0 40px; border-bottom:1px solid var(--stucco-deep)}
+  .plate{font:600 14px/1 "Archivo"; letter-spacing:.04em; color:var(--stone); margin-bottom:36px}
+  .plate b{color:var(--ink); font-weight:600}
+  h1{
+    font:500 clamp(42px, 8vw, 66px)/1.05 "Cormorant Garamond", serif;
+    letter-spacing:-.01em;
+  }
+  h1 em{font-style:italic; color:var(--terra)}
+  .lede{margin-top:22px; font-size:18px; max-width:56ch; color:#4a3f34}
+
+  section{padding:44px 0; border-bottom:1px solid var(--stucco-deep)}
+  h2{font:500 30px/1.15 "Cormorant Garamond", serif; margin-bottom:6px}
+  .sub{font:italic 500 17px/1.4 "Cormorant Garamond", serif; color:var(--stone); margin-bottom:18px}
+  p{max-width:62ch}
+  p + p{margin-top:14px}
+
+  /* values map */
+  .values{margin-top:24px; display:grid; gap:0}
+  .val{display:grid; grid-template-columns:132px 1fr; gap:16px; padding:13px 0; border-bottom:1px solid var(--stucco-deep); align-items:baseline}
+  .val:last-child{border-bottom:none}
+  .val b{font:600 19px/1.2 "Cormorant Garamond", serif; color:var(--terra)}
+  .val span{font-size:15.5px; color:#4a3f34}
+  @media (max-width:520px){ .val{grid-template-columns:1fr; gap:2px} }
+  .ethic{
+    margin-top:26px; padding:20px 24px;
+    border-left:3px solid var(--olive);
+    background:rgba(93,107,66,.07);
+    font:italic 500 20px/1.5 "Cormorant Garamond", serif; max-width:58ch;
+  }
+
+  /* exhibits */
+  .exhibit{border-left:3px solid var(--terra); padding:4px 0 4px 18px; margin-top:24px}
+  .exhibit p{font:italic 500 20px/1.5 "Cormorant Garamond", serif; color:var(--ink); max-width:60ch}
+  .exhibit cite{display:block; font:500 13px/1.4 "Archivo"; font-style:normal; color:var(--stone); margin-top:8px; letter-spacing:.03em}
+  .exhibit cite b{color:var(--terra); font-weight:600}
+  .exhibit cite a{color:var(--terra)}
+
+  /* routine */
+  ol.routine{list-style:none; margin-top:26px; counter-reset:step}
+  ol.routine li{counter-increment:step; position:relative; padding:0 0 22px 58px}
+  ol.routine li:last-child{padding-bottom:0}
+  ol.routine li::before{
+    content:counter(step, decimal-leading-zero);
+    position:absolute; left:0; top:3px;
+    font:500 17px/1 "Cormorant Garamond", serif; color:var(--olive);
+    letter-spacing:.05em;
+  }
+  ol.routine li:not(:last-child)::after{
+    content:""; position:absolute; left:11px; top:28px; bottom:6px;
+    width:1px; background:var(--stucco-deep);
+  }
+  ol.routine h3{font:600 16px/1.3 "Archivo"; margin-bottom:4px}
+  ol.routine p{font-size:15.5px; color:#4a3f34}
+
+  /* record */
+  .record{margin-top:24px; display:grid; gap:4px}
+  .record div{
+    display:flex; justify-content:space-between; gap:18px;
+    padding:11px 0; border-bottom:1px solid var(--stucco-deep);
+    font-size:15.5px;
+  }
+  .record div:last-child{border-bottom:none}
+  .record span:first-child{color:var(--stone)}
+  .record span:last-child{text-align:right; font-weight:500}
+
+  footer{padding:44px 0 0}
+  .close{font:italic 500 24px/1.4 "Cormorant Garamond", serif; margin-bottom:26px}
+  .contact{font-size:15.5px; color:#4a3f34}
+  .contact a{white-space:nowrap}
+  .sign{margin-top:30px; font:italic 500 20px/1.35 "Cormorant Garamond", serif}
+</style>
+</head>
+<body>
+<main>
+
+<header>
+  <p class="plate"><b>Dom Claudio</b> &nbsp;·&nbsp; Leasing Consultant &nbsp;·&nbsp; prepared for IMT Residential</p>
+  <h1>Via Avanti. <em>Setting the standard.</em></h1>
+  <p class="lede">Every property gets revealed to its neighborhood exactly once. I want to be on the team that does it for Via Avanti: to help it build a reputation in Sherman Oaks that lives up to IMT's name.</p>
+</header>
+
+<section>
+  <h2>The standard I keep</h2>
+  <p class="sub">Four habits, none negotiable.</p>
+  <div class="values">
+    <div class="val"><b>Prove it</b><span>Every claim on this page links to a published source, and every file I build reads clean when it's pulled six months later.</span></div>
+    <div class="val"><b>To the dollar</b><span>I started my career balancing a casino cage — accounts from $400K to $2.5M, under surveillance. Rent checks don't scare me.</span></div>
+    <div class="val"><b>Unasked</b><span>Converted from staffing temp to direct hire because the client asked to keep me. Built my office a web app nobody requested.</span></div>
+    <div class="val"><b>Thirty days later</b><span>Every resident of mine finds a handwritten thank-you card at their door a month after move-in.</span></div>
+  </div>
+  <p class="ethic">Underneath all of it is one ethic: every conversation, booked or not, ends with "I hope you find what you're looking for." Service for the prospect's needs supersedes the sale — and it's why they come back and sign.</p>
+  <p>IMT publishes the values it hires for. Reading them felt less like studying a culture than recognizing one.</p>
+</section>
+
+<section>
+  <h2>The hall of fame</h2>
+  <p class="sub">On the record, in residents' own words.</p>
+  <p>Claims should be verifiable. These are published reviews, each linked to its source.</p>
+  <div class="exhibit">
+    <p>"The Village was my last stop during a long day of apartment hunting and although it's still early in my search Domingo gave an amazing tour &amp; was such a pleasant representation of the property!"</p>
+    <cite><b>Exhibit A</b> · Prospect review · Google · <a href="https://share.google/6ZW6Jqq9JM6UP2yHm" rel="noopener">View source ↗</a></cite>
+  </div>
+  <div class="exhibit">
+    <p>"Domingo is amazing at listening to our concerns and always goes the extra mile to help with our every need."</p>
+    <cite><b>Exhibit B</b> · Resident review · Google · <a href="https://share.google/jAS6k0S6upaM6ceJW" rel="noopener">View source ↗</a></cite>
+  </div>
+  <div class="exhibit">
+    <p>"The office team, especially Elaina and Domingo, have always been professional, attentive, and quick to resolve any issues that came up. They genuinely care about the residents, and it shows in the way they handle everything with such promptness and kindness."</p>
+    <cite><b>Exhibit C</b> · Resident review · Google · <a href="https://share.google/chi1Bgr4ZPnQMZRDd" rel="noopener">View source ↗</a></cite>
+  </div>
+  <div class="exhibit">
+    <p>"Domingo has consistently gone above and beyond to ensure our apartment is well maintained and that any maintenance concerns are addressed promptly… I renewed my lease for another year because of how comfortable I've felt living here and because the leasing office has gone above and beyond to make this a positive living experience."</p>
+    <cite><b>Exhibit D</b> · Resident review · Yelp · <a href="https://www.yelp.com/biz/the-village-apartments-santa-clarita?hrid=MY5ZIdyXs5GbWc7-iF2dVg" rel="noopener">View source ↗</a></cite>
+  </div>
+</section>
+
+<section>
+  <h2>The routine that earns them</h2>
+  <p class="sub">Eleven stages, first contact to renewal. No loose ends.</p>
+  <p>Reviews like those don't come from charm; they come from a pipeline that never sways regardless of who the prospect is — which is also the backbone of Fair Housing. Every lease I close runs through it.</p>
+  <ol class="routine">
+    <li><h3>First contact</h3><p>Every lead gets a same-day response with availability matched to their need and a direct invitation to tour, with two concrete time options. Speed to lead is the cheapest conversion tool in the business.</p></li>
+    <li><h3>The tour</h3><p>Routed by the needs the prospect names. The anchor features never get skipped — the ones they forget to ask about are the ones they'd miss most as residents.</p></li>
+    <li><h3>Follow-up cadence</h3><p>Same-day thank-you with a recap, a value touch within 48 hours, then spaced touches until they lease here or lease elsewhere. Never "just checking in" — always a floor plan, a pricing update, an answer. All logged.</p></li>
+    <li><h3>Application onboarding</h3><p>One clear email the moment someone commits: the link, the document checklist, the fees, and what happens next. Receipt is timestamped, so pricing and priority order are never a dispute.</p></li>
+    <li><h3>Identity &amp; income verification</h3><p>ID matched, income documented to standard, discrepancies resolved in writing before the file advances. I came up processing income certifications under bond-compliance audit standards; market-rate screening is the same discipline with fewer forms.</p></li>
+    <li><h3>Unit verification</h3><p>Once an applicant chooses a unit, I walk it. Discrepancies go to maintenance the same day, manager looped in. The unit gets its punch list weeks before move-in, not the morning of.</p></li>
+    <li><h3>Funds collection</h3><p>Every dollar receipted and timestamped the moment it's received. The file always answers three facts: who paid, how much, and when.</p></li>
+    <li><h3>File hygiene</h3><p>Nothing advances incomplete. One owner per file, version-controlled naming. A file I build can be pulled by a manager, an auditor, or an owner's rep six months later and read like a story with no missing pages.</p></li>
+    <li><h3>Move-in coordination</h3><p>On the calendar the moment the lease comes back signed. Utilities confirmed, insurance verified, keys staged, welcome sent. The first impression they get as a resident is the last step of my sale.</p></li>
+    <li><h3>Thirty days later</h3><p>A handwritten notecard at the resident's door. Thirty days in, the boxes are unpacked and the decision feels real — that's the moment to say thank you.</p></li>
+    <li><h3>Retention</h3><p>Lease-ups fill units; good consultants fill them with residents who renew. The second year is sold during week one — that's how a lease-up becomes a stabilized property.</p></li>
+  </ol>
+</section>
+
+<section>
+  <h2>The record</h2>
+  <div class="record">
+    <div><span>Multifamily leasing</span><span>5+ years, 15+ communities</span></div>
+    <div><span>Current chapter</span><span>Leasing Consultant, 384-unit community, Santa Clarita</span></div>
+    <div><span>Path</span><span>Staffing assignments across Greystar, Sares Regis &amp; Avenue 5 portfolios → hired direct</span></div>
+    <div><span>Systems</span><span>Yardi Voyager · RentCafe · Knock CRM · OneSite · Power BI/REBA</span></div>
+    <div><span>Before leasing</span><span>High-value cage teller, Commerce Casino · brand-builder for a State Farm agency</span></div>
+    <div><span>Education</span><span>BA English Literature, Ramapo College of New Jersey</span></div>
+  </div>
+</section>
+
+<footer>
+  <p class="close">Avanti means forward. I'd like to help take it there.</p>
+  <p class="contact">
+    <a href="mailto:dom@domclaudio.com">dom@domclaudio.com</a> &nbsp;·&nbsp;
+    <a href="tel:+13108041439">(310) 804-1439</a> &nbsp;·&nbsp;
+    <a href="https://domclaudio.com">domclaudio.com</a>
+  </p>
+  <p class="sign">Respectfully submitted;<br>Dom Claudio.</p>
+</footer>
+
+</main>
+</body>
+</html>
