@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Domingo Claudio for Vivmark Residential</title>
+<meta name="description" content="Application page for the Multisite Leasing Consultant role at Hesby, Kenwood Mews, and Academy Village.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0F2B4F;
+    --azure: #298DFF;
+    --ink: #31343A;
+    --ink-soft: #5B6068;
+    --rule: #DDE3EA;
+    --paper: #FFFFFF;
+    --wash: #F3F6FA;
+    --serif: 'IBM Plex Serif', Georgia, serif;
+    --sans: 'IBM Plex Sans', system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.6;
+  }
+  a { color: var(--navy); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--azure); outline-offset: 3px; }
+
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 22px; }
+
+  header.top {
+    border-bottom: 1px solid var(--rule);
+  }
+  header.top .wrap {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding-top: 22px; padding-bottom: 18px;
+  }
+  header.top .name { font-weight: 600; color: var(--navy); letter-spacing: 0.01em; }
+  header.top .for { color: var(--ink-soft); font-size: 15px; }
+
+  .hero { padding: 56px 0 40px; }
+  .hero h1 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(30px, 5.4vw, 42px);
+    line-height: 1.18;
+    color: var(--navy);
+    margin: 0 0 22px;
+    max-width: 16ch;
+  }
+  .hero p { margin: 0 0 14px; max-width: 60ch; }
+  .hero p.role { color: var(--ink-soft); font-size: 15px; margin-top: 26px; }
+
+  section { padding: 40px 0; border-top: 1px solid var(--rule); }
+  h2 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 1.25;
+    color: var(--navy);
+    margin: 0 0 18px;
+  }
+  section p { max-width: 62ch; margin: 0 0 14px; }
+
+  /* The ledger: the one place the page is allowed to be loud */
+  .ledger {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 6px 0 12px;
+    font-variant-numeric: tabular-nums;
+  }
+  .ledger th, .ledger td {
+    text-align: left;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: baseline;
+  }
+  .ledger th { font-weight: 500; color: var(--ink-soft); font-size: 14px; }
+  .ledger td.num {
+    text-align: right;
+    font-family: var(--serif);
+    font-size: 26px;
+    line-height: 1;
+    color: var(--navy);
+    white-space: nowrap;
+    width: 1%;
+    padding-left: 24px;
+  }
+  .ledger tr.lead td { border-bottom-width: 2px; border-bottom-color: var(--navy); }
+  .ledger tr.lead td.num { color: var(--azure); font-size: 34px; }
+  .ledger td small { display: block; color: var(--ink-soft); font-size: 14px; margin-top: 3px; }
+  .source { font-size: 14px; color: var(--ink-soft); }
+
+  .exhibit {
+    margin: 22px 0 0;
+    padding: 2px 0 2px 18px;
+    border-left: 3px solid var(--azure);
+  }
+  .exhibit p {
+    font-family: var(--serif);
+    font-size: 19px;
+    line-height: 1.5;
+    color: var(--navy);
+    max-width: 58ch;
+    margin: 0;
+  }
+  .exhibit cite { display: block; font-style: normal; font-size: 14px; color: var(--ink-soft); margin-top: 8px; }
+  .exhibit + .exhibit { margin-top: 26px; }
+  #record .source { margin-top: 26px; }
+
+  /* App screens */
+  .screens {
+    display: flex; gap: 16px;
+    overflow-x: auto;
+    padding: 8px 0 14px;
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: 22px;
+    -webkit-overflow-scrolling: touch;
+    margin: 18px -22px 0;
+    padding-left: 22px; padding-right: 22px;
+  }
+  .screens figure {
+    flex: 0 0 auto;
+    width: 220px;
+    margin: 0;
+    scroll-snap-align: start;
+  }
+  .shot {
+    position: relative;
+    aspect-ratio: 481 / 1041;
+    overflow: hidden;
+    border-radius: 24px;
+    border: 1px solid var(--rule);
+    background: #fff;
+  }
+  .shot img { position: absolute; left: 0; width: 119.13%; height: auto; display: block; }
+  .shot img:first-child { top: 0; }
+  .shot img:last-child { top: 49.86%; }
+  .screens figcaption { font-size: 14px; color: var(--ink-soft); margin-top: 8px; line-height: 1.4; }
+  @media (min-width: 900px) {
+    .screens { margin-left: -90px; margin-right: -90px; padding-left: 90px; padding-right: 90px; overflow: visible; }
+    .screens figure { width: calc((100% - 48px) / 4); }
+  }
+
+  .contact { padding: 40px 0 64px; border-top: 1px solid var(--rule); }
+  .contact p { margin: 0 0 6px; }
+  .contact .sig { font-family: var(--serif); margin-top: 22px; }
+  .contact .sig b { display: block; font-weight: 500; color: var(--navy); }
+  .contact .links { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 10px 22px; font-size: 16px; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .hero h1 { animation: rise 500ms ease-out both; }
+    @keyframes rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <span class="name">Domingo Claudio</span>
+    <span class="for">For Vivmark Residential</span>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <h1>Last year I closed 45% of a 384‑unit property's leases.</h1>
+    <p>That's 75 leases in twelve months at The Village in Santa Clarita, on a five-agent leasing team, and 51% of the property's leases so far in 2026. Before that I spent two years floating across fifteen-plus communities for Greystar, Sares Regis, Avenue5, and RW Selby.</p>
+    <p>My resume has the record. This page has what a resume can't hold: the report the numbers come from, what residents and prospects have said about me in public, and a look at something I built.</p>
+    <p class="role">Multisite Leasing Consultant, North Hollywood. Reference EQR/2007723.</p>
+  </div>
+
+  <section id="numbers">
+    <h2>The twelve months in Yardi</h2>
+    <table class="ledger">
+      <tbody>
+        <tr class="lead">
+          <td>Leases closed<small>45% of the property's 165</small></td>
+          <td class="num">75</td>
+        </tr>
+        <tr>
+          <td>Prospects I created</td>
+          <td class="num">638</td>
+        </tr>
+        <tr>
+          <td>Appointments set<small>78% of my prospects became an appointment</small></td>
+          <td class="num">496</td>
+        </tr>
+        <tr>
+          <td>Follow-ups completed</td>
+          <td class="num">288</td>
+        </tr>
+        <tr>
+          <td>2026 year to date<small>58 of the property's 114 leases</small></td>
+          <td class="num">51%</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="source">Yardi Voyager, Team Performance by Agent, September 1, 2025 to September 6, 2026. I can share the report.</p>
+  </section>
+
+  <section id="record">
+    <h2>On the record</h2>
+    <p>The part of this job I'm best at is the first ten minutes, and I'd rather let other people say so. These are published reviews from the property I work at, in residents' and prospects' own words, each linked to its source.</p>
+    <blockquote class="exhibit">
+      <p>"The Village was my last stop during a long day of apartment hunting and although it's still early in my search Domingo gave an amazing tour &amp; was such a pleasant representation of the property!"</p>
+      <cite>Prospect, Google review. <a href="https://share.google/6ZW6Jqq9JM6UP2yHm" rel="noopener">Source</a></cite>
+    </blockquote>
+    <blockquote class="exhibit">
+      <p>"Domingo is amazing at listening to our concerns and always goes the extra mile to help with our every need."</p>
+      <cite>Resident, Google review. <a href="https://share.google/jAS6k0S6upaM6ceJW" rel="noopener">Source</a></cite>
+    </blockquote>
+    <blockquote class="exhibit">
+      <p>"The office team, especially Elaina and Domingo, have always been professional, attentive, and quick to resolve any issues that came up. They genuinely care about the residents, and it shows in the way they handle everything with such promptness and kindness."</p>
+      <cite>Resident, Google review. <a href="https://share.google/chi1Bgr4ZPnQMZRDd" rel="noopener">Source</a></cite>
+    </blockquote>
+    <blockquote class="exhibit">
+      <p>"Domingo has consistently gone above and beyond to ensure our apartment is well maintained and that any maintenance concerns are addressed promptly… I renewed my lease for another year because of how comfortable I've felt living here and because the leasing office has gone above and beyond to make this a positive living experience."</p>
+      <cite>Resident, Yelp review. <a href="https://www.yelp.com/biz/the-village-apartments-santa-clarita?hrid=MY5ZIdyXs5GbWc7-iF2dVg" rel="noopener">Source</a></cite>
+    </blockquote>
+    <p class="source">Mystery shop evaluators have scored me 100% in person and 94.4% by phone; the report is available on request.</p>
+  </section>
+
+  <section id="app">
+    <h2>What I built when lead-to-appointment time was costing us tours</h2>
+    <p>A mobile prospect app for the property I work at: floor plans pulled from availability, tour scheduling with a reference code per request, and a page for the leasing team so a prospect knows who they're meeting. I built it on my own time and presented it to our regional sales leadership.</p>
+    <p>It's a prototype, not a product, and it isn't something I'd bring with me. It's here because it shows how I think about the gap between a lead and a tour, and because I come from marketing: campaigns, analytics, copy, and web are part of how I work a leasing desk.</p>
+    <div class="screens" aria-label="Screens from the prospect app prototype">
+      <figure>
+        <div class="shot"><img src="home-top.jpg" alt="" loading="lazy"><img src="home-bottom.jpg" alt="Home screen of the prospect app: property name, hero image, availability count, bedroom count, and starting rent." loading="lazy"></div>
+        <figcaption>Home. Availability and starting rent in the first screen, not the fourth.</figcaption>
+      </figure>
+      <figure>
+        <div class="shot"><img src="plans-top.jpg" alt="" loading="lazy"><img src="plans-bottom.jpg" alt="Floor plans screen with filter chips and plan cards showing layout, square footage, availability, and a tour button." loading="lazy"></div>
+        <figcaption>Floor plans, updated from Yardi, with a tour button on every card.</figcaption>
+      </figure>
+      <figure>
+        <div class="shot"><img src="visit-top.jpg" alt="" loading="lazy"><img src="visit-bottom.jpg" alt="Tour screen offering an in-person tour or a FaceTime tour, with a property site map below." loading="lazy"></div>
+        <figcaption>Tour scheduling. In person or FaceTime, confirmed within office hours.</figcaption>
+      </figure>
+      <figure>
+        <div class="shot"><img src="team-top.jpg" alt="" loading="lazy"><img src="team-bottom.jpg" alt="Team screen introducing the leasing consultant with a short quote and buttons to start a conversation or schedule a tour." loading="lazy"></div>
+        <figcaption>The team page. A name and a face before the first call.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <h2>Let's talk</h2>
+    <p>I'd welcome a conversation about what the Area Sales Manager needs from this seat. My resume and cover letter are in the application; the report behind the numbers above is a request away.</p>
+    <div class="links">
+      <a href="tel:+13108041439">310.804.1439</a>
+      <a href="mailto:dom@domclaudio.com">dom@domclaudio.com</a>
+      <a href="https://www.domclaudio.com/">domclaudio.com</a>
+    </div>
+    <p class="sig">Respectfully submitted;<b>Domingo Claudio</b></p>
+  </section>
+
+</main>
+</body>
+</html>
