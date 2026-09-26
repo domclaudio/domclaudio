@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Battle of the Greats — Dom Claudio</title>
+  <meta name="description" content="A spec short-form series for Chess.com by Dom Claudio: the legends of chess, rebuilt as engines, finally get a rematch with the cat.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23769656'/%3E%3Ctext x='50' y='66' text-anchor='middle' font-family='Helvetica Neue,Arial,sans-serif' font-weight='700' font-size='52' fill='%23EEEED2' letter-spacing='-2'%3EDC%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #312E2B;
+      --bg-deep: #262522;
+      --surface: #3A3733;
+      --line: #4A4642;
+      --line-soft: #403C38;
+      --cream: #EEEED2;
+      --cream-dim: #C9C7B4;
+      --board: #769656;
+      --green: #81B64C;
+      --gold: #E3B341;
+      --text: #E8E6E3;
+      --muted: #A8A49E;
+      --faint: #7A766F;
+      --sans: 'DM Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      --mono: 'DM Mono', 'SF Mono', Menlo, monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg); color: var(--text);
+      font-family: var(--sans); font-size: 17px; line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    .topbar {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 22px 48px; border-bottom: 1px solid var(--line-soft);
+      background: var(--bg-deep);
+    }
+    .topbar .name { font-size: 13px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--cream); }
+    .topbar .crumb { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--green); }
+    .topbar .crumb:hover { color: var(--cream); }
+
+    .page { max-width: 820px; margin: 0 auto; padding: 56px 48px 90px; }
+
+    /* ── WORDMARK ── */
+    .wordmark {
+      position: relative; overflow: hidden;
+      background: var(--bg-deep);
+      border: 1px solid var(--line);
+      padding: 64px 48px 56px; text-align: center;
+    }
+    .wordmark::before {
+      content: ''; position: absolute; inset: 0; opacity: 0.16;
+      background-image:
+        linear-gradient(45deg, var(--board) 25%, transparent 25%, transparent 75%, var(--board) 75%),
+        linear-gradient(45deg, var(--board) 25%, transparent 25%, transparent 75%, var(--board) 75%);
+      background-size: 64px 64px; background-position: 0 0, 32px 32px;
+      mask-image: radial-gradient(ellipse at center, #000 20%, transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse at center, #000 20%, transparent 75%);
+    }
+    .wordmark > * { position: relative; }
+    .wm-kicker { font-family: var(--mono); font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
+    .wm-title { font-size: clamp(38px, 6vw, 64px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.0; color: var(--cream); }
+    .wm-title .g { color: var(--green); }
+    .wm-sub { margin-top: 22px; font-size: 11px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--muted); }
+    .wm-type { margin-top: 10px; font-size: 14px; color: var(--faint); }
+
+    /* ── BRIEF ── */
+    .brief { margin-top: 44px; border-top: 1px solid var(--line); }
+    .brief-row { display: grid; grid-template-columns: 110px 1fr; gap: 24px; padding: 18px 0; border-bottom: 1px solid var(--line-soft); }
+    .brief-key { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--green); padding-top: 6px; }
+    .brief-val { font-size: 17px; line-height: 1.6; color: var(--cream-dim); }
+    .brief-val .hl { color: var(--cream); font-weight: 600; }
+    .aside { margin-top: 22px; font-size: 14px; font-style: italic; color: var(--muted); }
+
+    .label { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--green); margin: 56px 0 16px; }
+    .body { font-size: 17px; line-height: 1.7; color: var(--cream-dim); margin-bottom: 16px; }
+    .body .hl { color: var(--cream); font-weight: 600; }
+    .body.small { font-size: 14px; color: var(--muted); }
+
+    /* ── PIECE ── */
+    .piece { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--line); }
+    .piece-num { font-family: var(--mono); font-size: 11px; letter-spacing: 3px; color: var(--gold); }
+    .piece-title { font-size: clamp(24px, 3vw, 32px); font-weight: 600; line-height: 1.2; margin: 8px 0 4px; color: var(--cream); }
+    .piece-sub { font-size: 14px; color: var(--muted); margin-bottom: 28px; }
+    .rationale { margin-top: 22px; padding-left: 16px; border-left: 3px solid var(--green); font-size: 14px; line-height: 1.6; color: var(--muted); }
+    .rationale b { color: var(--cream-dim); font-weight: 600; }
+
+    /* ── SCRIPT ── */
+    .script { background: var(--bg-deep); border: 1px solid var(--line); }
+    .script-head {
+      display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px;
+      padding: 18px 28px; border-bottom: 1px solid var(--line-soft);
+      font-family: var(--mono); font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted);
+    }
+    .script-head b { color: var(--cream); font-weight: 500; }
+    .beat { display: grid; grid-template-columns: 72px 1fr; gap: 20px; padding: 20px 28px; border-bottom: 1px solid var(--line-soft); }
+    .beat:last-child { border-bottom: 0; }
+    .tc { font-family: var(--mono); font-size: 13px; color: var(--gold); padding-top: 3px; }
+    .beat-name { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+    .beat-name span { color: var(--faint); font-weight: 400; letter-spacing: 1px; text-transform: none; margin-left: 8px; }
+    .beat-p { font-size: 15.5px; line-height: 1.6; color: var(--cream-dim); margin-bottom: 8px; }
+    .cap { display: inline-block; font-family: var(--mono); font-size: 13.5px; color: var(--cream); background: rgba(0,0,0,0.35); padding: 4px 10px; border-radius: 3px; margin: 2px 0; }
+    .cap.small { font-size: 12px; color: var(--muted); }
+    .meow { display: inline-block; font-size: 13.5px; color: var(--bg-deep); background: var(--cream); padding: 3px 10px; border-radius: 12px; font-weight: 600; margin-left: 6px; }
+    .stack .cap { display: table; margin: 4px 0; }
+
+    /* tale of the tape */
+    .tape { margin: 10px 0 4px; border: 1px solid var(--line); background: var(--surface); font-size: 14px; }
+    .tape-row { display: grid; grid-template-columns: 1fr 90px 1fr; text-align: center; border-bottom: 1px solid var(--line-soft); }
+    .tape-row:last-child { border-bottom: 0; }
+    .tape-row > div { padding: 10px 8px; }
+    .tape-row .k { font-family: var(--mono); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--faint); padding-top: 12px; }
+    .tape-row.head > div { font-weight: 700; color: var(--cream); font-size: 15px; background: var(--bg-deep); }
+    .tape-row.head .k { color: var(--gold); }
+    .tape-row .m { color: var(--cream); }
+    .tape-row .c { color: var(--green); }
+
+    /* ── BIBLE ── */
+    .ep { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--line-soft); }
+    .ep-left { display: flex; align-items: baseline; gap: 16px; }
+    .ep-num { font-family: var(--mono); font-size: 12px; color: var(--faint); letter-spacing: 1px; }
+    .ep-title { font-size: 16px; font-weight: 500; color: var(--cream); }
+    .ep-badge { font-size: 8px; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; color: var(--bg-deep); background: var(--green); padding: 3px 10px; border-radius: 2px; }
+    .ep-badge.gold { background: var(--gold); }
+    .ep-log { font-size: 14.5px; color: var(--muted); line-height: 1.6; padding: 4px 0 16px 40px; border-bottom: 1px solid var(--line-soft); }
+    .ep-log i { color: var(--cream-dim); }
+    .bible-rule { margin-top: 22px; font-size: 14px; color: var(--muted); font-style: italic; }
+
+    /* ── RULEBOOK ── */
+    .rule { display: grid; grid-template-columns: 44px 1fr; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--line-soft); }
+    .rule-n { font-family: var(--mono); font-size: 22px; color: var(--gold); line-height: 1; padding-top: 2px; }
+    .rule-t { font-size: 16px; font-weight: 600; color: var(--cream); margin-bottom: 4px; }
+    .rule-p { font-size: 15px; color: var(--cream-dim); line-height: 1.6; }
+    .rule-p i { color: var(--cream); }
+
+    .foot-note { margin-top: 64px; text-align: center; font-size: 14px; font-style: italic; color: var(--faint); }
+    .sig { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--line); font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--faint); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+    .sig a { color: var(--green); }
+
+    @media (max-width: 720px) {
+      .topbar { padding: 18px 24px; }
+      .page { padding: 40px 24px 70px; }
+      .wordmark { padding: 48px 24px 40px; }
+      .brief-row { grid-template-columns: 1fr; gap: 6px; }
+      .beat { grid-template-columns: 1fr; gap: 6px; padding: 18px 20px; }
+      .script-head { padding: 16px 20px; }
+      .ep-log { padding-left: 0; }
+      .tape-row { grid-template-columns: 1fr 70px 1fr; font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="name" href="/">Dom Claudio</a>
+  <a class="crumb" href="/#editorial">← Editorial</a>
+</div>
+
+<main class="page">
+
+  <div class="wordmark">
+    <div class="wm-kicker">Heavyweight Championship of the World (of chess)</div>
+    <div class="wm-title">Battle of<br>the <span class="g">Greats</span></div>
+    <div class="wm-sub">A Chess.com Spec Series</div>
+    <div class="wm-type">Short-Form Series &nbsp;·&nbsp; TikTok &nbsp;·&nbsp; YouTube Shorts &nbsp;·&nbsp; Reels</div>
+  </div>
+
+  <div class="brief">
+    <div class="brief-row">
+      <div class="brief-key">Problem</div>
+      <div class="brief-val">Chess.com is the biggest chess site in the world and the one you're supposed to be a little embarrassed to love.</div>
+    </div>
+    <div class="brief-row">
+      <div class="brief-key">Insight</div>
+      <div class="brief-val">Nobody has ever been embarrassed to love Mittens. The site's best brand moment was the one time it stopped being a company and started being a character.</div>
+    </div>
+    <div class="brief-row">
+      <div class="brief-key">Idea</div>
+      <div class="brief-val"><span class="hl">Battle of the Greats.</span> A short-form series where the legends of chess, rebuilt as engines from their own games, finally get a rematch with the cat. Sixty seconds, one game, one "meow." The legends have history. Mittens has a record.</div>
+    </div>
+  </div>
+
+  <p class="aside">Written by someone with 25,000 games on the platform and a rating he'd rather not put on the tale of the tape.</p>
+
+  <div class="label">The Concept</div>
+  <p class="body">Open source has a license. It doesn't have a personality. Chess.com does, and it's a cat with a rating of 1 that beat everyone in January 2023 and became the biggest traffic spike in the site's history. The streamers who say they prefer the other site are the ones who built the legend.</p>
+  <p class="body">Battle of the Greats brings the cat back as a franchise. Each episode is a boxing card: ring walk, tale of the tape, bell, then a real game on the real interface against a legend's engine. <span class="hl">Every episode ends on a cliffhanger, and the cliffhanger is a live position.</span> You can play it against Mittens from that exact spot, on one site only. The next episode opens by revealing how it actually went.</p>
+  <p class="body">That's the mechanic doing the marketing. "Finish the game" beats "sign up" every time, and it can't be copied, because the cat lives here.</p>
+  <p class="body small">Legends are chosen for what can ship: players Chess.com already has bot relationships with, and public-domain-era masters whose engines are built from their own games.</p>
+
+  <!-- ═══════════ 01 THE EPISODE ═══════════ -->
+  <section class="piece">
+    <div class="piece-num">01</div>
+    <h2 class="piece-title">The Episode</h2>
+    <div class="piece-sub">Ep. 01 · Magnus vs. Mittens · beat sheet with captions</div>
+
+    <div class="script">
+      <div class="script-head"><span><b>Battle of the Greats</b> · Ep. 01</span><span>Vertical · 0:60 · captions on · sound on</span></div>
+
+      <div class="beat">
+        <div class="tc">0:00</div>
+        <div>
+          <div class="beat-name">Cold open <span>3 sec</span></div>
+          <p class="beat-p">Black. A bell.</p>
+          <div class="stack"><span class="cap">HEAVYWEIGHT CHAMPIONSHIP OF THE WORLD.</span><span class="cap small">(of chess)</span></div>
+        </div>
+      </div>
+
+      <div class="beat">
+        <div class="tc">0:03</div>
+        <div>
+          <div class="beat-name">Ring walk <span>8 sec</span></div>
+          <p class="beat-p">Pixel boxing ring. Magnus's bot avatar enters from the left, spotlight, crowd noise.</p>
+          <div class="stack"><span class="cap">MAGNUS. 5x World Champion. Peak rating 2882.</span></div>
+          <p class="beat-p">Mittens's avatar is already in the ring. Sitting.</p>
+          <div class="stack"><span class="cap">MITTENS. Rating: 1.</span><span class="cap">Undefeated (allegedly).</span></div>
+        </div>
+      </div>
+
+      <div class="beat">
+        <div class="tc">0:11</div>
+        <div>
+          <div class="beat-name">Tale of the tape <span>6 sec</span></div>
+          <div class="tape">
+            <div class="tape-row head"><div class="m">Magnus</div><div class="k">vs</div><div class="c">Mittens</div></div>
+            <div class="tape-row"><div class="m">Entire board</div><div class="k">Reach</div><div class="c">Unknown</div></div>
+            <div class="tape-row"><div class="m">Universal</div><div class="k">Style</div><div class="c">Meow</div></div>
+            <div class="tape-row"><div class="m">None found</div><div class="k">Weakness</div><div class="c">None reported</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="beat">
+        <div class="tc">0:17</div>
+        <div>
+          <div class="beat-name">The bell <span>30 sec</span></div>
+          <p class="beat-p">Hard cut to the real Chess.com board. Magnus bot as white. Moves play at engine speed. Three caption beats:</p>
+          <p class="beat-p"><b style="color:var(--cream)">Move 8.</b> Magnus develops cleanly. <span class="cap">He's playing it straight. He respects the cat.</span></p>
+          <p class="beat-p"><b style="color:var(--cream)">Move 14.</b> Mittens plays something ugly the eval bar doesn't punish. <span class="cap">That's not a move. That's a threat.</span><span class="meow">meow</span></p>
+          <p class="beat-p"><b style="color:var(--cream)">Move 22.</b> The position is unclear. Eval bar hovering at zero. <span class="cap">Nobody in this ring knows what's happening.</span></p>
+        </div>
+      </div>
+
+      <div class="beat">
+        <div class="tc">0:47</div>
+        <div>
+          <div class="beat-name">Move 23. Mittens to move. Freeze. <span>6 sec</span></div>
+          <p class="beat-p">Crowd noise drops out. One line at a time:</p>
+          <div class="stack"><span class="cap">Mittens is thinking.</span><span class="cap">Mittens does not think.</span><span class="cap">This is new.</span></div>
+        </div>
+      </div>
+
+      <div class="beat">
+        <div class="tc">0:53</div>
+        <div>
+          <div class="beat-name">Cut to black. Bell. <span>7 sec</span></div>
+          <div class="stack"><span class="cap">Position 001 is live. Finish it.</span><span class="cap small">chess.com/mittens &nbsp;·&nbsp; Ep. 02 Thursday.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <p class="rationale"><b>Why it's built this way.</b> The rating-1 gag is Mittens's original bit, so the tale of the tape is doing brand memory, not inventing. "He respects the cat" is the tone rule for the series: Magnus is never the joke, the cat is the joke, and the cat is winning anyway. Move 22 hovering at zero is the important beat, because the cliffhanger has to be an honest position. If the community can see it's rigged, "finish it" dies. And Thursday turns a video into a schedule, which is what a franchise is.</p>
+  </section>
+
+  <!-- ═══════════ 02 THE BIBLE ═══════════ -->
+  <section class="piece">
+    <div class="piece-num">02</div>
+    <h2 class="piece-title">The Series</h2>
+    <div class="piece-sub">Six episodes, one a week. Every episode ends in a live position. Every episode opens by settling the last one.</div>
+
+    <div class="ep"><div class="ep-left"><span class="ep-num">01</span><span class="ep-title">Magnus</span></div><span class="ep-badge">Scripted</span></div>
+    <div class="ep-log">The best player alive, and the first one to take the cat seriously. Ends on move 23 with the eval at zero and Mittens, for the first time in recorded history, thinking.</div>
+
+    <div class="ep"><div class="ep-left"><span class="ep-num">02</span><span class="ep-title">Kasparov</span></div></div>
+    <div class="ep-log">The most aggressive champion who ever lived plays the way he always did: straight at the king. Mittens does not have a king so much as a place where the king is. Ends with Kasparov up a piece and Mittens up something nobody can name.</div>
+
+    <div class="ep"><div class="ep-left"><span class="ep-num">03</span><span class="ep-title">Tal</span></div></div>
+    <div class="ep-log">The magician from Riga sacrifices a knight on move 9 for reasons that made sense in 1961. Mittens takes it. Then takes the next one. Ends with three pieces hanging. <i>This is either a masterpiece or a crime scene. Position 003 is live.</i></div>
+
+    <div class="ep"><div class="ep-left"><span class="ep-num">04</span><span class="ep-title">Capablanca</span></div></div>
+    <div class="ep-log">The cleanest technician in history refuses to be baited. Thirty moves of nothing happening, beautifully. Ends in a pawn endgame that looks equal. <i>Capablanca has never lost a position like this. Mittens has never seen one.</i></div>
+
+    <div class="ep"><div class="ep-left"><span class="ep-num">05</span><span class="ep-title">Morphy</span></div></div>
+    <div class="ep-log">The 1858 game, replayed against the cat: open lines, quick development, checkmate in the air. Morphy is winning by move 15 the way he always was. Ends when Mittens plays the engine's only move. <i>Did the cat just find that?</i></div>
+
+    <div class="ep"><div class="ep-left"><span class="ep-num">06</span><span class="ep-title">Hikaru, live</span></div><span class="ep-badge gold">Finale</span></div>
+    <div class="ep-log">The finale isn't an engine. Hikaru plays the cat on stream, one game, no takebacks, the eval bar in real time. The cliffhanger is real because nobody knows the ending, including Chess.com. Position 006 goes live the second he resigns or doesn't.</div>
+
+    <p class="bible-rule">Series rule: the legends' engines are tuned from their own games, and the cliffhanger positions are honest. If the community can tell a position is rigged, the mechanic dies with it.</p>
+  </section>
+
+  <!-- ═══════════ 03 THE VOICE ═══════════ -->
+  <section class="piece">
+    <div class="piece-num">03</div>
+    <h2 class="piece-title">The Voice</h2>
+    <div class="piece-sub">Mittens rulebook. The captions are where the character lives, and the character is the campaign.</div>
+
+    <div class="rule"><div class="rule-n">1</div><div><div class="rule-t">Mittens says "meow." Only "meow."</div><div class="rule-p">Everything else is the narrator describing Mittens. The moment the cat gets a second word, the cat is a mascot.</div></div></div>
+    <div class="rule"><div class="rule-n">2</div><div><div class="rule-t">The narrator is a boxing announcer who has read one chess book.</div><div class="rule-p">Confident, wrong in ways that are correct. <i>That's not a move. That's a threat.</i></div></div></div>
+    <div class="rule"><div class="rule-n">3</div><div><div class="rule-t">The legend is never the joke.</div><div class="rule-p">Magnus is respected. Tal is admired. The joke is that none of it helps.</div></div></div>
+    <div class="rule"><div class="rule-n">4</div><div><div class="rule-t">Mittens never wins on screen.</div><div class="rule-p">Mittens wins off screen, in the position you're now playing, or in next week's cold open. On screen the cat only ever gets as far as "thinking."</div></div></div>
+    <div class="rule"><div class="rule-n">5</div><div><div class="rule-t">Rating: 1. Always.</div><div class="rule-p">Never explained, never updated, never joked about directly. It's on the tale of the tape every episode like a birthdate.</div></div></div>
+  </section>
+
+  <p class="foot-note">Full series treatment and episode scripts available upon request.</p>
+
+  <div class="sig">
+    <span>Dom Claudio · <a href="https://domclaudio.com">domclaudio.com</a></span>
+    <span>Spec Series · September 2026</span>
+  </div>
+
+</main>
+</body>
+</html>
