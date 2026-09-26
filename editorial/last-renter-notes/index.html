@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Last Renter Notes — Dom Claudio</title>
+  <meta name="description" content="A spec product for Apartments.com by Dom Claudio: the last renter leaves a note on the unit, the next one reads it.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23237A3C'/%3E%3Ctext x='50' y='66' text-anchor='middle' font-family='Helvetica Neue,Arial,sans-serif' font-weight='700' font-size='52' fill='%23FFFFFF' letter-spacing='-2'%3EDC%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green: #237A3C;
+      --green-deep: #1B5E2E;
+      --green-tint: #EAF4EC;
+      --ink: #1C1C1C;
+      --ink-soft: #444;
+      --ink-muted: #6E6E6E;
+      --ink-faint: #9A9A9A;
+      --rule: #E2E2E2;
+      --rule-soft: #EEEEEE;
+      --paper: #FFFFFF;
+      --paper-sunk: #F6F6F4;
+      --link: #2D6BB0;
+      --sans: 'DM Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 17px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 22px 48px;
+      border-bottom: 1px solid var(--rule-soft);
+    }
+    .topbar .name {
+      font-size: 13px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+    }
+    .topbar .crumb {
+      font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--green);
+    }
+    .topbar .crumb:hover { color: var(--green-deep); }
+
+    .page { max-width: 820px; margin: 0 auto; padding: 56px 48px 90px; }
+
+    /* ── WORDMARK ── */
+    .wordmark {
+      border: 1px solid var(--rule);
+      border-top: 6px solid var(--green);
+      padding: 64px 48px 56px;
+      text-align: center;
+      background: var(--paper);
+    }
+    .wm-title {
+      font-size: clamp(38px, 6vw, 62px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.02;
+      color: var(--ink);
+    }
+    .wm-title .g { color: var(--green); }
+    .wm-sub {
+      margin-top: 22px;
+      font-size: 11px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase;
+      color: var(--ink-muted);
+    }
+    .wm-type {
+      margin-top: 10px;
+      font-size: 14px; color: var(--ink-faint); font-weight: 400;
+    }
+
+    /* ── BRIEF ── */
+    .brief { margin-top: 44px; border-top: 1px solid var(--rule); }
+    .brief-row {
+      display: grid; grid-template-columns: 110px 1fr; gap: 24px;
+      padding: 18px 0; border-bottom: 1px solid var(--rule-soft);
+    }
+    .brief-key {
+      font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--green); padding-top: 6px;
+    }
+    .brief-val { font-size: 17px; line-height: 1.6; color: var(--ink-soft); }
+    .brief-val .hl { color: var(--ink); font-weight: 600; }
+
+    .aside {
+      margin-top: 22px;
+      font-size: 14px; font-style: italic; color: var(--ink-muted);
+    }
+
+    /* ── LABELS / BODY ── */
+    .label {
+      font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--green); margin: 56px 0 16px;
+    }
+    .body { font-size: 17px; line-height: 1.7; color: var(--ink-soft); margin-bottom: 16px; }
+    .body .hl { color: var(--ink); font-weight: 600; }
+    .body.small { font-size: 14px; color: var(--ink-muted); }
+
+    /* ── PIECE ── */
+    .piece { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--rule); }
+    .piece-num {
+      font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--green);
+    }
+    .piece-title {
+      font-size: clamp(24px, 3vw, 32px); font-weight: 600; line-height: 1.2;
+      margin: 8px 0 4px;
+    }
+    .piece-sub { font-size: 14px; color: var(--ink-muted); margin-bottom: 28px; }
+    .rationale {
+      margin-top: 22px;
+      padding-left: 16px;
+      border-left: 3px solid var(--green);
+      font-size: 14px; line-height: 1.6; color: var(--ink-muted);
+    }
+    .rationale b { color: var(--ink-soft); font-weight: 600; }
+
+    /* ── MOCK FRAME ── */
+    .mock {
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      background: var(--paper);
+      overflow: hidden;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.05);
+    }
+    .mock + .mock { margin-top: 24px; }
+    .mock-bar {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 10px 16px;
+      background: var(--paper-sunk);
+      border-bottom: 1px solid var(--rule-soft);
+      font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink-faint);
+    }
+    .mock-bar .brand { font-weight: 700; color: var(--green); letter-spacing: 0.5px; text-transform: none; font-size: 13px; }
+    .mock-body { padding: 28px 32px; }
+
+    /* email */
+    .em-subject { font-size: 18px; font-weight: 600; color: var(--ink); }
+    .em-pre { font-size: 13px; color: var(--ink-faint); margin-top: 2px; }
+    .em-hr { height: 1px; background: var(--rule-soft); margin: 18px 0; }
+    .em-p { font-size: 15.5px; line-height: 1.65; color: var(--ink-soft); margin-bottom: 14px; }
+    .em-p b { color: var(--ink); font-weight: 600; }
+    .em-p.ps { font-size: 14px; color: var(--ink-muted); }
+    .btn {
+      display: inline-block;
+      background: var(--green); color: #fff;
+      font-size: 14px; font-weight: 600;
+      padding: 12px 22px; border-radius: 4px;
+      margin: 6px 0 18px;
+    }
+    .btn.ghost { background: #fff; color: var(--green); border: 1.5px solid var(--green); }
+    .em-sig { font-size: 14px; color: var(--ink-faint); margin-top: 6px; }
+
+    /* form */
+    .fm-h { font-size: 22px; font-weight: 700; }
+    .fm-sub { font-size: 14px; color: var(--ink-muted); margin: 4px 0 24px; }
+    .fm-q { margin-bottom: 22px; }
+    .fm-q label { display: block; font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
+    .fm-field {
+      border: 1px solid var(--rule); border-radius: 4px;
+      padding: 12px 14px; font-size: 14.5px; color: var(--ink-faint);
+      background: #fff; min-height: 56px; line-height: 1.5;
+    }
+    .fm-opts { display: flex; flex-wrap: wrap; gap: 8px 14px; font-size: 14px; color: var(--ink-soft); }
+    .fm-opts span::before {
+      content: ''; display: inline-block; width: 13px; height: 13px;
+      border: 1.5px solid var(--ink-faint); border-radius: 50%;
+      margin-right: 7px; vertical-align: -1px;
+    }
+    .fm-help { font-size: 12.5px; color: var(--ink-faint); margin-top: 8px; }
+    .fm-foot { font-size: 12.5px; color: var(--ink-faint); line-height: 1.55; margin-top: 8px; padding-top: 16px; border-top: 1px solid var(--rule-soft); }
+
+    /* confirmation */
+    .cf-h { font-size: 26px; font-weight: 700; }
+    .cf-p { font-size: 15.5px; color: var(--ink-soft); line-height: 1.6; margin: 10px 0 6px; }
+
+    /* listing table */
+    .lt-head { padding: 22px 32px 0; }
+    .lt-prop { font-size: 22px; font-weight: 700; }
+    .lt-plan { font-size: 14px; color: var(--ink-muted); margin-top: 2px; }
+    .lt-count { font-size: 15px; font-weight: 600; margin: 18px 0 10px; }
+    table.lt { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+    table.lt th {
+      text-align: left; font-weight: 500; color: var(--ink-muted);
+      background: var(--paper-sunk); padding: 12px 14px;
+      border-top: 1px solid var(--rule-soft); border-bottom: 1px solid var(--rule-soft);
+      font-size: 13.5px;
+    }
+    table.lt td { padding: 16px 14px; border-bottom: 1px solid var(--rule-soft); vertical-align: middle; }
+    table.lt th:first-child, table.lt td:first-child { padding-left: 32px; }
+    table.lt th:last-child, table.lt td:last-child { padding-right: 32px; text-align: right; }
+    table.lt th.new { color: var(--green); font-weight: 700; }
+    .rn { color: var(--link); font-weight: 600; white-space: nowrap; }
+    .rn small { display: block; font-weight: 400; color: var(--ink-faint); font-size: 12px; white-space: normal; }
+    .rn.lock { color: var(--ink-soft); }
+    .rn.empty { color: var(--ink-faint); font-weight: 400; font-style: italic; }
+    .sm {
+      display: inline-block; border: 1.5px solid var(--green); color: var(--green);
+      font-size: 13px; font-weight: 600; padding: 8px 14px; border-radius: 4px; white-space: nowrap;
+    }
+    .sm.solid { background: var(--green); color: #fff; }
+    tr.expanded td { background: var(--green-tint); border-bottom: 1px solid var(--rule-soft); }
+    table.lt tr.notes td:last-child { padding: 0 32px 22px; background: var(--green-tint); text-align: left; }
+    .note { padding: 18px 0; border-top: 1px solid rgba(0,0,0,0.07); }
+    .note-by { font-size: 12.5px; color: var(--ink-muted); margin-bottom: 8px; }
+    .note-by b { color: var(--ink); font-weight: 600; }
+    .note-by span { margin-left: 12px; }
+    .note-p { font-size: 15px; line-height: 1.6; color: var(--ink-soft); margin-bottom: 6px; }
+    .note-resp {
+      margin-top: 10px; padding: 12px 14px; background: #fff; border-radius: 4px;
+      font-size: 14px; color: var(--ink-soft); border: 1px solid var(--rule-soft);
+    }
+    .note-resp b { color: var(--green); font-weight: 600; }
+    .note-tally {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 18px; border-top: 1px solid rgba(0,0,0,0.07);
+      font-size: 15px; font-weight: 600;
+    }
+    .states { margin-top: 20px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .state {
+      border: 1px solid var(--rule); border-radius: 4px; padding: 14px 16px;
+      background: var(--paper);
+    }
+    .state-k { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 8px; }
+    .state .rn { font-size: 14px; }
+
+    /* footer */
+    .foot-note { margin-top: 64px; text-align: center; font-size: 14px; font-style: italic; color: var(--ink-faint); }
+    .sig { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--rule); font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink-faint); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+    .sig a { color: var(--green); }
+
+    @media (max-width: 720px) {
+      .topbar { padding: 18px 24px; }
+      .page { padding: 40px 24px 70px; }
+      .wordmark { padding: 48px 24px 40px; }
+      .brief-row { grid-template-columns: 1fr; gap: 6px; }
+      .mock-body { padding: 22px 20px; }
+      .lt-head { padding: 20px 20px 0; }
+      table.lt th:first-child, table.lt td:first-child { padding-left: 20px; }
+      table.lt th:last-child, table.lt td:last-child { padding-right: 20px; }
+      table.lt th.hide, table.lt td.hide,
+      table.lt th:last-child, table.lt td:last-child { display: none; }
+      table.lt tr.notes td:last-child { display: table-cell; padding: 0 20px 20px; }
+      table.lt th, table.lt td { padding-left: 10px; padding-right: 10px; }
+      .rn { white-space: normal; }
+      .note-by span { display: block; margin-left: 0; margin-top: 2px; }
+      .note-tally { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .states { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="name" href="/">Dom Claudio</a>
+  <a class="crumb" href="/#editorial">← Editorial</a>
+</div>
+
+<main class="page">
+
+  <div class="wordmark">
+    <div class="wm-title">Last Renter<br><span class="g">Notes</span></div>
+    <div class="wm-sub">An Apartments.com Product Spec</div>
+    <div class="wm-type">Feature Concept &nbsp;·&nbsp; Product Copy &nbsp;·&nbsp; Launch Email</div>
+  </div>
+
+  <div class="brief">
+    <div class="brief-row">
+      <div class="brief-key">Problem</div>
+      <div class="brief-val">The one person who knows what it's like to live in 4B just moved out, and nobody asked her.</div>
+    </div>
+    <div class="brief-row">
+      <div class="brief-key">Insight</div>
+      <div class="brief-val">Renters don't need more reviews. They need one from someone who had the same keys.</div>
+    </div>
+    <div class="brief-row">
+      <div class="brief-key">Idea</div>
+      <div class="brief-val"><span class="hl">Last Renter Notes.</span> Verified renters leave a unit-level note on their way out; it surfaces only when that unit is listed again, and only to Apartments.com users who've left one of their own. Read one free. Unlock the rest by paying it forward.</div>
+    </div>
+  </div>
+
+  <p class="aside">Written by someone who answered the Send Message button eleven hundred times last year.</p>
+
+  <div class="label">The Concept</div>
+  <p class="body">Apartments.com already has reviews. They're about buildings, they're unverified, and they skew toward the angriest month of someone's lease. None of that helps a renter deciding between unit 2420 and unit 2520 at the same price.</p>
+  <p class="body">Last Renter Notes moves the review to the unit, verifies it from the lease, and gates it behind contribution. You can read one note anywhere for free. To read the rest, you leave one for your own place. <span class="hl">The membership is the note.</span></p>
+  <p class="body">Three rules make it defensible. Notes are anonymous but verified. After 48 hours nobody can edit them, including the writer. And the property gets the last word on every row, right above the button that sends them the lead. Renters get a witness. Properties that don't oversell get rewarded. Nobody's lead flow is touched.</p>
+  <p class="body small">Working title was Renter Squad. The copy renamed it.</p>
+
+  <!-- ═══════════ 01 THE ASK ═══════════ -->
+  <section class="piece">
+    <div class="piece-num">01</div>
+    <h2 class="piece-title">The Ask</h2>
+    <div class="piece-sub">Move-out email, note form, and confirmation</div>
+
+    <div class="mock">
+      <div class="mock-bar"><span class="brand">Apartments.com</span><span>Email · Day of move-out</span></div>
+      <div class="mock-body">
+        <div class="em-subject">You know things about 4B.</div>
+        <div class="em-pre">Somebody's about to sign for it.</div>
+        <div class="em-hr"></div>
+        <p class="em-p">Hello Maya,</p>
+        <p class="em-p">You lived at 4B for fourteen months. That makes you the only person on earth who knows whether the bedroom window actually closes.</p>
+        <p class="em-p">Someone is about to tour it. They'll get the photos, the floor plan, and a nice person with a clipboard. They will not get you.</p>
+        <p class="em-p">Two minutes. Say what you'd want to hear.</p>
+        <span class="btn">Leave a note for the next renter</span>
+        <p class="em-p ps">It shows up only when 4B is listed again, and only to renters who've left a note of their own. The leasing office can respond. Nobody can edit you.</p>
+        <div class="em-sig">Apartments.com</div>
+      </div>
+    </div>
+
+    <div class="mock">
+      <div class="mock-bar"><span class="brand">Apartments.com</span><span>Note form</span></div>
+      <div class="mock-body">
+        <div class="fm-h">Notes on 4B</div>
+        <div class="fm-sub">For the next renter. A review of the apartment, not the people who rent it.</div>
+
+        <div class="fm-q">
+          <label>What did the listing get right?</label>
+          <div class="fm-field">The rent was the rent. No surprise fees at signing, and the light in the living room is real.</div>
+        </div>
+        <div class="fm-q">
+          <label>What did you learn after moving in?</label>
+          <div class="fm-field">Garbage day is Tuesday. It starts at 4:50 a.m. You'll sleep through it by March.</div>
+        </div>
+        <div class="fm-q">
+          <label>Why are you leaving?</label>
+          <div class="fm-opts"><span>Job or school</span><span>Bought a place</span><span>Needed more room</span><span>Rent went up</span><span>Something about the apartment</span><span>Something about the building</span></div>
+          <div class="fm-help">Pick the closest one. The next renter reads this before they read anything else.</div>
+        </div>
+        <div class="fm-q">
+          <label>Would you sign again?</label>
+          <div class="fm-opts"><span>Yes</span><span>Yes, at a lower number</span><span>No</span></div>
+          <div class="fm-help">Nobody sees your pick on its own. Once 4B has three notes, they see the count.</div>
+        </div>
+        <span class="btn">Post note</span>
+        <div class="fm-foot">Verified from your lease. Posted as "Lived here 14 months." Delete it any time. After 48 hours nobody can edit it, including you.</div>
+      </div>
+    </div>
+
+    <div class="mock">
+      <div class="mock-bar"><span class="brand">Apartments.com</span><span>Confirmation</span></div>
+      <div class="mock-body">
+        <div class="cf-h">Filed.</div>
+        <p class="cf-p">Your note goes live the next time 4B does. Until then, it sits in a drawer with everyone else's.</p>
+        <p class="cf-p">You've unlocked Last Renter Notes. Every note on every unit you're looking at, wherever you land next.</p>
+        <span class="btn ghost">Start looking</span>
+      </div>
+    </div>
+
+    <p class="rationale"><b>Why it's built this way.</b> The questions run generous to honest, so by the time someone reaches "no" they've already said something fair. "Why are you leaving?" is multiple choice on purpose. The essay is where bitterness lives; a single tap keeps it factual and lets it aggregate, so a unit that's turned over three times with "something about the apartment" tells its own story without anyone writing a bad review.</p>
+  </section>
+
+  <!-- ═══════════ 02 THE LISTING ═══════════ -->
+  <section class="piece">
+    <div class="piece-num">02</div>
+    <h2 class="piece-title">The Listing</h2>
+    <div class="piece-sub">Renter Notes column on the unit table, replacing Unit Details</div>
+
+    <div class="mock">
+      <div class="mock-bar"><span class="brand">Apartments.com</span><span>Listing · Pricing tab</span></div>
+      <div class="lt-head">
+        <div class="lt-prop">Meridian at The Market Place</div>
+        <div class="lt-plan">Plan 24 &nbsp;·&nbsp; 2 Beds &nbsp;·&nbsp; 2 Baths &nbsp;·&nbsp; 1,186 Sq Ft</div>
+        <div class="lt-count">4 Available Units</div>
+      </div>
+      <table class="lt">
+        <thead>
+          <tr>
+            <th>Unit</th><th>Base Price</th><th class="hide">Sq Ft</th><th class="hide">Availability</th><th class="new">Renter Notes</th><th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="expanded">
+            <td>2420</td><td>$3,995</td><td class="hide">1,186</td><td class="hide">Oct 1</td>
+            <td><span class="rn">2 notes<small>Lived here 14 mo, 2 yr</small></span></td>
+            <td><span class="sm">Send Message</span></td>
+          </tr>
+          <tr class="notes">
+            <td colspan="6">
+              <div class="note">
+                <div class="note-by"><b>Lived here 14 months</b><span>Left for: needed more room</span><span>Would sign again: yes</span></div>
+                <p class="note-p">The rent was the rent. No surprise fees at signing, and the light in the living room is real.</p>
+                <p class="note-p">Garbage day is Tuesday. It starts at 4:50 a.m. You'll sleep through it by March.</p>
+              </div>
+              <div class="note">
+                <div class="note-by"><b>Lived here 2 years</b><span>Left for: bought a place</span><span>Would sign again: yes, at a lower number</span></div>
+                <p class="note-p">Corner unit, so you hear the Market Place lot on weekend nights, but you also get two walls of windows. Worth it in winter. Less so in July.</p>
+                <div class="note-resp"><b>Meridian at The Market Place responded:</b> The lot lighting was upgraded in June. Come see it after dark, we'll hold the tour.</div>
+              </div>
+              <div class="note-tally"><span>2 of 2 would sign again.</span><span class="sm solid">Send Message</span></div>
+            </td>
+          </tr>
+          <tr>
+            <td>2520</td><td>$4,285</td><td class="hide">1,186</td><td class="hide">Oct 1</td>
+            <td><span class="rn empty">Nobody's told us about 2520 yet</span></td>
+            <td><span class="sm">Send Message</span></td>
+          </tr>
+          <tr>
+            <td>2610</td><td>$4,110</td><td class="hide">1,186</td><td class="hide">Oct 15</td>
+            <td><span class="rn lock">1 note<small>Leave one to read it</small></span></td>
+            <td><span class="sm">Send Message</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="states">
+      <div class="state"><div class="state-k">Member · has notes</div><span class="rn">2 notes<small>Lived here 14 mo, 2 yr</small></span></div>
+      <div class="state"><div class="state-k">Not a member yet</div><span class="rn lock">2 notes<small>Leave one to read them</small></span></div>
+      <div class="state"><div class="state-k">No notes yet</div><span class="rn empty">Nobody's told us about 2520 yet</span></div>
+    </div>
+
+    <p class="rationale"><b>Column, not gate.</b> Send Message is the lead, and the lead is what the property is paying for. Nothing stands between a renter and that button. This replaces the weakest column on the row instead, so the note sits at the exact moment of decision. The non-member state puts the give-to-get on every row of every listing. The empty state is a little sad on purpose. And the property response is what makes it sellable: they can't edit the note, but they get the last word on the row, right above the button.</p>
+  </section>
+
+  <!-- ═══════════ 03 THE LAUNCH ═══════════ -->
+  <section class="piece">
+    <div class="piece-num">03</div>
+    <h2 class="piece-title">The Launch</h2>
+    <div class="piece-sub">Email to renters who found their current place on Apartments.com</div>
+
+    <div class="mock">
+      <div class="mock-bar"><span class="brand">Apartments.com</span><span>Email · Launch</span></div>
+      <div class="mock-body">
+        <div class="em-subject">The next person in 4B has a question for you.</div>
+        <div class="em-pre">Two minutes. Then you can read everyone else's.</div>
+        <div class="em-hr"></div>
+        <p class="em-p">Hello Maya,</p>
+        <p class="em-p">Sixteen months ago you found 4B on Apartments.com. Since then you've learned everything the listing couldn't tell you. Which burner runs hot. Whether the "quiet street" is quiet. What happens on garbage day.</p>
+        <p class="em-p">Somebody's going to rent 4B after you. Right now they'll get the photos, the floor plan, and a tour. We'd like them to get you, too.</p>
+        <p class="em-p"><b>Introducing Last Renter Notes.</b> A note from the last renter, on the unit, for the next one. Verified from your lease, posted anonymously, visible only when the unit lists again.</p>
+        <p class="em-p">Here's the deal. You can read one note on any listing for free. To read the rest, you leave one for your place. That's the whole membership. No fee, no points, no badge. Just a note in a drawer that opens when someone needs it.</p>
+        <span class="btn">Leave a note for 4B</span>
+        <p class="em-p">You don't have to be moving. You don't have to be unhappy. Most notes are things like "the rent was the rent" and "the light is real." The next renter would like to know that too.</p>
+        <div class="em-sig">Apartments.com</div>
+        <p class="em-p ps" style="margin-top:16px">P.S. Your landlord can respond to your note. They can't edit it. Neither can we.</p>
+      </div>
+    </div>
+
+    <p class="rationale"><b>Seed the drawer.</b> A give-to-get feature launches empty unless the people who can contribute on day one are asked on day one. This goes to renters whose current lease started on the site. It never says "review." Notes are for someone; reviews are about something.</p>
+  </section>
+
+  <p class="foot-note">Full product brief and edge cases available upon request.</p>
+
+  <div class="sig">
+    <span>Dom Claudio · <a href="https://domclaudio.com">domclaudio.com</a></span>
+    <span>Spec Product · September 2026</span>
+  </div>
+
+</main>
+</body>
+</html>
