@@ -117,7 +117,13 @@
     .tape-row:last-child { border-bottom: 0; }
     .tape-row > div { padding: 10px 8px; }
     .tape-row .k { font-family: var(--mono); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--faint); padding-top: 12px; }
-    .tape-row.head > div { font-weight: 700; color: var(--cream); font-size: 15px; background: var(--bg-deep); }
+    .tape-row.head > div { font-weight: 700; color: var(--cream); font-size: 15px; background: var(--bg-deep); padding-top: 16px; }
+    .tape-row.head .k { padding-top: 60px; }
+    .fighter { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .fighter img { width: 84px; height: 84px; border-radius: 50%; object-fit: cover; border: 3px solid var(--line); background: var(--bg-deep); }
+    .fighter.m img { border-color: var(--cream-dim); }
+    .fighter.c img { border-color: var(--green); }
+    .tape-credit { font-size: 11px; color: var(--faint); margin-top: 8px; font-style: italic; }
     .tape-row.head .k { color: var(--gold); }
     .tape-row .m { color: var(--cream); }
     .tape-row .c { color: var(--green); }
@@ -229,11 +235,16 @@
         <div>
           <div class="beat-name">Tale of the tape <span>6 sec</span></div>
           <div class="tape">
-            <div class="tape-row head"><div class="m">Magnus</div><div class="k">vs</div><div class="c">Mittens</div></div>
+            <div class="tape-row head">
+              <div class="m"><div class="fighter m"><img src="magnus.png" alt="Magnus bot avatar">Magnus</div></div>
+              <div class="k">vs</div>
+              <div class="c"><div class="fighter c"><img src="mittens.png" alt="Mittens bot avatar">Mittens</div></div>
+            </div>
             <div class="tape-row"><div class="m">Entire board</div><div class="k">Reach</div><div class="c">Unknown</div></div>
             <div class="tape-row"><div class="m">Universal</div><div class="k">Style</div><div class="c">Meow</div></div>
             <div class="tape-row"><div class="m">None found</div><div class="k">Weakness</div><div class="c">None reported</div></div>
           </div>
+          <div class="tape-credit">Mittens and Magnus bot artwork © Chess.com, shown for reference.</div>
         </div>
       </div>
 
