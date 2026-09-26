@@ -805,6 +805,17 @@ function go(id) {
 
   window.scrollTo(0, 0);
 }
+
+// Deep links: /#editorial, /#screenwriting, /#about, /#consistently-comfortable
+(function () {
+  const known = ['editorial', 'screenwriting', 'about', 'consistently-comfortable'];
+  function fromHash() {
+    const id = location.hash.replace('#', '');
+    if (known.includes(id)) go(id);
+  }
+  window.addEventListener('hashchange', fromHash);
+  if (location.hash) fromHash();
+})();
 </script>
 
 </body>
