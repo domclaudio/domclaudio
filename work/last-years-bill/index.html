@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Last Year's Bill — Dom Claudio</title>
+  <meta name="description" content="A spec campaign for Mint Mobile by Dom Claudio: a :30 spot, a win-back email sequence, and a landing page built on one idea. You pay once a year.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2368C9A4'/%3E%3Ctext x='50' y='66' text-anchor='middle' font-family='Helvetica Neue,Arial,sans-serif' font-weight='700' font-size='52' fill='%231C2528' letter-spacing='-2'%3EDC%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --mint: #68C9A4; --mint-deep: #3FA983; --mint-tint: #E9F7F1;
+      --ink: #1C2528; --ink-soft: #3E4A4E; --muted: #6F7B7F; --faint: #9AA5A8;
+      --rule: #E1E7E6; --rule-soft: #EEF2F1;
+      --paper: #FFFFFF; --paper-sunk: #F5F8F7;
+      --sans: 'DM Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      --courier: 'Courier Prime', 'Courier New', Courier, monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 17px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+
+    .topbar { display: flex; justify-content: space-between; align-items: center; padding: 22px 48px; border-bottom: 1px solid var(--rule-soft); }
+    .topbar .name { font-size: 13px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; }
+    .topbar .crumb { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--mint-deep); }
+    .topbar .crumb:hover { color: var(--ink); }
+
+    .page { max-width: 820px; margin: 0 auto; padding: 56px 48px 90px; }
+
+    /* wordmark */
+    .wordmark { background: var(--mint); color: var(--ink); padding: 64px 48px 56px; text-align: center; position: relative; overflow: hidden; }
+    .wordmark::after { content: '$180'; position: absolute; right: -20px; bottom: -60px; font-size: 220px; font-weight: 700; letter-spacing: -0.06em; color: rgba(28,37,40,0.07); line-height: 1; }
+    .wm-kicker { font-size: 11px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 18px; position: relative; }
+    .wm-title { font-size: clamp(40px, 6.5vw, 66px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.0; position: relative; }
+    .wm-sub { margin-top: 22px; font-size: 11px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--ink-soft); position: relative; }
+    .wm-type { margin-top: 10px; font-size: 14px; color: var(--ink-soft); position: relative; }
+
+    /* brief */
+    .brief { margin-top: 44px; border-top: 1px solid var(--rule); }
+    .brief-row { display: grid; grid-template-columns: 110px 1fr; gap: 24px; padding: 18px 0; border-bottom: 1px solid var(--rule-soft); }
+    .brief-key { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--mint-deep); padding-top: 6px; }
+    .brief-val { font-size: 17px; line-height: 1.6; color: var(--ink-soft); }
+    .brief-val .hl { color: var(--ink); font-weight: 600; }
+    .strategy { margin-top: 26px; font-size: 16px; line-height: 1.6; color: var(--ink-soft); padding: 14px 18px; border-left: 3px solid var(--mint); background: var(--paper-sunk); }
+    .strategy b { color: var(--ink); font-weight: 600; }
+    .aside { margin-top: 22px; font-size: 14px; font-style: italic; color: var(--muted); }
+
+    .label { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--mint-deep); margin: 56px 0 16px; }
+    .body { font-size: 17px; line-height: 1.7; color: var(--ink-soft); margin-bottom: 16px; }
+    .body .hl { color: var(--ink); font-weight: 600; }
+    .body.small { font-size: 14px; color: var(--muted); }
+
+    .piece { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--rule); }
+    .piece-num { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--mint-deep); }
+    .piece-title { font-size: clamp(24px, 3vw, 32px); font-weight: 600; line-height: 1.2; margin: 8px 0 4px; }
+    .piece-sub { font-size: 14px; color: var(--muted); margin-bottom: 28px; }
+    .rationale { margin-top: 22px; padding-left: 16px; border-left: 3px solid var(--mint); font-size: 14px; line-height: 1.6; color: var(--muted); }
+    .rationale b { color: var(--ink-soft); font-weight: 600; }
+
+    /* screenplay */
+    .script { background: #FDFDFB; border: 1px solid var(--rule); padding: 44px 56px; font-family: var(--courier); font-size: 15px; line-height: 1.5; color: #222; }
+    .script .slug { font-weight: 700; text-transform: uppercase; margin-bottom: 18px; }
+    .script .action { margin: 14px 0 16px; max-width: 60ch; }
+    .script .char { text-transform: uppercase; margin: 14px 0 0 38%; }
+    .script .paren { margin: 0 0 0 30%; font-style: italic; }
+    .script .dlg { margin: 0 auto 4px 18%; max-width: 36ch; }
+    .script .super { margin-top: 26px; font-weight: 700; }
+    .script .super span { font-weight: 400; font-style: italic; }
+    .script-meta { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; font-family: var(--courier); font-size: 12px; color: var(--muted); margin: 10px 4px 0; }
+
+    /* emails */
+    .mock { border: 1px solid var(--rule); border-radius: 6px; background: var(--paper); overflow: hidden; box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.05); }
+    .mock + .mock { margin-top: 24px; }
+    .mock-bar { display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; background: var(--paper-sunk); border-bottom: 1px solid var(--rule-soft); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--faint); }
+    .mock-bar .brand { font-weight: 700; color: var(--mint-deep); letter-spacing: 0.5px; text-transform: none; font-size: 13px; }
+    .mock-body { padding: 26px 30px; }
+    .em-subject { font-size: 18px; font-weight: 600; }
+    .em-pre { font-size: 13px; color: var(--faint); margin-top: 2px; }
+    .em-hr { height: 1px; background: var(--rule-soft); margin: 16px 0; }
+    .em-p { font-size: 15.5px; line-height: 1.65; color: var(--ink-soft); margin-bottom: 14px; }
+    .em-p b { color: var(--ink); font-weight: 600; }
+    .em-p.ps { font-size: 14px; color: var(--muted); }
+    .btn { display: inline-block; background: var(--ink); color: #fff; font-size: 14px; font-weight: 600; padding: 12px 22px; border-radius: 4px; margin: 4px 0 16px; }
+    .btn.mint { background: var(--mint); color: var(--ink); }
+    .em-sig { font-size: 14px; color: var(--faint); }
+    .test { margin-top: 0; padding: 14px 30px 18px; background: var(--mint-tint); border-top: 1px solid var(--rule-soft); display: grid; grid-template-columns: 1fr 1fr; gap: 16px; font-size: 13.5px; line-height: 1.55; color: var(--ink-soft); }
+    .test .k { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--mint-deep); display: block; margin-bottom: 4px; }
+
+    /* landing */
+    .lp { border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; }
+    .lp-nav { display: flex; justify-content: space-between; align-items: center; padding: 14px 28px; border-bottom: 1px solid var(--rule-soft); font-size: 13px; color: var(--muted); }
+    .lp-nav b { color: var(--mint-deep); font-weight: 700; font-size: 15px; }
+    .lp-hero { padding: 48px 28px 36px; text-align: center; background: var(--mint-tint); }
+    .lp-h1 { font-size: clamp(30px, 4.5vw, 44px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.05; }
+    .lp-sub { margin: 14px auto 0; max-width: 46ch; font-size: 16px; color: var(--ink-soft); }
+    .lp-math { display: flex; justify-content: center; gap: 28px; margin: 28px 0 6px; flex-wrap: wrap; }
+    .lp-math div { text-align: center; }
+    .lp-math .n { font-size: 40px; font-weight: 700; letter-spacing: -0.02em; line-height: 1; }
+    .lp-math .n small { font-size: 16px; font-weight: 500; color: var(--muted); letter-spacing: 0; }
+    .lp-math .t { font-size: 12px; color: var(--muted); margin-top: 6px; letter-spacing: 1px; text-transform: uppercase; }
+    .lp-math .eq { font-size: 28px; color: var(--faint); align-self: center; }
+    .lp-cta { margin-top: 22px; }
+    .lp-fine { font-size: 12px; color: var(--faint); margin-top: 10px; }
+    .lp-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--rule-soft); }
+    .lp-row div { padding: 22px 24px; border-right: 1px solid var(--rule-soft); font-size: 14.5px; color: var(--ink-soft); line-height: 1.55; }
+    .lp-row div:last-child { border-right: 0; }
+    .lp-row b { display: block; color: var(--ink); font-weight: 600; margin-bottom: 4px; }
+    .lp-faq { padding: 22px 28px 26px; border-top: 1px solid var(--rule-soft); font-size: 14.5px; color: var(--ink-soft); }
+    .lp-faq p { margin-bottom: 10px; }
+    .lp-faq b { color: var(--ink); font-weight: 600; }
+
+    .foot-note { margin-top: 64px; text-align: center; font-size: 14px; font-style: italic; color: var(--faint); }
+    .sig { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--rule); font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--faint); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+    .sig a { color: var(--mint-deep); }
+
+    @media (max-width: 720px) {
+      .topbar { padding: 18px 24px; }
+      .page { padding: 40px 24px 70px; }
+      .wordmark { padding: 48px 24px 40px; }
+      .wordmark::after { font-size: 140px; }
+      .brief-row { grid-template-columns: 1fr; gap: 6px; }
+      .script { padding: 28px 20px; font-size: 14px; }
+      .script .char { margin-left: 28%; } .script .paren { margin-left: 22%; } .script .dlg { margin-left: 12%; }
+      .mock-body { padding: 22px 20px; }
+      .test { grid-template-columns: 1fr; padding: 14px 20px 18px; }
+      .lp-row { grid-template-columns: 1fr; }
+      .lp-row div { border-right: 0; border-bottom: 1px solid var(--rule-soft); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="name" href="/">Dom Claudio</a>
+  <a class="crumb" href="/#brands">← Work</a>
+</div>
+
+<main class="page">
+
+  <div class="wordmark">
+    <div class="wm-kicker">Pay once a year</div>
+    <div class="wm-title">Last Year's<br>Bill</div>
+    <div class="wm-sub">A Mint Mobile Spec Campaign</div>
+    <div class="wm-type">:30 Spot &nbsp;·&nbsp; Win-Back Email Sequence &nbsp;·&nbsp; Landing Page</div>
+  </div>
+
+  <div class="brief">
+    <div class="brief-row">
+      <div class="brief-key">Problem</div>
+      <div class="brief-val">Everyone knows Mint is $15 a month. Almost nobody remembers that means they pay once a year.</div>
+    </div>
+    <div class="brief-row">
+      <div class="brief-key">Insight</div>
+      <div class="brief-val">The best thing about a bill you pay once is the eleven months you don't think about it.</div>
+    </div>
+    <div class="brief-row">
+      <div class="brief-key">Idea</div>
+      <div class="brief-val"><span class="hl">Last Year's Bill.</span> A campaign where the Mint customer's only flaw is that she can't remember what she pays, because she paid it in January.</div>
+    </div>
+  </div>
+
+  <p class="strategy"><b>The strategy.</b> Reframe the price from a monthly number into a once-a-year non-event, then point that same idea at lapsed customers with a sequence built to be measured: one hypothesis per email, one page to land on, one button.</p>
+
+  <p class="aside">Written by a former Mint customer who left for a free-phone promo and still remembers what month he used to pay in.</p>
+
+  <div class="label">The Concept</div>
+  <p class="body">Mint's whole brand is that it doesn't take itself seriously, and its whole business is annual prepay. The two have never been the same joke. <span class="hl">Last Year's Bill</span> makes them one: the Mint customer is the person in the room who is slightly bored by the phone-bill conversation, because she isn't having one.</p>
+  <p class="body">Every piece follows one rule. The Mint customer never sells. She answers questions, briefly, and goes back to what she was doing. The other person in the scene does all the reacting, because the other person is the audience.</p>
+  <p class="body">The spot introduces the idea. The email sequence takes it to the people most likely to already believe it: customers who left. The landing page is where both send them, and it says the math once.</p>
+
+  <!-- ═══════════ 01 THE SPOT ═══════════ -->
+  <section class="piece">
+    <div class="piece-num">01</div>
+    <h2 class="piece-title">The Spot</h2>
+    <div class="piece-sub">:30 · "Bills" · two-hander, one location</div>
+
+    <div class="script">
+      <div class="slug">INT. TABLE – NIGHT</div>
+      <p class="action">MAYA and DEV, both 30s, sit opposite. A stack of bills on Dev's end, a notepad and calculator on Maya's.</p>
+
+      <div class="char">DEV</div>
+      <div class="dlg">We have to pay the electric before they cut us off.</div>
+      <div class="char">MAYA</div>
+      <div class="dlg">I get paid Friday. I'll take care of it then.</div>
+
+      <p class="action">Dev checks one of the bills. Brow raises.</p>
+
+      <div class="char">DEV</div>
+      <div class="dlg">How can they charge us for that?</div>
+      <div class="char">MAYA</div>
+      <div class="dlg">USPS, usually.</div>
+
+      <p class="action">He looks at her, deadpan. Back to the stack.</p>
+
+      <div class="char">DEV</div>
+      <div class="dlg">Your phone bill's one-eighty, right?</div>
+      <div class="char">MAYA</div>
+      <div class="dlg">Yes, but I already paid mine for the year.</div>
+      <div class="char">DEV</div>
+      <div class="dlg">What?</div>
+
+      <p class="action">She looks up from the notepad.</p>
+
+      <div class="char">MAYA</div>
+      <div class="dlg">In January. It's a year thing.</div>
+
+      <p class="action">She goes back to the notepad. He waits. Nothing.</p>
+
+      <div class="char">DEV</div>
+      <div class="dlg">So what did you pay in February?</div>
+      <div class="char">MAYA</div>
+      <div class="paren">(writing)</div>
+      <div class="dlg">For my phone?</div>
+      <div class="char">DEV</div>
+      <div class="dlg">Yes.</div>
+      <div class="char">MAYA</div>
+      <div class="dlg">Nothing.</div>
+
+      <p class="action">He looks at his own bill. One-eighty. Then the stack under it. Same envelope, eleven more times.</p>
+
+      <div class="char">DEV</div>
+      <div class="paren">(quietly)</div>
+      <div class="dlg">How can they charge us for that?</div>
+      <div class="char">MAYA</div>
+      <div class="paren">(not looking up)</div>
+      <div class="dlg">Monthly, usually.</div>
+
+      <p class="super">SUPER: <span>Pay once a year. Forget you have a phone bill.</span></p>
+      <p class="super">SUPER: <span>Mint Mobile. Plans from $15/mo, paid annually.</span></p>
+    </div>
+    <div class="script-meta"><span>Runs :30 at a natural read</span><span>$180 = 12 × $15, on the nose</span></div>
+
+    <p class="rationale"><b>Why it's built this way.</b> "USPS, usually" establishes Maya as the dry one before the product comes up, so her being bored by her own phone bill later is character, not brand behavior. Her only line of product information is "It's a year thing," and she has to be asked for it. Dev gets every reaction beat because he's the audience. The ending returns the first joke aimed at the right bill, so the scene closes without anyone saying anything nice about Mint.</p>
+  </section>
+
+  <!-- ═══════════ 02 THE WIN-BACK ═══════════ -->
+  <section class="piece">
+    <div class="piece-num">02</div>
+    <h2 class="piece-title">The Win-Back</h2>
+    <div class="piece-sub">Three emails to customers who left in the last 18 months · each with a hypothesis and a measure</div>
+
+    <div class="mock">
+      <div class="mock-bar"><span class="brand">Mint Mobile</span><span>Email 1 · Day 0</span></div>
+      <div class="mock-body">
+        <div class="em-subject">Long time no see. How's the monthly thing going?</div>
+        <div class="em-pre">No judgment. Some judgment.</div>
+        <div class="em-hr"></div>
+        <p class="em-p">Hello Dev,</p>
+        <p class="em-p">You left Mint about a year ago, which means you've paid a phone bill roughly twelve times since. We've paid attention to zero of them, because that's not how we do it here.</p>
+        <p class="em-p">Quick reminder of how we do it here: <b>you pay once. Then you don't think about it for a year.</b> That's the whole feature. It's a very short feature.</p>
+        <span class="btn mint">See what a year costs now</span>
+        <p class="em-p ps">Your old number's still yours if you want it back. We kept the light on.</p>
+        <div class="em-sig">Mint Mobile</div>
+      </div>
+      <div class="test">
+        <div><span class="k">Hypothesis</span>Lapsed customers didn't leave over price; they left for a device promo or coverage. Leading with the cadence, not the $15, reopens the conversation without arguing about the reason they left.</div>
+        <div><span class="k">Measure</span>Open rate vs. control subject ("Come back to Mint") and click-through to the landing page. Success is a click lift of 20% or more over control; opens alone don't count.</div>
+      </div>
+    </div>
+
+    <div class="mock">
+      <div class="mock-bar"><span class="brand">Mint Mobile</span><span>Email 2 · Day 5 · to non-clickers</span></div>
+      <div class="mock-body">
+        <div class="em-subject">We did the math on your last twelve bills.</div>
+        <div class="em-pre">It's one number, and it isn't ours.</div>
+        <div class="em-hr"></div>
+        <p class="em-p">Hello Dev,</p>
+        <p class="em-p">Here's a year of Mint on our Unlimited plan: <b>$180, once.</b> Here's a year of most other plans: a number you'd rather not add up, twelve times.</p>
+        <p class="em-p">We're not going to add it up for you. We're better than that. We're barely better than that.</p>
+        <span class="btn mint">Do the math on one page</span>
+        <p class="em-p ps">Bringing your number over takes about ten minutes. Then you're done for a year. We mean that literally.</p>
+        <div class="em-sig">Mint Mobile</div>
+      </div>
+      <div class="test">
+        <div><span class="k">Hypothesis</span>People who didn't click on tone will click on a number. Putting the annual total in the body, once, moves the value question from "cheap" to "done."</div>
+        <div><span class="k">Measure</span>Click-through among Email 1 non-clickers, and landing-page scroll depth to the math block. Test "$180, once" against "$15 a month" in the body copy; keep whichever drives more clicks to the button.</div>
+      </div>
+    </div>
+
+    <div class="mock">
+      <div class="mock-bar"><span class="brand">Mint Mobile</span><span>Email 3 · Day 12 · to non-converters</span></div>
+      <div class="mock-body">
+        <div class="em-subject">Last one. Then we'll forget about you, like you forgot your phone bill.</div>
+        <div class="em-pre">Fondly.</div>
+        <div class="em-hr"></div>
+        <p class="em-p">Hello Dev,</p>
+        <p class="em-p">This is the last email in this little series, and we'd like to end it the way we'd like you to end your phone bill: <b>once, and then not again for a year.</b></p>
+        <p class="em-p">Your number's still yours. Your old plan's still here. The price is on the page, and the page is one page.</p>
+        <span class="btn mint">Pay once. We'll see you next year.</span>
+        <p class="em-p ps">If it's a no, that's fine. We'll go back to not thinking about you, which is our specialty.</p>
+        <div class="em-sig">Mint Mobile</div>
+      </div>
+      <div class="test">
+        <div><span class="k">Hypothesis</span>A clean ending converts better than a discount for this audience, because a discount reopens the price argument the campaign has been avoiding. The offer is the exit itself.</div>
+        <div><span class="k">Measure</span>Conversion rate from this email, tested against a variant with a first-year credit. If the credit wins by less than its cost, the clean version ships. Unsubscribe rate is the guardrail: above 0.5% and the subject line gets softened.</div>
+      </div>
+    </div>
+
+    <p class="rationale"><b>Why three, and why these gaps.</b> Day 0, 5, and 12 is a cadence that gets out of the inbox before it becomes the thing it's making fun of. Each email goes only to people the previous one didn't move, so the sequence narrows instead of repeating. And every email is a version of the same joke: we don't think about your bill, and soon neither will you. That's the campaign idea doing lifecycle work, not a separate promo bolted on.</p>
+  </section>
+
+  <!-- ═══════════ 03 THE LANDING ═══════════ -->
+  <section class="piece">
+    <div class="piece-num">03</div>
+    <h2 class="piece-title">The Landing</h2>
+    <div class="piece-sub">One page, where the spot and the emails both send people</div>
+
+    <div class="lp">
+      <div class="lp-nav"><b>Mint Mobile</b><span>mintmobile.com/once</span></div>
+      <div class="lp-hero">
+        <div class="lp-h1">Pay once. Forget it for a year.</div>
+        <p class="lp-sub">Twelve months of unlimited talk, text, and data, billed one time. Then nothing, until it's January again.</p>
+        <div class="lp-math">
+          <div><div class="n">$180</div><div class="t">Once a year</div></div>
+          <div class="eq">=</div>
+          <div><div class="n">$15<small>/mo</small></div><div class="t">What it works out to</div></div>
+          <div class="eq">=</div>
+          <div><div class="n">0</div><div class="t">Bills in February</div></div>
+        </div>
+        <div class="lp-cta"><span class="btn">Bring my number back</span></div>
+        <div class="lp-fine">New to Mint? Same button. Same price. Same February.</div>
+      </div>
+      <div class="lp-row">
+        <div><b>Keep your number.</b> Port it over in about ten minutes. Your phone stays your phone.</div>
+        <div><b>Same towers.</b> Mint runs on T-Mobile's 5G network. The coverage map is theirs; the bill isn't.</div>
+        <div><b>Nothing monthly.</b> No autopay to babysit. No surprise fees on the fourteenth. One charge, one time.</div>
+      </div>
+      <div class="lp-faq">
+        <p><b>What happens after a year?</b> We email you. Once. You pay again, or you don't.</p>
+        <p><b>Can I pay monthly instead?</b> You can pay for three months at a time. But then you'd think about it in April, and that's the thing we're trying to help you stop doing.</p>
+      </div>
+    </div>
+
+    <p class="rationale"><b>One page, one number, one button.</b> The math block is the whole argument, and the third figure is the joke: zero bills in February. The FAQ answers the two objections a lapsed customer actually has (what happens at renewal, and can I avoid the lump sum) without a dropdown. Measure: button click rate from each email source, and time-to-port for people who click. If the math block isn't the most-viewed element on the page, the page is wrong.</p>
+  </section>
+
+  <p class="foot-note">Want the full sequence logic, the segment definitions, and the test plan? Ask.</p>
+
+  <div class="sig">
+    <span>Dom Claudio · <a href="https://domclaudio.com">domclaudio.com</a></span>
+    <span>Spec Campaign · September 2026</span>
+  </div>
+
+</main>
+</body>
+</html>
