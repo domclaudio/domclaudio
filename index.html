@@ -106,13 +106,29 @@ a { color:inherit; text-decoration:none; }
 .amex-inner .t { margin-top:12px; font-size:11px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,0.85); }
 .amex-inner .arrow { font-family:var(--mono); font-size:28px; color:rgba(255,255,255,0.6); }
 
+/* sub-dividers */
+.sub + .sub { margin-top:56px; }
+.sub-label { display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; margin-bottom:18px; }
+.sub-name { font-size:20px; font-weight:700; letter-spacing:-0.01em; }
+.sub-desc { font-size:11px; font-weight:500; letter-spacing:2px; text-transform:uppercase; color:#999; }
+
+/* tile: Leverazopam */
+.art-rx { background:#F4F7F6; color:#1A1F1E; }
+.rx-inner { width:min(520px,82%); background:#fff; border:1px solid #DDE4E2; padding:22px 26px 26px; }
+.rx-bar { display:flex; justify-content:space-between; gap:12px; font-family:var(--mono); font-size:11px; letter-spacing:1px; text-transform:uppercase; color:#6A7574; padding-bottom:12px; border-bottom:1px solid #DDE4E2; }
+.rx-bar span:first-child { color:#2F6F68; }
+.rx-name { margin-top:16px; font-size:clamp(34px,5vw,52px); font-weight:700; letter-spacing:-0.03em; line-height:1; }
+.rx-ask { margin-top:10px; font-size:14px; color:#3D4847; }
+
 /* SCRIPTS */
 .scripts { background:var(--dark); color:var(--white); padding:88px 48px; }
 .scripts .inner { max-width:1040px; margin:0 auto; }
 .scripts .sec-label { color:var(--white); border-color:#333; }
 .scripts .sec-label span:last-child { color:#666; }
 .scripts-intro { font-size:18px; color:#aaa; max-width:640px; margin-bottom:40px; line-height:1.6; }
-.proj-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.proj-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:24px; }
+.proj-pointer { margin-top:32px; font-size:15px; color:#999; }
+.proj-pointer a { color:var(--white); border-bottom:1px solid #444; }
 .proj { padding:26px 0 0; border-top:1px solid #2a2a2a; }
 .proj-type { font-size:10px; letter-spacing:2.5px; text-transform:uppercase; color:#666; font-weight:700; }
 .proj-title { font-size:24px; font-weight:600; margin:10px 0 10px; }
@@ -161,62 +177,10 @@ a { color:inherit; text-decoration:none; }
 
 <section class="specs" id="brands">
   <div class="sec-label"><span>For brands</span><span>Self-directed specs · 2026</span></div>
-  <div class="grid">
 
-    <a class="tile wide" href="/work/battle-of-the-greats/">
-      <div class="tile-art art-botg">
-        <div class="botg-inner">
-          <img src="work/battle-of-the-greats/magnus.png" alt="">
-          <div class="botg-vs"><div class="vs">VS</div><div class="t">Heavyweight Championship</div><div class="s">of the world (of chess)</div></div>
-          <img class="c" src="work/battle-of-the-greats/mittens.png" alt="">
-        </div>
-      </div>
-      <div class="tile-meta">
-        <div class="tile-kind">Chess.com · Brand Strategy · Social · Content</div>
-        <div class="tile-title">Battle of the Greats.</div>
-        <div class="tile-desc">The legends of chess, rebuilt as engines, finally get a rematch with the cat. Every episode ends in a position you can play.</div>
-      </div>
-    </a>
-
-    <a class="tile" href="/work/last-renter-notes/">
-      <div class="tile-art art-lrn">
-        <div class="lrn-inner">
-          <div class="lrn-top"></div>
-          <div class="lrn-row h"><span>Unit</span><span>Price</span><span class="k">Renter Notes</span></div>
-          <div class="lrn-row x"><span>2420</span><span>$3,995</span><span class="lrn-n">2 notes<small>Lived here 14 mo, 2 yr</small></span></div>
-          <div class="lrn-row"><span>2520</span><span>$4,285</span><span class="lrn-e">Nobody's told us about 2520 yet</span></div>
-          <div class="lrn-note"><b>Lived here 14 months.</b> Garbage day is Tuesday. It starts at 4:50 a.m. You'll sleep through it by March.</div>
-        </div>
-      </div>
-      <div class="tile-meta">
-        <div class="tile-kind">Apartments.com · Product Marketing · Customer Insight</div>
-        <div class="tile-title">Last Renter Notes.</div>
-        <div class="tile-desc">The last renter leaves a note on the unit; the next one reads it. Read one free, unlock the rest by paying it forward.</div>
-      </div>
-    </a>
-
-    <a class="tile" href="/work/consistently-comfortable/">
-      <div class="tile-art art-cc">
-        <div class="cc-inner"><div class="a">Consistently</div><div class="b">Comfortable</div><div class="s">A MeUndies Campaign</div></div>
-      </div>
-      <div class="tile-meta">
-        <div class="tile-kind">MeUndies · Creative Strategy · Copywriting · Video</div>
-        <div class="tile-title">Consistently Comfortable.</div>
-        <div class="tile-desc">One character, one scenario, two outcomes. The product is never the punchline. It's the invisible reason everything goes right.</div>
-      </div>
-    </a>
-
-    <a class="tile wide" href="/work/last-years-bill/">
-      <div class="tile-art art-mint">
-        <div class="mint-inner"><div class="n">$180</div><div class="o">Once a year</div><div class="s">0 bills in February</div></div>
-      </div>
-      <div class="tile-meta">
-        <div class="tile-kind">Mint Mobile · Campaign · Lifecycle · Conversion</div>
-        <div class="tile-title">Last Year's Bill.</div>
-        <div class="tile-desc">A :30 spot, a measured win-back sequence, and one landing page, all built on the thing Mint underplays: you pay once a year.</div>
-      </div>
-    </a>
-
+  <div class="sub" id="pitch">
+    <div class="sub-label"><span class="sub-name">The Pitch</span><span class="sub-desc">Brand campaigns</span></div>
+    <div class="grid">
     <a class="tile wide" href="/work/fifty-two-trips/">
       <div class="tile-art art-amex">
         <div class="amex-inner">
@@ -232,7 +196,87 @@ a { color:inherit; text-decoration:none; }
       </div>
     </a>
 
+    <a class="tile" href="/work/last-years-bill/">
+      <div class="tile-art art-mint">
+        <div class="mint-inner"><div class="n">$180</div><div class="o">Once a year</div><div class="s">0 bills in February</div></div>
+      </div>
+      <div class="tile-meta">
+        <div class="tile-kind">Mint Mobile · Campaign · Lifecycle · Conversion</div>
+        <div class="tile-title">Last Year's Bill.</div>
+        <div class="tile-desc">A :30 spot, a measured win-back sequence, and one landing page, all built on the thing Mint underplays: you pay once a year.</div>
+      </div>
+    </a>
+
+    <a class="tile" href="/work/consistently-comfortable/">
+      <div class="tile-art art-cc">
+        <div class="cc-inner"><div class="a">Consistently</div><div class="b">Comfortable</div><div class="s">A MeUndies Campaign</div></div>
+      </div>
+      <div class="tile-meta">
+        <div class="tile-kind">MeUndies · Creative Strategy · Copywriting · Video</div>
+        <div class="tile-title">Consistently Comfortable.</div>
+        <div class="tile-desc">One character, one scenario, two outcomes. The product is never the punchline. It's the invisible reason everything goes right.</div>
+      </div>
+    </a>
+    </div>
   </div>
+
+  <div class="sub" id="product">
+    <div class="sub-label"><span class="sub-name">The Product</span><span class="sub-desc">Product and growth thinking</span></div>
+    <div class="grid">
+    <a class="tile wide" href="/work/last-renter-notes/">
+      <div class="tile-art art-lrn">
+        <div class="lrn-inner">
+          <div class="lrn-top"></div>
+          <div class="lrn-row h"><span>Unit</span><span>Price</span><span class="k">Renter Notes</span></div>
+          <div class="lrn-row x"><span>2420</span><span>$3,995</span><span class="lrn-n">2 notes<small>Lived here 14 mo, 2 yr</small></span></div>
+          <div class="lrn-row"><span>2520</span><span>$4,285</span><span class="lrn-e">Nobody's told us about 2520 yet</span></div>
+          <div class="lrn-note"><b>Lived here 14 months.</b> Garbage day is Tuesday. It starts at 4:50 a.m. You'll sleep through it by March.</div>
+        </div>
+      </div>
+      <div class="tile-meta">
+        <div class="tile-kind">Apartments.com · Product Marketing · Customer Insight</div>
+        <div class="tile-title">Last Renter Notes.</div>
+        <div class="tile-desc">The last renter leaves a note on the unit; the next one reads it. Read one free, unlock the rest by paying it forward.</div>
+      </div>
+    </a>
+    </div>
+  </div>
+
+  <div class="sub" id="show">
+    <div class="sub-label"><span class="sub-name">The Show</span><span class="sub-desc">Content and series</span></div>
+    <div class="grid">
+    <a class="tile wide" href="/work/battle-of-the-greats/">
+      <div class="tile-art art-botg">
+        <div class="botg-inner">
+          <img src="work/battle-of-the-greats/magnus.png" alt="">
+          <div class="botg-vs"><div class="vs">VS</div><div class="t">Heavyweight Championship</div><div class="s">of the world (of chess)</div></div>
+          <img class="c" src="work/battle-of-the-greats/mittens.png" alt="">
+        </div>
+      </div>
+      <div class="tile-meta">
+        <div class="tile-kind">Chess.com · Brand Strategy · Social · Content</div>
+        <div class="tile-title">Battle of the Greats.</div>
+        <div class="tile-desc">The legends of chess, rebuilt as engines, finally get a rematch with the cat. Every episode ends in a position you can play.</div>
+      </div>
+    </a>
+
+    <a class="tile wide" href="/work/precautions/">
+      <div class="tile-art art-rx">
+        <div class="rx-inner">
+          <div class="rx-bar"><span>Rx only</span><span>Springwood Pharmaceuticals</span></div>
+          <div class="rx-name">Leverazopam</div>
+          <div class="rx-ask">Ask your doctor if it's right for you.</div>
+        </div>
+      </div>
+      <div class="tile-meta">
+        <div class="tile-kind">Precautions · Campaign · Transmedia · Audience Building</div>
+        <div class="tile-title">Leverazopam.</div>
+        <div class="tile-desc">A marketing campaign for a drug that doesn't exist, for a film that hasn't been shot yet. Live now at precautionsfilm.com.</div>
+      </div>
+    </a>
+    </div>
+  </div>
+
 </section>
 
 <section class="scripts" id="screen">
@@ -248,19 +292,13 @@ a { color:inherit; text-decoration:none; }
         <a class="proj-link" href="https://watchtheelephant.com">watchtheelephant.com →</a>
       </div>
       <div class="proj">
-        <div class="proj-type">Short · Psychological Horror</div>
-        <div class="proj-title">Precautions</div>
-        <p class="proj-logline">A teenager pushes for autonomy when his mother pushes this lifelong medication, regardless of the side effects.</p>
-        <div class="proj-status">Pre-production</div>
-        <a class="proj-link" href="https://precautionsfilm.com">precautionsfilm.com →</a>
-      </div>
-      <div class="proj">
         <div class="proj-type">Pilot · Dark Comedy</div>
         <div class="proj-title">Case Management</div>
         <p class="proj-logline">Hell is a corporate office. Demons are middle managers. And the worst part of eternal damnation? The performance reviews.</p>
         <div class="proj-status">In development</div>
       </div>
     </div>
+    <p class="proj-pointer">Precautions, my short in pre-production, is under <a href="#show">The Show</a>, where its campaign lives.</p>
   </div>
 </section>
 
