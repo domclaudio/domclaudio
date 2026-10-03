@@ -77,18 +77,11 @@ a { color:inherit; text-decoration:none; }
 .cc-inner .s { margin-top:16px; font-size:10px; letter-spacing:4px; text-transform:uppercase; color:#777; }
 
 /* tile: Last Renter Notes */
-.art-lrn { background:#fff; border-bottom:1px solid var(--light-line); padding:22px 26px; align-items:flex-start; }
-.lrn-inner { width:100%; position:relative; font-size:13px; }
-.lrn-top { height:6px; background:var(--apt); margin:-22px -26px 18px; }
-.lrn-row { display:grid; grid-template-columns:52px 64px 1fr; gap:10px; padding:11px 0; border-bottom:1px solid #eee; align-items:center; }
-.lrn-row.h { color:#888; font-size:12px; border-bottom:1px solid #e6e6e6; }
-.lrn-row.h .k { color:var(--apt); font-weight:700; }
-.lrn-row.x { background:var(--apt-tint); margin:0 -8px; padding:11px 8px; border-radius:3px; }
-.lrn-n { color:#2D6BB0; font-weight:600; }
-.lrn-n small { display:block; color:#999; font-weight:400; font-size:11px; }
-.lrn-e { color:#999; font-style:italic; }
-.lrn-note { margin-top:12px; font-size:13px; color:#555; line-height:1.5; }
-.lrn-note b { color:#222; font-weight:600; }
+.art-lrn { background:var(--apt); padding:26px; }
+.lrn-card { width:100%; max-width:430px; background:#fff; border-radius:4px; padding:22px 24px 20px; box-shadow:0 10px 30px rgba(0,0,0,.18); transform:rotate(-1.2deg); }
+.lrn-chip { display:inline-block; font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--apt); background:var(--apt-tint); padding:5px 9px; border-radius:3px; }
+.lrn-quote { margin-top:14px; font-size:clamp(18px,2.2vw,23px); font-weight:600; line-height:1.35; letter-spacing:-0.01em; color:#1a1a1a; }
+.lrn-by { margin-top:14px; font-size:12.5px; color:#8A9490; }
 
 /* tile: Last Year's Bill */
 .art-mint { background:#68C9A4; color:#1C2528; }
@@ -98,13 +91,13 @@ a { color:inherit; text-decoration:none; }
 .mint-inner .s { margin-top:14px; font-size:12px; color:#2E3B3F; }
 
 /* tile: Fifty-Two Trips */
-.art-amex { background:#006FCF; color:#fff; }
-.amex-inner { position:relative; display:flex; align-items:center; gap:clamp(18px,4vw,44px); line-height:1; }
+.art-amex { background:#006FCF; color:#fff; padding:0 18px; }
+.amex-inner { position:relative; display:flex; align-items:center; gap:clamp(12px,1.8vw,30px); line-height:1; max-width:100%; }
 .amex-inner .col { text-align:center; }
-.amex-inner .n { font-size:clamp(56px,8vw,104px); font-weight:700; letter-spacing:-0.05em; }
+.amex-inner .n { font-size:clamp(30px,3.6vw,58px); font-weight:700; letter-spacing:-0.04em; }
 .amex-inner .n.dim { color:rgba(255,255,255,0.45); }
-.amex-inner .t { margin-top:12px; font-size:11px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,0.85); }
-.amex-inner .arrow { font-family:var(--mono); font-size:28px; color:rgba(255,255,255,0.6); }
+.amex-inner .t { margin-top:10px; font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.85); }
+.amex-inner .arrow { font-family:var(--mono); font-size:22px; color:rgba(255,255,255,0.6); }
 
 /* sub-dividers */
 .sub + .sub { margin-top:56px; }
@@ -113,12 +106,20 @@ a { color:inherit; text-decoration:none; }
 .sub-desc { font-size:11px; font-weight:500; letter-spacing:2px; text-transform:uppercase; color:#999; }
 
 /* tile: Leverazopam */
-.art-rx { background:#F4F7F6; color:#1A1F1E; }
-.rx-inner { width:min(520px,82%); background:#fff; border:1px solid #DDE4E2; padding:22px 26px 26px; }
-.rx-bar { display:flex; justify-content:space-between; gap:12px; font-family:var(--mono); font-size:11px; letter-spacing:1px; text-transform:uppercase; color:#6A7574; padding-bottom:12px; border-bottom:1px solid #DDE4E2; }
-.rx-bar span:first-child { color:#2F6F68; }
-.rx-name { margin-top:16px; font-size:clamp(34px,5vw,52px); font-weight:700; letter-spacing:-0.03em; line-height:1; }
-.rx-ask { margin-top:10px; font-size:14px; color:#3D4847; }
+.art-rx { background:linear-gradient(#1b1f1e 0%,#232927 58%,#171b1a 100%); overflow:hidden; }
+.rx-scene { position:relative; width:100%; height:100%; display:flex; align-items:flex-end; justify-content:center; }
+.rx-scene::before { content:''; position:absolute; left:50%; top:8%; width:78%; height:86%; transform:translateX(-50%);
+  background:radial-gradient(ellipse at 50% 35%, rgba(255,232,190,.17), transparent 62%); pointer-events:none; }
+.rx-counter { position:absolute; left:0; right:0; bottom:0; height:21%; background:linear-gradient(#2c3331,#1a1f1e); border-top:1px solid rgba(255,255,255,.10); }
+.rx-bottle { position:relative; z-index:2; width:188px; margin-bottom:17%; filter:drop-shadow(0 16px 22px rgba(0,0,0,.55)); }
+.rx-cap { height:16px; margin:0 14px; border-radius:4px 4px 2px 2px; background:linear-gradient(#f2f1ec,#cfccc2); }
+.rx-neck { height:5px; margin:0 20px; background:linear-gradient(#b9741f,#9a5d16); }
+.rx-body { border-radius:5px 5px 7px 7px; padding:12px 10px 16px; background:linear-gradient(100deg,#b4701d 0%,#d08a2c 18%,#e0a349 42%,#c47c22 72%,#95591a 100%); }
+.rx-label { background:#fbfaf6; border-radius:2px; padding:9px 10px 10px; color:#1a1f1e; box-shadow:inset 0 0 0 1px rgba(0,0,0,.08); }
+.rx-l-top { display:flex; justify-content:space-between; gap:6px; font-size:6.5px; font-weight:700; letter-spacing:.7px; text-transform:uppercase; color:#5d6866; padding-bottom:5px; border-bottom:1px solid #d8dcd8; }
+.rx-l-name { margin-top:7px; font-size:19px; font-weight:700; letter-spacing:-0.02em; line-height:1; }
+.rx-l-dose { margin-top:3px; font-size:9px; font-weight:500; color:#3d4847; }
+.rx-l-dir { margin-top:8px; padding-top:7px; border-top:1px solid #d8dcd8; font-family:var(--mono); font-size:6.6px; line-height:1.55; letter-spacing:.2px; color:#3d4847; }
 
 /* SCRIPTS */
 .scripts { background:var(--dark); color:var(--white); padding:88px 48px; }
@@ -181,7 +182,7 @@ a { color:inherit; text-decoration:none; }
   <div class="sub" id="pitch">
     <div class="sub-label"><span class="sub-name">The Pitch</span><span class="sub-desc">Brand campaigns</span></div>
     <div class="grid">
-    <a class="tile wide" href="/work/fifty-two-trips/">
+    <a class="tile" href="/work/fifty-two-trips/">
       <div class="tile-art art-amex">
         <div class="amex-inner">
           <div class="col"><div class="n dim">2.2%</div><div class="t">Groceries went up</div></div>
@@ -206,17 +207,6 @@ a { color:inherit; text-decoration:none; }
         <div class="tile-desc">A :30 spot, a measured win-back sequence, and one landing page, all built on the thing Mint underplays: you pay once a year.</div>
       </div>
     </a>
-
-    <a class="tile" href="/work/consistently-comfortable/">
-      <div class="tile-art art-cc">
-        <div class="cc-inner"><div class="a">Consistently</div><div class="b">Comfortable</div><div class="s">A MeUndies Campaign</div></div>
-      </div>
-      <div class="tile-meta">
-        <div class="tile-kind">MeUndies · Creative Strategy · Copywriting · Video</div>
-        <div class="tile-title">Consistently Comfortable.</div>
-        <div class="tile-desc">One character, one scenario, two outcomes. The product is never the punchline. It's the invisible reason everything goes right.</div>
-      </div>
-    </a>
     </div>
   </div>
 
@@ -225,12 +215,10 @@ a { color:inherit; text-decoration:none; }
     <div class="grid">
     <a class="tile wide" href="/work/last-renter-notes/">
       <div class="tile-art art-lrn">
-        <div class="lrn-inner">
-          <div class="lrn-top"></div>
-          <div class="lrn-row h"><span>Unit</span><span>Price</span><span class="k">Renter Notes</span></div>
-          <div class="lrn-row x"><span>2420</span><span>$3,995</span><span class="lrn-n">2 notes<small>Lived here 14 mo, 2 yr</small></span></div>
-          <div class="lrn-row"><span>2520</span><span>$4,285</span><span class="lrn-e">Nobody's told us about 2520 yet</span></div>
-          <div class="lrn-note"><b>Lived here 14 months.</b> Garbage day is Tuesday. It starts at 4:50 a.m. You'll sleep through it by March.</div>
+        <div class="lrn-card">
+          <div class="lrn-chip">Renter note · Unit 2420</div>
+          <p class="lrn-quote">Garbage day is Tuesday. It starts at 4:50&nbsp;a.m. You'll sleep through it by March.</p>
+          <div class="lrn-by">— the renter before you · lived here 14 months</div>
         </div>
       </div>
       <div class="tile-meta">
@@ -260,18 +248,39 @@ a { color:inherit; text-decoration:none; }
       </div>
     </a>
 
-    <a class="tile wide" href="/work/precautions/">
+    <a class="tile" href="/work/precautions/">
       <div class="tile-art art-rx">
-        <div class="rx-inner">
-          <div class="rx-bar"><span>Rx only</span><span>Springwood Pharmaceuticals</span></div>
-          <div class="rx-name">Leverazopam</div>
-          <div class="rx-ask">Ask your doctor if it's right for you.</div>
+        <div class="rx-scene">
+          <div class="rx-bottle">
+            <div class="rx-cap"></div>
+            <div class="rx-neck"></div>
+            <div class="rx-body">
+              <div class="rx-label">
+                <div class="rx-l-top"><span>Springwood Pharmaceuticals</span><span>Rx only</span></div>
+                <div class="rx-l-name">LEVERAZOPAM</div>
+                <div class="rx-l-dose">500 mg · 90 tablets</div>
+                <div class="rx-l-dir">TAKE ONE TABLET BY MOUTH AT BEDTIME.<br>DO NOT SKIP A DOSE.</div>
+              </div>
+            </div>
+          </div>
+          <div class="rx-counter"></div>
         </div>
       </div>
       <div class="tile-meta">
         <div class="tile-kind">Precautions · Campaign · Transmedia · Audience Building</div>
         <div class="tile-title">Leverazopam.</div>
         <div class="tile-desc">A marketing campaign for a drug that doesn't exist, for a film that hasn't been shot yet. Live now at precautionsfilm.com.</div>
+      </div>
+    </a>
+
+    <a class="tile" href="/work/consistently-comfortable/">
+      <div class="tile-art art-cc">
+        <div class="cc-inner"><div class="a">Consistently</div><div class="b">Comfortable</div><div class="s">A MeUndies Campaign</div></div>
+      </div>
+      <div class="tile-meta">
+        <div class="tile-kind">MeUndies · Creative Strategy · Copywriting · Video</div>
+        <div class="tile-title">Consistently Comfortable.</div>
+        <div class="tile-desc">One character, one scenario, two outcomes. The product is never the punchline. It's the invisible reason everything goes right.</div>
       </div>
     </a>
     </div>
