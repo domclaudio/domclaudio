@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lead With the Flaw — Dom Claudio</title>
+  <meta name="description" content="How Dom Claudio leased 45% of a 384-unit Santa Clarita community by naming its weaknesses before the tour started. Real work, with the Yardi numbers behind it.">
+  <link rel="canonical" href="https://domclaudio.com/work/lead-with-the-flaw/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Dom Claudio">
+  <meta property="og:url" content="https://domclaudio.com/work/lead-with-the-flaw/">
+  <meta property="og:title" content="Lead With the Flaw">
+  <meta property="og:description" content="I told prospects what was wrong with the property before they could find out themselves. Then I leased 45% of it.">
+  <meta property="og:image" content="https://domclaudio.com/work/lead-with-the-flaw/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Navy card reading: Lead with the flaw. 75 leases. 45% of the property.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Lead With the Flaw">
+  <meta name="twitter:description" content="I told prospects what was wrong with the property before they could find out themselves. Then I leased 45% of it.">
+  <meta name="twitter:image" content="https://domclaudio.com/work/lead-with-the-flaw/og.jpg">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230F2B4F'/%3E%3Ctext x='50' y='66' text-anchor='middle' font-family='Helvetica Neue,Arial,sans-serif' font-weight='700' font-size='52' fill='%23FFFFFF' letter-spacing='-2'%3EDC%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0F2B4F; --azure: #298DFF; --azure-deep: #1C6FD0;
+      --ink: #22262C; --ink-soft: #4C535D; --muted: #6B737F; --faint: #9AA2AE;
+      --rule: #DDE3EA; --rule-soft: #EDF1F5;
+      --paper: #FFFFFF; --wash: #F3F6FA;
+      --sans: 'IBM Plex Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      --serif: 'IBM Plex Serif', Georgia, serif;
+      --mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 17px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; }
+
+    .topbar { display: flex; justify-content: space-between; align-items: center; padding: 22px 48px; border-bottom: 1px solid var(--rule-soft); }
+    .topbar .name { font-size: 13px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; text-decoration: none; }
+    .topbar .crumb { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--azure-deep); text-decoration: none; }
+    .topbar .crumb:hover { color: var(--ink); }
+
+    .page { max-width: 820px; margin: 0 auto; padding: 0 48px 90px; }
+
+    /* wordmark */
+    .wordmark { position: relative; overflow: hidden; background: var(--navy); color: #fff; margin: 0 -48px; padding: 64px 48px 56px; }
+    .wordmark::after { content: "45%"; position: absolute; right: -24px; bottom: -72px; font-size: 230px; font-weight: 700; letter-spacing: -0.06em; line-height: 1; color: rgba(41,141,255,.16); }
+    .wm-kicker { position: relative; font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: 2.5px; text-transform: uppercase; color: #7FBAFF; }
+    .wm-title { position: relative; margin-top: 20px; font-size: clamp(38px, 7vw, 70px); font-weight: 700; letter-spacing: -0.035em; line-height: 1.0; }
+    .wm-sub { position: relative; margin-top: 20px; font-family: var(--serif); font-style: italic; font-size: 19px; color: rgba(255,255,255,.88); max-width: 44ch; }
+    .wm-type { position: relative; margin-top: 26px; font-family: var(--mono); font-size: 12px; letter-spacing: .5px; color: rgba(255,255,255,.62); }
+
+    .realtag { display: inline-block; margin-top: 28px; position: relative; font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--navy); background: #7FBAFF; padding: 6px 11px; }
+
+    .brief { margin-top: 48px; border-top: 1px solid var(--rule); }
+    .brief-row { display: grid; grid-template-columns: 110px 1fr; gap: 24px; padding: 18px 0; border-bottom: 1px solid var(--rule-soft); }
+    .brief-key { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--azure-deep); padding-top: 6px; }
+    .brief-val { font-size: 17px; line-height: 1.6; color: var(--ink-soft); }
+    .brief-val .hl { color: var(--ink); font-weight: 600; }
+    .aside { margin-top: 24px; font-family: var(--serif); font-style: italic; font-size: 16px; color: var(--muted); }
+
+    .piece { margin-top: 66px; padding-top: 32px; border-top: 1px solid var(--rule); }
+    .piece-num { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--azure-deep); }
+    .piece-title { font-size: clamp(25px, 3.2vw, 34px); font-weight: 600; letter-spacing: -.02em; line-height: 1.15; margin: 8px 0 4px; }
+    .piece-sub { font-size: 14px; color: var(--muted); margin-bottom: 26px; }
+    .body { font-size: 17px; line-height: 1.7; color: var(--ink-soft); }
+    .body + .body { margin-top: 18px; }
+    .body b { color: var(--ink); font-weight: 600; }
+    .rationale { margin-top: 24px; padding-left: 18px; border-left: 3px solid var(--azure); font-size: 15px; line-height: 1.6; color: var(--muted); }
+
+    /* the script of what he says */
+    .says { list-style: none; margin-top: 8px; }
+    .says li { display: grid; grid-template-columns: 112px 1fr; gap: 20px; padding: 16px 0; border-bottom: 1px solid var(--rule-soft); align-items: start; }
+    .says .when { font-family: var(--mono); font-size: 11.5px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--azure-deep); padding-top: 4px; }
+    .says .what { font-size: 16.5px; line-height: 1.6; color: var(--ink-soft); min-width: 0; }
+    .says .what b { color: var(--ink); font-weight: 600; }
+
+    /* resident quote */
+    .quote { margin-top: 28px; background: var(--wash); border-left: 4px solid var(--azure); padding: 26px 28px; }
+    .quote p { font-family: var(--serif); font-size: 17.5px; line-height: 1.65; color: var(--ink); }
+    .quote p + p { margin-top: 14px; }
+    .quote .attrib { margin-top: 18px; font-family: var(--mono); font-size: 11.5px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); font-style: normal; }
+
+    /* numbers */
+    .nums { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; margin-top: 4px; }
+    .nums td { padding: 13px 0; border-bottom: 1px solid var(--rule-soft); font-size: 16px; color: var(--ink-soft); vertical-align: top; }
+    .nums td:last-child { text-align: right; font-weight: 600; color: var(--ink); white-space: nowrap; padding-left: 16px; }
+    .nums tr.total td { border-bottom: 2px solid var(--navy); color: var(--ink); font-weight: 600; }
+    .nums tr.total td:last-child { color: var(--azure-deep); font-weight: 700; }
+    .numnote { margin-top: 12px; font-family: var(--mono); font-size: 12.5px; line-height: 1.5; color: var(--muted); }
+
+    .closer { margin-top: 72px; padding-top: 36px; border-top: 2px solid var(--navy); }
+    .closer .big { font-size: clamp(30px, 5.4vw, 50px); font-weight: 700; letter-spacing: -.03em; line-height: 1.05; }
+    .closer .big span { color: var(--azure-deep); }
+    .closer .who { margin-top: 20px; font-family: var(--mono); font-size: 14px; color: var(--muted); }
+    .disclaimer { margin-top: 26px; font-size: 13px; line-height: 1.6; color: var(--faint); max-width: 64ch; }
+
+    .sig { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--rule); font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--faint); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+    .sig a { color: var(--azure-deep); }
+
+    @media (max-width: 720px) {
+      .topbar { padding: 18px 24px; }
+      .page { padding: 0 24px 70px; }
+      .wordmark { margin: 0 -24px; padding: 46px 24px 40px; }
+      .wordmark::after { font-size: 140px; bottom: -44px; }
+      .brief-row { grid-template-columns: 1fr; gap: 6px; }
+      .says li { grid-template-columns: 1fr; gap: 6px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="name" href="/">Dom Claudio</a>
+  <a class="crumb" href="/#work">← Work</a>
+</div>
+
+<main class="page">
+
+  <div class="wordmark">
+    <div class="wm-kicker">The Village Apartments · Santa Clarita</div>
+    <div class="wm-title">Lead With<br>the Flaw</div>
+    <div class="wm-sub">I told prospects what was wrong with the property before they could find out for themselves. Then I leased 45% of it.</div>
+    <div class="wm-type">384 units &nbsp;·&nbsp; 1,130 leads &nbsp;·&nbsp; 75 signed</div>
+    <span class="realtag">Not spec. This one ran.</span>
+  </div>
+
+  <div class="brief">
+    <div class="brief-row">
+      <div class="brief-key">Problem</div>
+      <div class="brief-val">A 384-unit community in a market where the comparable properties include a garage with the lease. Every unit here is a two- or three-bedroom, and every unit gets one parking space regardless. Garages exist, but only a few, and they cost extra. The building was designed for an era when a household had one car.</div>
+    </div>
+    <div class="brief-row">
+      <div class="brief-key">Insight</div>
+      <div class="brief-val">Nobody walks because of the parking. They walk because they found out about the parking by themselves, twenty minutes into a tour, right after I told them the place was perfect. The constraint doesn't lose the lease. Discovering it does.</div>
+    </div>
+    <div class="brief-row">
+      <div class="brief-key">Idea</div>
+      <div class="brief-val"><span class="hl">Lead with the flaw.</span> Name the constraint before they see it, explain why it exists, then let the real advantages land as facts instead of as sales patter. Credibility first, features second.</div>
+    </div>
+  </div>
+
+  <p class="aside">I have told more prospects what's wrong with this property than anyone else who works here. I also leased more of it.</p>
+
+  <section class="piece">
+    <div class="piece-num">01</div>
+    <h2 class="piece-title">What I Say, and When</h2>
+    <div class="piece-sub">The order matters more than the words</div>
+
+    <ol class="says">
+      <li>
+        <div class="when">Before the lot</div>
+        <div class="what"><b>The parking.</b> One space per unit, whether you've taken a two-bedroom or a three. This place was built when a family had one car and now every adult has one. Here's what street parking looks like, and it's always there. I'd rather you hear it from me in the office than count the spaces yourself on the way to the model.</div>
+      </li>
+      <li>
+        <div class="when">Before the tour</div>
+        <div class="what"><b>The garages.</b> A handful exist and they're an additional charge. Most places you're looking at in the valley include one. I'm not going to pretend that isn't a difference.</div>
+      </li>
+      <li>
+        <div class="when">In the unit</div>
+        <div class="what"><b>The kitchen is complete.</b> Refrigerator, dishwasher, range. Central air and heat you run from your phone. And in-unit laundry, which at this price point in Santa Clarita is not a given.</div>
+      </li>
+      <li>
+        <div class="when">At the desk</div>
+        <div class="what"><b>Seven days.</b> Service and management are both open seven days a week. Whatever happens, there's a person here to take it. That's the part people don't shop for and then need in month three.</div>
+      </li>
+      <li>
+        <div class="when">Always</div>
+        <div class="what"><b>Mr. Sir and Ms. Ma'am.</b> That's what everyone gets called, prospects and residents both, from the first call to the renewal. It's formal enough to be respectful and warm enough that people use it back.</div>
+      </li>
+    </ol>
+
+    <p class="rationale">The disclosure isn't humility, it's sequencing. A prospect who hears the worst thing first spends the rest of the tour testing whether I'll be straight about everything else. When I am, the amenities stop sounding like a pitch and start sounding like a list of true things. The objection gets spent in the office, where it costs five minutes, instead of in the parking lot, where it costs the lease.</p>
+  </section>
+
+  <section class="piece">
+    <div class="piece-num">02</div>
+    <h2 class="piece-title">The Hardest Version of It</h2>
+    <div class="piece-sub">When the objection is the reviews</div>
+
+    <p class="body">I was still a temp when a prospect came in having already read everything the internet says about this community. Current and former residents, writing about crime on site. She'd made up most of her mind before she parked.</p>
+
+    <p class="body">I told her two true things. We have courtesy patrol. And she shouldn't take my word for any of it — she should go look at the crime statistics for the area herself, and I pointed her at SpotCrime, which pulls from police data and which I have no control over whatsoever.</p>
+
+    <p class="body"><b>That was the whole move.</b> I didn't argue with her fear and I didn't minimize it. I handed her the tool to check me, including the risk that it wouldn't come back in my favor.</p>
+
+    <p class="body">She signed. A year later she renewed, and wrote this:</p>
+
+    <div class="quote">
+      <p>"I moved from Burbank to Newhall and was a little hesitant because of some of the reviews and concerns about crime. That said, crime can happen anywhere — even in Burbank. I've lived here for over a year now, and my experience has been overwhelmingly positive."</p>
+      <p>"I do want to emphasize that this review is based solely on my personal experience… I can't speak for every area of the complex."</p>
+      <p>"I renewed my lease for another year because of how comfortable I've felt living here."</p>
+      <div class="attrib">Public resident review · name withheld</div>
+    </div>
+
+    <p class="rationale">Read what she does in her own review. She repeats my framing back to me — <i>crime can happen anywhere</i> — and then she volunteers her own caveat without being asked, because nobody ever told her she had to pretend. An honest tour produced an honest advocate. A lease is a transaction; a renewal twelve months later is the evidence that the honesty held up after the commission cleared.</p>
+  </section>
+
+  <section class="piece">
+    <div class="piece-num">03</div>
+    <h2 class="piece-title">What It Did</h2>
+    <div class="piece-sub">Yardi, Team Performance by Agent · trailing twelve months</div>
+
+    <table class="nums">
+      <tr><td>Leads worked</td><td>1,130</td></tr>
+      <tr><td>Prospects created</td><td>638</td></tr>
+      <tr><td>Appointments set</td><td>496</td></tr>
+      <tr><td>Tours given</td><td>111</td></tr>
+      <tr><td>Follow-ups completed</td><td>288</td></tr>
+      <tr><td>Conversion ratio</td><td>6.64%</td></tr>
+      <tr class="total"><td>Leases signed — 45% of the property's 165</td><td>75</td></tr>
+    </table>
+    <p class="numnote">2026 year to date: 58 of the property's 114, or 51%. Figures pulled from Yardi in September 2026.</p>
+
+    <p class="rationale">The next-highest producer on the team closed 51 in the same twelve months. I trained her.</p>
+  </section>
+
+  <div class="closer">
+    <div class="big">Anyone can write a campaign.<br><span>I also moved the units.</span></div>
+    <div class="who">— Dom Claudio</div>
+    <p class="disclaimer">Figures are from Yardi's Team Performance by Agent report for The Village Apartments, pulled September 2026. The resident review is published publicly; it's quoted here in part, without the reviewer's name or unit. Nothing on this page is confidential to my employer.</p>
+  </div>
+
+  <div class="sig">
+    <span>Dom Claudio · <a href="https://domclaudio.com">domclaudio.com</a></span>
+    <span>Leasing · Santa Clarita, CA</span>
+  </div>
+
+</main>
+</body>
+</html>
