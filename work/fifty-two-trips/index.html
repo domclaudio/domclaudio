@@ -75,7 +75,8 @@
     .frame img { width: 100%; height: 100%; object-fit: cover; }
     .frame::after { content: counter(frame); position: absolute; top: 8px; left: 8px; font-family: var(--courier); font-size: 12px; font-weight: 700; line-height: 1; background: #fff; color: var(--ink); padding: 5px 7px; }
     .cue { font-family: var(--courier); font-size: 14.5px; line-height: 1.5; color: #222; }
-    .cue .slug { font-weight: 700; text-transform: uppercase; }
+    .cue .slug { font-weight: 700; text-transform: uppercase; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 14px; }
+    .cue .tc { color: var(--blue); font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums; margin-left: auto; }
     .cue .action { margin-top: 6px; color: var(--ink-soft); }
     .cue .char { margin-top: 10px; text-transform: uppercase; padding-left: 22%; }
     .cue .dlg { padding-left: 10%; }
@@ -157,7 +158,7 @@
       <li>
         <div class="frame"><img src="frame1.jpg?v=2" alt="Adrianna pulls a tray of sugar cookies from the oven on Christmas Eve; a plate on the counter reads For Santa." loading="lazy"></div>
         <div class="cue">
-          <div class="slug">INT. KITCHEN – CHRISTMAS EVE – NIGHT</div>
+          <div class="slug"><span>INT. KITCHEN – CHRISTMAS EVE – NIGHT</span><span class="tc">0:00–0:05</span></div>
           <p class="action">A crooner's Christmas standard drifts from a phone. The oven DINGS. ADRIANNA (30s) pulls out sugar cookies.</p>
           <div class="char">ADRIANNA (V.O.)</div>
           <div class="dlg">Every year I wonder how I pull this off.</div>
@@ -166,7 +167,7 @@
       <li>
         <div class="frame"><img src="frame2.jpg?v=2" alt="A hand in a winter coat taps a card at a grocery checkout terminal." loading="lazy"></div>
         <div class="cue">
-          <div class="slug">INT. SUPERMARKET – JANUARY</div>
+          <div class="slug"><span>INT. SUPERMARKET – JANUARY</span><span class="tc">0:05–0:08</span></div>
           <p class="action">Winter coat. She taps her card at checkout.</p>
           <div class="char">ADRIANNA (V.O.)</div>
           <div class="dlg">Turns out, I didn't.</div>
@@ -175,7 +176,7 @@
       <li>
         <div class="frame"><img src="frame3.jpg?v=2" alt="Adrianna pushes a cart with a watermelon through a bright produce aisle in summer." loading="lazy"></div>
         <div class="cue">
-          <div class="slug">INT. SUPERMARKET – JULY</div>
+          <div class="slug"><span>INT. SUPERMARKET – JULY</span><span class="tc">0:08–0:11</span></div>
           <p class="action">Sunglasses on her head, a watermelon in the cart.</p>
           <div class="char">ADRIANNA (V.O.)</div>
           <div class="dlg">My grocery runs did.</div>
@@ -184,7 +185,7 @@
       <li>
         <div class="frame"><img src="frame4.jpg?v=2" alt="Hands place baking ingredients into a cart in a holiday-decorated aisle." loading="lazy"></div>
         <div class="cue">
-          <div class="slug">INT. SUPERMARKET – DECEMBER</div>
+          <div class="slug"><span>INT. SUPERMARKET – DECEMBER</span><span class="tc">0:11–0:15</span></div>
           <p class="action">The baking aisle. Flour, sugar, sprinkles: the cookie ingredients.</p>
           <div class="char">ADRIANNA (V.O.)</div>
           <div class="dlg">A little back, every week, all year.</div>
@@ -193,7 +194,7 @@
       <li>
         <div class="frame"><img src="frame5.jpg?v=2" alt="Adrianna sits on the edge of a bed in early morning light, waking her daughter." loading="lazy"></div>
         <div class="cue">
-          <div class="slug">INT. MAYA'S BEDROOM – CHRISTMAS MORNING</div>
+          <div class="slug"><span>INT. MAYA'S BEDROOM – CHRISTMAS MORNING</span><span class="tc">0:15–0:19</span></div>
           <p class="action">Adrianna nudges MAYA (7) awake.</p>
           <div class="char">ADRIANNA</div>
           <div class="dlg">Hey. He came.</div>
@@ -202,22 +203,22 @@
       <li>
         <div class="frame"><img src="frame6.jpg?v=2" alt="Maya runs toward a new bicycle under the Christmas tree while Adrianna watches from the doorway." loading="lazy"></div>
         <div class="cue">
-          <div class="slug">INT. LIVING ROOM – CONTINUOUS</div>
+          <div class="slug"><span>INT. LIVING ROOM – CONTINUOUS</span><span class="tc">0:19–0:26</span></div>
           <p class="action">Maya races to a bike under the tree. Adrianna watches from the doorway, coffee in hand.</p>
           <div class="char">ADRIANNA (V.O.)</div>
           <div class="dlg">Fifty-two trips to the store. One very happy kid.</div>
         </div>
       </li>
     </ol>
-    <div class="script-meta"><span>Runs :30 at a natural read</span><span>52 trips × ~$115 = $6,000, the cap, on the nose</span></div>
+    <div class="script-meta"><span>About 13 seconds of voiceover across 26 seconds of picture</span><span>End card 0:26–0:30</span></div>
 
-    <p class="rationale"><b>Why it's built this way.</b> The voiceover is a question asked in December and answered by the year. She never says a percentage; the numbers live on the end card, where people expect fine print. She isn't wealthy and she isn't struggling. She pays in full every month, which is the only way the card actually comes out ahead, and the only customer the spot should be talking to.</p>
+    <p class="rationale"><b>Why it's built this way.</b> The voiceover is a question asked in December and answered by the year. She never says a percentage; the numbers live on the end card, where people expect fine print. She isn't wealthy and she isn't struggling. She pays the balance in full every month, which is the only way the math holds.</p>
   </section>
 
   <section class="piece">
     <div class="piece-num">02</div>
     <h2 class="piece-title">The End Card</h2>
-    <div class="piece-sub">The claim, with its cap, in one frame</div>
+    <div class="piece-sub">0:26–0:30 · The claim, with its cap, in one frame</div>
     <div class="endcard">
       <span class="k">End card</span>
       <div class="h">Groceries went up 2.2%.<br>She got 6% back.</div>
@@ -231,7 +232,7 @@
     <h2 class="piece-title">The Math She Lives By</h2>
     <div class="piece-sub">What the year actually returns</div>
     <table class="math">
-      <tr><td>52 weekly grocery runs at about $115</td><td>$6,000</td></tr>
+      <tr><td>52 weekly grocery runs, averaging $116</td><td>$6,032</td></tr>
       <tr><td>6% back, up to the $6,000 annual cap</td><td>$360</td></tr>
       <tr><td>Annual fee after year one</td><td>−$95</td></tr>
       <tr><td>Disney streaming credit, up to $10 a month on the Disney+ she already pays for</td><td>+$120</td></tr>
