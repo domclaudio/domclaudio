@@ -100,6 +100,9 @@ a { color:inherit; text-decoration:none; }
 .amex-inner .arrow { font-family:var(--mono); font-size:22px; color:rgba(255,255,255,0.6); }
 
 /* brand blocks */
+.brand-art { background:var(--b); color:var(--bi); flex-direction:column; gap:14px; }
+.brand-art .bn { font-size:clamp(30px,4vw,46px); font-weight:700; letter-spacing:-0.03em; line-height:1; text-align:center; padding:0 20px; }
+.brand-art .bs { font-size:10px; font-weight:700; letter-spacing:3px; text-transform:uppercase; opacity:.7; }
 .brand-go { margin-top:14px; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--navy); }
 .tile.brand:hover .brand-go { text-decoration:underline; }
 
@@ -182,61 +185,49 @@ a { color:inherit; text-decoration:none; }
 
   <div class="grid brands">
     <a class="tile brand" href="/work/american-express/">
-      <div class="tile-art art-amex">
-        <div class="amex-inner">
-          <div class="col"><div class="n dim">2.2%</div><div class="t">Groceries went up</div></div>
-          <div class="arrow">→</div>
-          <div class="col"><div class="n">6%</div><div class="t">She got back</div></div>
-        </div>
+      <div class="tile-art brand-art" style="--b:#006FCF;--bi:#fff">
+        <span class="bn">American Express</span>
+        <span class="bs">Spec work</span>
       </div>
       <div class="tile-meta">
         <div class="tile-kind">Campaign · Script &amp; Storyboards</div>
-        <div class="tile-title">American Express</div>
-        <div class="tile-desc">Fifty-Two Trips</div>
+        <div class="tile-title">Fifty-Two Trips.</div>
         <div class="brand-go">See the work →</div>
       </div>
     </a>
 
     <a class="tile brand" href="/work/mint-mobile/">
-      <div class="tile-art art-mint">
-        <div class="mint-inner"><div class="n">$180</div><div class="o">Once a year</div><div class="s">0 bills in February</div></div>
+      <div class="tile-art brand-art" style="--b:#68C9A4;--bi:#1C2528">
+        <span class="bn">Mint Mobile</span>
+        <span class="bs">Spec work</span>
       </div>
       <div class="tile-meta">
         <div class="tile-kind">Campaign · Lifecycle · Conversion</div>
-        <div class="tile-title">Mint Mobile</div>
-        <div class="tile-desc">Last Year's Bill</div>
+        <div class="tile-title">Last Year's Bill.</div>
         <div class="brand-go">See the work →</div>
       </div>
     </a>
 
     <a class="tile brand" href="/work/chess-com/">
-      <div class="tile-art art-botg">
-        <div class="botg-inner">
-          <img src="work/battle-of-the-greats/magnus.png" alt="">
-          <div class="botg-vs"><div class="vs">VS</div><div class="t">Heavyweight Championship</div><div class="s">of the world (of chess)</div></div>
-          <img class="c" src="work/battle-of-the-greats/mittens.png" alt="">
-        </div>
+      <div class="tile-art brand-art" style="--b:#262522;--bi:#EEEED2">
+        <span class="bn">Chess.com</span>
+        <span class="bs">Spec work</span>
       </div>
       <div class="tile-meta">
         <div class="tile-kind">Brand Strategy · Social · Content</div>
-        <div class="tile-title">Chess.com</div>
-        <div class="tile-desc">Battle of the Greats</div>
+        <div class="tile-title">Battle of the Greats.</div>
         <div class="brand-go">See the work →</div>
       </div>
     </a>
 
     <a class="tile brand" href="/work/apartments-com/">
-      <div class="tile-art art-lrn">
-        <div class="lrn-card">
-          <div class="lrn-chip">Renter note · Unit 2420</div>
-          <p class="lrn-quote">Garbage day is Tuesday. It starts at 4:50&nbsp;a.m. You'll sleep through it by March.</p>
-          <div class="lrn-by">— the renter before you · lived here 14 months</div>
-        </div>
+      <div class="tile-art brand-art" style="--b:#237A3C;--bi:#fff">
+        <span class="bn">Apartments.com</span>
+        <span class="bs">Spec work</span>
       </div>
       <div class="tile-meta">
         <div class="tile-kind">Product Marketing · Customer Insight</div>
-        <div class="tile-title">Apartments.com</div>
-        <div class="tile-desc">Last Renter Notes</div>
+        <div class="tile-title">Last Renter Notes.</div>
         <div class="brand-go">See the work →</div>
       </div>
     </a>
