@@ -103,6 +103,15 @@ a { color:inherit; text-decoration:none; }
 .brand-go { margin-top:14px; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--navy); }
 .tile.brand:hover .brand-go { text-decoration:underline; }
 
+/* real-work pointer */
+.real-work { display:grid; grid-template-columns:auto 1fr auto; gap:6px 22px; align-items:baseline; margin-top:40px; padding:22px 26px; border:1px solid var(--light-line); border-left:4px solid var(--navy); border-radius:6px; background:#fff; transition:box-shadow .25s; }
+.real-work:hover { box-shadow:0 10px 26px rgba(0,0,0,0.08); }
+.rw-kind { font-size:10px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:var(--navy); }
+.rw-title { font-size:20px; font-weight:600; }
+.rw-go { grid-column:3; grid-row:1; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--navy); }
+.rw-desc { grid-column:1 / -1; font-size:15px; line-height:1.55; color:#666; }
+@media (max-width:760px) { .real-work { grid-template-columns:1fr; } .rw-go { grid-column:auto; grid-row:auto; } }
+
 /* sub-dividers */
 .sub + .sub { margin-top:56px; }
 .sub-label { display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; margin-bottom:18px; }
@@ -231,31 +240,14 @@ a { color:inherit; text-decoration:none; }
         <div class="brand-go">See the work →</div>
       </div>
     </a>
-
-    <a class="tile brand" href="/work/meundies/">
-      <div class="tile-art art-cc">
-        <div class="cc-inner"><div class="a">Consistently</div><div class="b">Comfortable</div><div class="s">A MeUndies Campaign</div></div>
-      </div>
-      <div class="tile-meta">
-        <div class="tile-kind">Creative Strategy · Copywriting · Video</div>
-        <div class="tile-title">MeUndies</div>
-        <div class="tile-desc">Consistently Comfortable</div>
-        <div class="brand-go">See the work →</div>
-      </div>
-    </a>
-
-    <a class="tile brand" href="/work/precautions/">
-      <div class="tile-art art-rx">
-        <img src="work/precautions/bottle.jpg?v=2" alt="An amber prescription bottle on a kitchen counter, labeled Leverazopam.">
-      </div>
-      <div class="tile-meta">
-        <div class="tile-kind">Precautions · my short film</div>
-        <div class="tile-title">Precautions</div>
-        <div class="tile-desc">Leverazopam</div>
-        <div class="brand-go">See the work →</div>
-      </div>
-    </a>
   </div>
+
+  <a class="real-work" href="/work/lead-with-the-flaw/">
+    <span class="rw-kind">Real work, not spec</span>
+    <span class="rw-title">Lead With the Flaw.</span>
+    <span class="rw-desc">How I leased 45% of a 384-unit community by naming its weaknesses before the tour started, with the Yardi numbers behind it.</span>
+    <span class="rw-go">Read it →</span>
+  </a>
 
 </section>
 
@@ -277,8 +269,15 @@ a { color:inherit; text-decoration:none; }
         <p class="proj-logline">Hell is a corporate office. Demons are middle managers. And the worst part of eternal damnation? The performance reviews.</p>
         <div class="proj-status">In development</div>
       </div>
+      <div class="proj">
+        <div class="proj-type">Short · Horror</div>
+        <div class="proj-title">Precautions</div>
+        <p class="proj-logline">The short is in pre-production. Its campaign is already running: a marketing push for Leverazopam, a drug that doesn't exist, live at precautionsfilm.com.</p>
+        <div class="proj-status">In pre-production · Trailer coming</div>
+        <a class="proj-link" href="/work/precautions/">See the campaign →</a>
+      </div>
     </div>
-    <p class="proj-pointer">Precautions, my short in pre-production, is under <a href="/work/precautions/">For brands</a>, where its campaign lives.</p>
+    
   </div>
 </section>
 
