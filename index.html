@@ -99,6 +99,10 @@ a { color:inherit; text-decoration:none; }
 .amex-inner .t { margin-top:10px; font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.85); }
 .amex-inner .arrow { font-family:var(--mono); font-size:22px; color:rgba(255,255,255,0.6); }
 
+/* brand blocks */
+.brand-go { margin-top:14px; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--navy); }
+.tile.brand:hover .brand-go { text-decoration:underline; }
+
 /* sub-dividers */
 .sub + .sub { margin-top:56px; }
 .sub-label { display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; margin-bottom:18px; }
@@ -167,10 +171,8 @@ a { color:inherit; text-decoration:none; }
 <section class="specs" id="brands">
   <div class="sec-label"><span>For brands</span><span>Self-directed specs · 2026</span></div>
 
-  <div class="sub" id="pitch">
-    <div class="sub-label"><span class="sub-name">The Pitch</span><span class="sub-desc">Brand campaigns</span></div>
-    <div class="grid">
-    <a class="tile" href="/work/fifty-two-trips/">
+  <div class="grid brands">
+    <a class="tile brand" href="/work/american-express/">
       <div class="tile-art art-amex">
         <div class="amex-inner">
           <div class="col"><div class="n dim">2.2%</div><div class="t">Groceries went up</div></div>
@@ -179,60 +181,26 @@ a { color:inherit; text-decoration:none; }
         </div>
       </div>
       <div class="tile-meta">
-        <div class="tile-kind">American Express · Campaign · Script &amp; Storyboards</div>
-        <div class="tile-title">Fifty-Two Trips.</div>
-        <div class="tile-desc">A year of grocery runs quietly pays for Christmas morning. A :30 for the Blue Cash Preferred, aimed at the customer Amex's image leaves out.</div>
+        <div class="tile-kind">Campaign · Script &amp; Storyboards</div>
+        <div class="tile-title">American Express</div>
+        <div class="tile-desc">Fifty-Two Trips</div>
+        <div class="brand-go">See the work →</div>
       </div>
     </a>
 
-    <a class="tile" href="/work/last-years-bill/">
+    <a class="tile brand" href="/work/mint-mobile/">
       <div class="tile-art art-mint">
         <div class="mint-inner"><div class="n">$180</div><div class="o">Once a year</div><div class="s">0 bills in February</div></div>
       </div>
       <div class="tile-meta">
-        <div class="tile-kind">Mint Mobile · Campaign · Lifecycle · Conversion</div>
-        <div class="tile-title">Last Year's Bill.</div>
-        <div class="tile-desc">A :30 spot, a measured win-back sequence, and one landing page, all built on the thing Mint underplays: you pay once a year.</div>
-      </div>
-    </a>
-    </div>
-  </div>
-
-  <div class="sub" id="product">
-    <div class="sub-label"><span class="sub-name">The Product</span><span class="sub-desc">Where the product is the idea</span></div>
-    <div class="grid">
-    <a class="tile" href="/work/last-renter-notes/">
-      <div class="tile-art art-lrn">
-        <div class="lrn-card">
-          <div class="lrn-chip">Renter note · Unit 2420</div>
-          <p class="lrn-quote">Garbage day is Tuesday. It starts at 4:50&nbsp;a.m. You'll sleep through it by March.</p>
-          <div class="lrn-by">— the renter before you · lived here 14 months</div>
-        </div>
-      </div>
-      <div class="tile-meta">
-        <div class="tile-kind">Apartments.com · Product Marketing · Customer Insight</div>
-        <div class="tile-title">Last Renter Notes.</div>
-        <div class="tile-desc">The last renter leaves a note on the unit; the next one reads it. Read one free, unlock the rest by paying it forward.</div>
+        <div class="tile-kind">Campaign · Lifecycle · Conversion</div>
+        <div class="tile-title">Mint Mobile</div>
+        <div class="tile-desc">Last Year's Bill</div>
+        <div class="brand-go">See the work →</div>
       </div>
     </a>
 
-    <a class="tile" href="/work/consistently-comfortable/">
-      <div class="tile-art art-cc">
-        <div class="cc-inner"><div class="a">Consistently</div><div class="b">Comfortable</div><div class="s">A MeUndies Campaign</div></div>
-      </div>
-      <div class="tile-meta">
-        <div class="tile-kind">MeUndies · Creative Strategy · Copywriting · Video</div>
-        <div class="tile-title">Consistently Comfortable.</div>
-        <div class="tile-desc">One character, one scenario, two outcomes. The product is never the punchline. It's the invisible reason everything goes right.</div>
-      </div>
-    </a>
-    </div>
-  </div>
-
-  <div class="sub" id="show">
-    <div class="sub-label"><span class="sub-name">The Show</span><span class="sub-desc">Content and series</span></div>
-    <div class="grid">
-    <a class="tile wide" href="/work/battle-of-the-greats/">
+    <a class="tile brand" href="/work/chess-com/">
       <div class="tile-art art-botg">
         <div class="botg-inner">
           <img src="work/battle-of-the-greats/magnus.png" alt="">
@@ -241,23 +209,52 @@ a { color:inherit; text-decoration:none; }
         </div>
       </div>
       <div class="tile-meta">
-        <div class="tile-kind">Chess.com · Brand Strategy · Social · Content</div>
-        <div class="tile-title">Battle of the Greats.</div>
-        <div class="tile-desc">The legends of chess, rebuilt as engines, finally get a rematch with the cat. Every episode ends in a position you can play.</div>
+        <div class="tile-kind">Brand Strategy · Social · Content</div>
+        <div class="tile-title">Chess.com</div>
+        <div class="tile-desc">Battle of the Greats</div>
+        <div class="brand-go">See the work →</div>
       </div>
     </a>
 
-    <a class="tile wide" href="/work/precautions/">
+    <a class="tile brand" href="/work/apartments-com/">
+      <div class="tile-art art-lrn">
+        <div class="lrn-card">
+          <div class="lrn-chip">Renter note · Unit 2420</div>
+          <p class="lrn-quote">Garbage day is Tuesday. It starts at 4:50&nbsp;a.m. You'll sleep through it by March.</p>
+          <div class="lrn-by">— the renter before you · lived here 14 months</div>
+        </div>
+      </div>
+      <div class="tile-meta">
+        <div class="tile-kind">Product Marketing · Customer Insight</div>
+        <div class="tile-title">Apartments.com</div>
+        <div class="tile-desc">Last Renter Notes</div>
+        <div class="brand-go">See the work →</div>
+      </div>
+    </a>
+
+    <a class="tile brand" href="/work/meundies/">
+      <div class="tile-art art-cc">
+        <div class="cc-inner"><div class="a">Consistently</div><div class="b">Comfortable</div><div class="s">A MeUndies Campaign</div></div>
+      </div>
+      <div class="tile-meta">
+        <div class="tile-kind">Creative Strategy · Copywriting · Video</div>
+        <div class="tile-title">MeUndies</div>
+        <div class="tile-desc">Consistently Comfortable</div>
+        <div class="brand-go">See the work →</div>
+      </div>
+    </a>
+
+    <a class="tile brand" href="/work/precautions/">
       <div class="tile-art art-rx">
         <img src="work/precautions/bottle.jpg?v=2" alt="An amber prescription bottle on a kitchen counter, labeled Leverazopam.">
       </div>
       <div class="tile-meta">
-        <div class="tile-kind">Precautions · Campaign · Transmedia · Audience Building</div>
-        <div class="tile-title">Leverazopam.</div>
-        <div class="tile-desc">A marketing campaign for a drug that doesn't exist, for a film that hasn't been shot yet. Live now at precautionsfilm.com.</div>
+        <div class="tile-kind">Precautions · my short film</div>
+        <div class="tile-title">Precautions</div>
+        <div class="tile-desc">Leverazopam</div>
+        <div class="brand-go">See the work →</div>
       </div>
     </a>
-    </div>
   </div>
 
 </section>
@@ -281,7 +278,7 @@ a { color:inherit; text-decoration:none; }
         <div class="proj-status">In development</div>
       </div>
     </div>
-    <p class="proj-pointer">Precautions, my short in pre-production, is under <a href="#show">The Show</a>, where its campaign lives.</p>
+    <p class="proj-pointer">Precautions, my short in pre-production, is under <a href="/work/precautions/">For brands</a>, where its campaign lives.</p>
   </div>
 </section>
 
